@@ -1,0 +1,19 @@
+<div class="modal-header">
+  <div class="modal-title d-flex">
+    <div class="input-group">
+      <span class="input-group-text bg-white">
+        <i class="bi bi-search"></i>
+      </span>
+      <input type="text" class="form-control" [(ngModel)]="search">
+    </div>
+    <button type="button" class="btn btn-default" aria-label="Close" (click)="handleSearch()">Search</button>
+  </div>
+  <button type="button" class="btn btn-close" aria-label="Close" (click)="activeModal.close()"></button>
+</div>
+<div class="modal-body">
+  <div>
+    <ul class="list-unstyled">
+      <li><i class="bi bi-search me-2"></i> Ceva extraordinar <i class="bi bi-close"></i></li>
+    </ul>
+  </div>
+</div>

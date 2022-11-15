@@ -1,0 +1,15 @@
+// @import 'src/styles/variables';
+
+:host {
+  .navbar {
+    background-color: #0b0c22;
+    .navbar-brand {
+      img {
+        width: 100px;
+      }
+    }
+    .navbar-toggle {
+      color: white;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+// @import 'src/styles/variables';
+
+:host {
+  .modal-header{
+    .modal-title {
+      flex: 1;
+    }
+  }
+}
