@@ -7,6 +7,7 @@ import { BottomNavigationComponent } from './components/bottom-navigation/bottom
 import { TopNavigationComponent } from './components/top-navigation/top-navigation.component';
 // Shared Modules
 import { CoreModule } from './shared/core.module';
+import { MediaPlayerDialogComponent } from './shared/modals/media-player/media-player-dialog.component';
 import { SearchDialogComponent } from './shared/modals/search/search-dialog.component';
 import { SharedModule } from './shared/shared.module';
 
@@ -16,7 +17,8 @@ import { SharedModule } from './shared/shared.module';
     TopNavigationComponent,
     BottomNavigationComponent,
     // Modals
-    SearchDialogComponent
+    SearchDialogComponent,
+    MediaPlayerDialogComponent
   ],
   imports: [
     BrowserModule,

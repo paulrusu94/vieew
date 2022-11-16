@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SearchPage } from './pages/search/search.page';
+import { ProfilePage } from './pages/profile/profile.page';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { SearchRoutingModule } from './search-routing.module';
+import { ProfileRoutingModule } from './profile-routing.module';
 
 @NgModule({
   declarations: [
     // Pages
-    SearchPage,
+    ProfilePage,
     // Components
   ],
   imports: [
     CommonModule,
-    SearchRoutingModule,
+    ProfileRoutingModule,
     SharedModule
   ]
 })
-export class SearchModule { }
+export class ProfileModule { }

@@ -3,11 +3,12 @@ import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: '[appSearchDialog]',
-  templateUrl: './search-dialog.component.html',
-  styleUrls: ['./search-dialog.component.scss'],
+  selector: '[appMediaPlayerDialog]',
+  templateUrl: './media-player-dialog.component.html',
+  styleUrls: ['./media-player-dialog.component.scss'],
 })
-export class SearchDialogComponent implements OnInit, OnDestroy {
+export class MediaPlayerDialogComponent implements OnInit, OnDestroy {
+  @Input() media: any
   public search: string = '';
 
   constructor(
@@ -16,7 +17,7 @@ export class SearchDialogComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    console.log('Modal inited');
+    console.log(this.media);
   }
 
   handleSearch() {

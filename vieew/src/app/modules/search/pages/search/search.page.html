@@ -1,75 +1,25 @@
-<section appStoriesComponent></section>
-<section class="feed">
-  <div class="card">
-    <div class="card-title px-2">
-      <span class="avatar"></span>
-      <span>Nike</span>
+<div class="container">
+  <section class="mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Nike</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
     </div>
-    <div class="card-image"></div>
-    <div class="card-actions px-2">
-      <a class="btn btn-link text-black" aria-current="page" href="#">
-        <i class="bi bi-send"></i>
-      </a>
-      <a class="btn btn-link text-black" aria-current="page" href="#">
-        <i class="bi bi-heart"></i>
-      </a>
+  </section>
+  <section *ngIf="feed$ | async as feed">
+    <div class="row" *ngIf="feed.length">
+      <div class="col-6" *ngFor="let video of feed">
+        <div class="card">
+          <img [src]="video?.thumbnail" alt="" (click)="openMediaPlayer(video)">
+          <div class="card-body">
+            <h5 class="card-title"><a class="text-black" [routerLink]="['/profile', video.author]">{{ video?.author }}</a></h5>
+            <p class="card-text">{{ video?.title }}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="card-text px-2">
-      <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-title px-2">
-      <span class="avatar"></span>
-      <span>Nike</span>
-    </div>
-    <div class="card-image"></div>
-    <div class="card-actions px-2">
-      <a class="btn btn-link text-black" aria-current="page" href="#">
-        <i class="bi bi-send"></i>
-      </a>
-      <a class="btn btn-link text-black" aria-current="page" href="#">
-        <i class="bi bi-heart"></i>
-      </a>
-    </div>
-    <div class="card-text px-2">
-      <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-title px-2">
-      <span class="avatar"></span>
-      <span>Nike</span>
-    </div>
-    <div class="card-image"></div>
-    <div class="card-actions px-2">
-      <a class="btn btn-link text-black" aria-current="page" href="#">
-        <i class="bi bi-send"></i>
-      </a>
-      <a class="btn btn-link text-black" aria-current="page" href="#">
-        <i class="bi bi-heart"></i>
-      </a>
-    </div>
-    <div class="card-text px-2">
-      <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-title px-2">
-      <span class="avatar"></span>
-      <span>Nike</span>
-    </div>
-    <div class="card-image"></div>
-    <div class="card-actions px-2">
-      <a class="btn btn-link text-black" aria-current="page" href="#">
-        <i class="bi bi-send"></i>
-      </a>
-      <a class="btn btn-link text-black" aria-current="page" href="#">
-        <i class="bi bi-heart"></i>
-      </a>
-    </div>
-    <div class="card-text px-2">
-      <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    </div>
-  </div>
-</section>
+  </section>
+</div>
