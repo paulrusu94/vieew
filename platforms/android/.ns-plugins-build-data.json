@@ -1,0 +1,18 @@
+{
+	"@nativescript/core": {
+		"/Volumes/Workspace/Personal/vieew/node_modules/@nativescript/core/platforms/android/res/values/ids.xml": "af407e752ae7884c6e064d1dc81008497d5ff0cc",
+		"/Volumes/Workspace/Personal/vieew/node_modules/@nativescript/core/platforms/android/core.aar": "5590baf86aa10f293a092fa8888d4c96ad76a9b3",
+		"/Volumes/Workspace/Personal/vieew/node_modules/@nativescript/core/platforms/android/native-api-usage.json": "4a614afaa51061d74eba0cbe39100f47b0e2a10b",
+		"/Volumes/Workspace/Personal/vieew/node_modules/@nativescript/core/platforms/android/widgets-release.aar": "b694a7025634c74be2c30be38e69462b47bdbdb3"
+	},
+	"nativescript-ui-core": {
+		"/Volumes/Workspace/Personal/vieew/node_modules/nativescript-ui-core/platforms/android/TNSCore-release.aar": "b0a7669a71f361505f1a91a9ebc1b9cf64213f79"
+	},
+	"nativescript-ui-sidedrawer": {
+		"/Volumes/Workspace/Personal/vieew/node_modules/nativescript-ui-sidedrawer/platforms/android/TNSSideDrawer-release.aar": "601190cbc04b24f7d68a0212c45bb1b9bc97708a"
+	},
+	"nativescript-ui-listview": {
+		"/Volumes/Workspace/Personal/vieew/node_modules/nativescript-ui-listview/platforms/android/include.gradle": "1575a4fb773366d6f3cfd6be6f382e2fd9543379",
+		"/Volumes/Workspace/Personal/vieew/node_modules/nativescript-ui-listview/platforms/android/TNSListView-release.aar": "aed98c69163dd879617d55ae29553fceb07fa33f"
+	}
+}
