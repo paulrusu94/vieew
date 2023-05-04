@@ -1,15 +1,15 @@
 {
+	"/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/runtime.js": "34e968695bb05f4c7d2ce74dc9d80234dbd975db",
 	"/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/assets/images/logo_vieew.png": "2e1bda522b76d46b620000100e8b6a4ca84565af",
-	"/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/fonts/fa-regular-400.ttf": "3d58fd9d329aad13e48c4cbb0620cd47d583c047",
-	"/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/src_app_modules_featured_featured_module_ts.js": "8f259c3e03af4eb6778b97e0f0a34717e04de604",
 	"/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/src_app_modules_browse_browse_module_ts.js": "9ee3ab8d852b63a0eb8497c27a3708c32a965f1c",
+	"/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/src_app_modules_featured_featured_module_ts.js": "8f259c3e03af4eb6778b97e0f0a34717e04de604",
 	"/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/package.json": "22659e2d2ba98c59e464fdc5e91707c5a5821abc",
+	"/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/fonts/fa-regular-400.ttf": "3d58fd9d329aad13e48c4cbb0620cd47d583c047",
+	"/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/src_app_modules_home_home_module_ts.js": "00847089a6f9e789236944785974b5dea308dae9",
 	"/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/src_app_modules_search_search_module_ts.js": "97c52763a9d2401b748a80a4561d7168b04753fb",
 	"/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/src_app_modules_settings_settings_module_ts.js": "15148b4929595af40900e2ed9e090fad7ef8751e",
-	"/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/runtime.js": "d27f27dc4d533efdb9f2af9119e664c4ac2a28aa",
 	"/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/fonts/fa-brands-400.ttf": "7cba2133893eb41e742d630f1218a8ac151675c8",
-	"/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/src_app_modules_cars_cars_module_ts.js": "c9fc79a0f388c5725209de7514b45fadc52e5c38",
 	"/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/fonts/fa-solid-900.ttf": "4f8bfab573ad1de9084b1f7675953e2008e3f459",
-	"/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/bundle.js": "b8ea139fe55a7653945f6f286f61822e9c4e6cf0",
-	"/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/vendor.js": "ba2a99baa4373628beeab8ba38949f3b09a08d97"
+	"/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/bundle.js": "6c363cd9842472911211e95a50507496c2d94c16",
+	"/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/vendor.js": "71f49341dd234036361d6a323685e408123f51ca"
 }

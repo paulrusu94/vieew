@@ -1,4 +1,4 @@
-#Thu Apr 20 04:47:46 EEST 2023
+#Thu Apr 20 10:59:57 EEST 2023
 base.0=/Volumes/Workspace/Personal/vieew/platforms/android/app/build/intermediates/dex/debug/mergeDexDebug/classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
