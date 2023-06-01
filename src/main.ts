@@ -1,8 +1,9 @@
-import { platformNativeScript, runNativeScriptAngularApp } from '@nativescript/angular';
+/// <reference types="@angular/localize" />
+
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 
-runNativeScriptAngularApp({
-  appModuleBootstrap: () => platformNativeScript().bootstrapModule(AppModule),
-});
 
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));

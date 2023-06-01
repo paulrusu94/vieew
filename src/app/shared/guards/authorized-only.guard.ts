@@ -1,25 +1,35 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import {
+  Router,
+  CanActivate,
+  CanActivateChild,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+} from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthenticationService } from '../services/authentication.service';
-import { Router } from '@angular/router';
+import { SessionService } from '../services/session.service';
 
-@Injectable({
-  providedIn: 'root'
-})
-
-export class AuthorizedOnlyGuard implements CanActivate {
-
-  constructor(private authService: AuthenticationService, private router: Router) {}
+@Injectable()
+export class AuthorizedOnlyGuard implements CanActivate, CanActivateChild {
+  constructor(private router: Router, private sessionService: SessionService) {}
 
   canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (this.authService.isAuthenticated()) {
-        return true;
-      } else {
-        this.router.navigate(['/login']);
-        return false;
-      }
+    router: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> | Promise<boolean> | boolean {
+    const session = this.sessionService.get();
+    if (session) {
+      return true;
+    }
+
+    window.location.href = '/login';
+    return false;
+  }
+
+  canActivateChild(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> | Promise<boolean> | boolean {
+    return this.canActivate(route, state);
   }
 }

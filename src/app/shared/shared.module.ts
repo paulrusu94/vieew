@@ -1,23 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { NativeScriptUISideDrawerModule } from 'nativescript-ui-sidedrawer/angular'
-// Guards
-import { AuthorizedOnlyGuard } from './guards/authorized-only.guard';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    NativeScriptUISideDrawerModule
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [],
-  entryComponents: [],
   exports: [
-    NativeScriptUISideDrawerModule
-  ],
-  providers: [
-    AuthorizedOnlyGuard,
-  ],
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+
+    ],
+  entryComponents: [],
+  providers: [],
 })
 export class SharedModule {}

@@ -1,8 +1,0 @@
-/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/src_app_modules_settings_settings_module_ts.js
-/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/runtime.js
-/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/src_app_modules_browse_browse_module_ts.js
-/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/bundle.js
-/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/src_app_modules_home_home_module_ts.js
-/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/vendor.js
-/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/src_app_modules_search_search_module_ts.js
-/Volumes/Workspace/Personal/vieew/platforms/android/app/src/main/assets/app/src_app_modules_featured_featured_module_ts.js

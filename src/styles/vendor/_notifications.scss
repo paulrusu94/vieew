@@ -1,0 +1,65 @@
+$swal-padding: 20px;
+
+.swal2-container {
+
+  .swal2-popup {
+    padding: 0;
+    border-radius: $border-radius;
+  }
+
+  .swal2-icon {
+    width: 4rem;
+    height: 4rem;
+
+    &.swal2-warning {
+      border-color: $light-orange;
+      color: $light-orange;
+    }
+  }
+
+  .swal2-header,
+  .swal2-content {
+    padding-left: $swal-padding;
+    padding-right: $swal-padding;
+    background-color: $light-blue;
+  }
+
+  .swal2-content {
+    color: $black;
+    font-size: 16px;
+    padding-bottom: 30px;
+
+    h1 {
+      font-size: 21px;
+      color: $black;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    p {
+      color: $black;
+      font-size: 16px;
+      margin: 0;
+    }
+  }
+
+  .swal2-actions {
+    margin: 0;
+    padding: $swal-padding;
+  }
+
+  &.announcements-container {
+    .swal2-title {
+      font-size: 18px;
+      text-align: inherit;
+      font-weight: 500;
+    }
+    .swal2-icon {
+      display: none !important;
+    }
+    .swal2-html-container {
+      padding-top: 40px;
+      text-align: inherit;
+    }
+  }
+
+}
