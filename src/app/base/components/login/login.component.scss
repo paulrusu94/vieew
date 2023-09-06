@@ -1,7 +1,20 @@
 :host {
-  background-color: #18004d;
-  height: 100vh;
   display: flex;
-  overflow: auto;
-  padding: 30px 0;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+
+  .form-signin {
+    max-width: 500px;
+    padding: 1rem;
+    form {
+      background: #0b0c210a;
+      padding: 15px 30px;
+      border-radius: 25px;
+      padding: 40px 30px;
+      -webkit-box-shadow: 3px 6px 26px 1px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 3px 6px 26px 1px rgba(0, 0, 0, 0.75);
+      box-shadow: 3px 6px 26px 1px rgba(0, 0, 0, 0.75);
+    }
+  }
 }

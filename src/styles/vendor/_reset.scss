@@ -1,37 +1,31 @@
 html,
 body {
-  overflow: auto;
-  height: 100vh;
-
-  @media print {
-    overflow: visible;
-    height: auto;
-  }
+  height: 100%;
 }
 
 body {
   font-size: 14px;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: inherit;
-  line-height: inherit;
-  font-size: inherit;
-  color: inherit;
-  margin-bottom: 0;
-}
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6 {
+//   font-weight: inherit;
+//   line-height: inherit;
+//   font-size: inherit;
+//   color: inherit;
+//   margin-bottom: 0;
+// }
 
-ol, ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+// ol, ul {
+//   list-style: none;
+//   margin: 0;
+//   padding: 0;
+// }
 
-textarea {
-  resize: none;
-}
+// textarea {
+//   resize: none;
+// }

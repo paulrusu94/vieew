@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { AuthorizedOnlyGuard } from './shared/guards/authorized-only.guard';
 // Componennts
-import { WelcomeComponent } from './base/components/welcome/welcome.component';
 import { LoginComponent } from './base/components/login/login.component';
 import { RegisterComponent } from './base/components/register/register.component';
 import { SecuredLayoutComponent } from './base/components/secured-layout/secured-layout.component';
@@ -12,10 +11,12 @@ export const routes: Routes = [
     component: SecuredLayoutComponent,
     canActivate: [AuthorizedOnlyGuard],
     canActivateChild: [AuthorizedOnlyGuard],
-  },
-  {
-    path: 'welcome',
-    component: WelcomeComponent,
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+      },
+    ],
   },
   {
     path: 'login',
@@ -27,6 +28,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/welcome',
+    redirectTo: '/',
   },
 ];
