@@ -1,49 +1,26 @@
-<div class="d-flex flex-column px-4 py-5 h-100">
-  <img class="d-block mx-auto mb-5" src="./assets/images/logo_horizontal.png" alt="" width="150">
-  <div class="col-lg-6 mx-auto text-left">
-    <h1 class="display-5 fw-bold text-body-emphasis text-white">Create an account</h1>
-    <p class="lead mb-4 text-white">If you already have created an account <br/> <a [routerLink]="['/login']">SIGN IN INTO YOUR ACCOUNT</a></p>
-    <p class="lead text-white">By completing the form below in order to create an account on Vieew, you agree with our <a href="">Terms & Conditions</a> and <a href="">Privacy Policy</a></p>
-    <form *ngIf="form" [formGroup]="form" (ngSubmit)="handleSubmit()">
-      <div class="mb-4">
-        <input
-          type="text"
-          class="form-control"
-          id="name"
-          placeholder="Name Surname"
-          aria-describedby="Name"
-          formControlName="name" />
-      </div>
-      <div class="mb-4">
-        <input
-          type="email"
-          class="form-control"
-          id="email"
-          placeholder="Email"
-          aria-describedby="email"
-          formControlName="email" />
-      </div>
-      <div class="mb-4">
-        <input
-          type="password"
-          class="form-control"
-          id="password"
-          placeholder="Password"
-          aria-describedby="password"
-          formControlName="password" />
-      </div>
-      <div class="mb-4">
-        <input
-          type="password"
-          class="form-control"
-          id="confirmPassword"
-          placeholder="Confirm Password"
-          aria-describedby="confirmPassword"
-          formControlName="confirmPassword" />
-      </div>
-      <div class="d-grid">
-        <button type="submit" class="d-block btn btn-primary btn-lg mb-4 text-uppercase">Create an account</button>
-      </div>
-    </form>
-  </div>
+<div class="form-signin w-100 m-auto">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <img class="mb-4" src="./assets/images/logo_horizontal.png" alt="" width="300">
+    <h1 class="h3 mb-3 fw-normal">Create your account</h1>
+
+    <div class="form-floating mb-2">
+      <input type="name" class="form-control" id="name" placeholder="Name" autocomplete="false" formControlName="name">
+      <label for="name">Name</label>
+      <p class="text-danger" *ngIf="form.get('name')?.invalid && form.get('name')?.dirty"><strong>Name</strong> is a required field</p>
+    </div>
+    <div class="form-floating mb-2">
+      <input type="email" class="form-control" id="email" placeholder="name@example.com" autocomplete="false" formControlName="email">
+      <label for="email">Email address</label>
+    </div>
+    <div class="form-floating mb-2">
+      <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="false" formControlName="password">
+      <label for="password">Password</label>
+    </div>
+    <div class="form-floating mb-4">
+      <input type="password" class="form-control" id="confirmPassword" placeholder="Password" autocomplete="false" formControlName="confirmPassword">
+      <label for="confirmPassword">Confirm Password</label>
+    </div>
+    <button class="btn btn-primary w-100 py-2 mb-3" type="submit">Create account</button>
+    <p class="text-end">Already have an account? <a [routerLink]="['/login']">Go to login</a></p>
+  </form>
 </div>

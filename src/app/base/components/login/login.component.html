@@ -1,14 +1,17 @@
-<div class="d-flex flex-column px-4 py-5 h-100">
-  <img class="d-block mx-auto mb-5" src="./assets/images/logo_horizontal.png" alt="" width="300">
-  <img class="d-block mx-auto mb-5" src="./assets/images/why_vieew.png" alt="" width="300">
-  <div class="col-lg-6 mx-auto text-left">
-    <h1 class="display-5 fw-bold text-body-emphasis text-white">Title</h1>
-    <p class="lead mb-4 text-white">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most
-      popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive
-      prebuilt components, and powerful JavaScript plugins.</p>
-    <div class="d-grid">
-      <button type="button" class="btn btn-primary btn-lg mb-4 text-uppercase">Create an account</button>
-      <button type="button" class="btn btn-outline-secondary btn-lg text-uppercase">Sign In</button>
+<div class="form-signin w-100 m-auto">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <img class="mb-4" src="./assets/images/logo_horizontal.png" alt="" width="300">
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+    <div class="form-floating mb-2">
+      <input type="email" class="form-control" id="email" placeholder="name@example.com" autocomplete="false" formControlName="email">
+      <label for="email">Email address</label>
     </div>
-  </div>
+    <div class="form-floating mb-4">
+      <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="false" formControlName="password">
+      <label for="password">Password</label>
+    </div>
+    <button class="btn btn-primary w-100 py-2 mb-3" type="submit">Sign in</button>
+    <p class="text-end">Don't have an account? <a [routerLink]="['/register']">Create an account</a></p>
+  </form>
 </div>

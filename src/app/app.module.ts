@@ -9,15 +9,18 @@ import { CoreModule } from './shared/core.module';
 import { AppRoutingModule } from './app-routing.module';
 // Components
 import { AppComponent } from './base/app.component';
-import { WelcomeComponent } from './base/components/welcome/welcome.component';
 import { LoginComponent } from './base/components/login/login.component';
 import { RegisterComponent } from './base/components/register/register.component';
 import { SecuredLayoutComponent } from './base/components/secured-layout/secured-layout.component';
+// Amplify
+import { Auth } from 'aws-amplify';
+import awsconfig from '../aws-exports';
+
+Auth.configure(awsconfig);
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomeComponent,
     LoginComponent,
     RegisterComponent,
     SecuredLayoutComponent
