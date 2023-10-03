@@ -12,6 +12,7 @@ import { AppComponent } from './base/app.component';
 import { LoginComponent } from './base/components/login/login.component';
 import { RegisterComponent } from './base/components/register/register.component';
 import { SecuredLayoutComponent } from './base/components/secured-layout/secured-layout.component';
+import { SideNavigationComponent } from './base/components/secured-layout/components/side-navigation/side-navigation.component';
 // Amplify
 import { Auth } from 'aws-amplify';
 import awsconfig from '../aws-exports';
@@ -23,7 +24,9 @@ Auth.configure(awsconfig);
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    SecuredLayoutComponent
+    SecuredLayoutComponent,
+    // Secured layout components
+    SideNavigationComponent
   ],
   imports: [
     BrowserModule,
