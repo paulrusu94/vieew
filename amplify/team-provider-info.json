@@ -16,14 +16,8 @@
       "auth": {
         "vieew30ef4bc7": {}
       },
-      "function": {
-        "VieewAPILambda": {
-          "deploymentBucketName": "amplify-vieew-dev-174314-deployment",
-          "s3Key": "amplify-builds/VieewAPILambda-6e62784a675250304733-build.zip"
-        }
-      },
       "api": {
-        "VieewAPI": {}
+        "vieew": {}
       }
     }
   }

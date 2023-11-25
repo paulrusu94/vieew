@@ -1,0 +1,46 @@
+# this is an auto generated file. This will be overwritten
+
+mutation CreateService(
+  $input: CreateServiceInput!
+  $condition: ModelServiceConditionInput
+) {
+  createService(input: $input, condition: $condition) {
+    id
+    name
+    description
+    price
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+mutation UpdateService(
+  $input: UpdateServiceInput!
+  $condition: ModelServiceConditionInput
+) {
+  updateService(input: $input, condition: $condition) {
+    id
+    name
+    description
+    price
+    createdAt
+    updatedAt
+    __typename
+  }
+}
+
+mutation DeleteService(
+  $input: DeleteServiceInput!
+  $condition: ModelServiceConditionInput
+) {
+  deleteService(input: $input, condition: $condition) {
+    id
+    name
+    description
+    price
+    createdAt
+    updatedAt
+    __typename
+  }
+}

@@ -1,18 +1,20 @@
 {
   "api": {
-    "VieewAPI": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "VieewAPILambda"
+    "vieew": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7
+            },
+            "authenticationType": "API_KEY"
+          }
         }
-      ],
+      },
       "providerPlugin": "awscloudformation",
-      "service": "API Gateway"
+      "service": "AppSync"
     }
   },
   "auth": {
@@ -46,30 +48,5 @@
       "service": "Cognito"
     }
   },
-  "function": {
-    "VieewAPILambda": {
-      "build": true,
-      "dependsOn": [],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    }
-  },
-  "parameters": {
-    "AMPLIFY_function_VieewAPILambda_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "VieewAPILambda"
-        }
-      ]
-    },
-    "AMPLIFY_function_VieewAPILambda_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "VieewAPILambda"
-        }
-      ]
-    }
-  }
+  "function": {}
 }
