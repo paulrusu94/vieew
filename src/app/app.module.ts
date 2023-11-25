@@ -14,10 +14,10 @@ import { RegisterComponent } from './base/components/register/register.component
 import { SecuredLayoutComponent } from './base/components/secured-layout/secured-layout.component';
 import { SideNavigationComponent } from './base/components/secured-layout/components/side-navigation/side-navigation.component';
 // Amplify
-import { Auth } from 'aws-amplify';
+import { Amplify } from 'aws-amplify';
 import awsconfig from '../aws-exports';
 
-Auth.configure(awsconfig);
+Amplify.configure(awsconfig);
 
 @NgModule({
   declarations: [
