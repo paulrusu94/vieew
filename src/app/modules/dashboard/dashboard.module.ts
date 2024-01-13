@@ -11,6 +11,5 @@ import { DashboardPage } from './pages/dashboard/dashboard.page';
     DashboardPage
   ],
   providers: [],
-  entryComponents: [],
 })
 export class DashboardModule {}

@@ -15,6 +15,5 @@ import { ServicePage } from './pages/service/service.page';
     ServicePage
   ],
   providers: [],
-  entryComponents: [],
 })
 export class ServicesModule {}

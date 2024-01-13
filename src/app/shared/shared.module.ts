@@ -19,7 +19,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
 
     ],
-  entryComponents: [],
   providers: [],
 })
 export class SharedModule {}
