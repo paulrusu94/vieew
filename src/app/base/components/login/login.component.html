@@ -1,17 +1,25 @@
-<div class="form-signin w-100 m-auto">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <img class="mb-4" src="./assets/images/logo_horizontal.png" alt="" width="300">
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+<div class="container">
+<div class="row">
+  <div class="col-6">
 
-    <div class="form-floating mb-2">
-      <input type="email" class="form-control" id="email" placeholder="name@example.com" autocomplete="false" formControlName="email">
-      <label for="email">Email address</label>
-    </div>
-    <div class="form-floating mb-4">
-      <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="false" formControlName="password">
-      <label for="password">Password</label>
-    </div>
-    <button class="btn btn-primary w-100 py-2 mb-3" type="submit">Sign in</button>
-    <p class="text-end">Don't have an account? <a [routerLink]="['/register']">Create an account</a></p>
-  </form>
+  </div>
+
+  <div class="form-signin col-6">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <h1 class="h3 mb-3 fw-normal">Log in</h1>
+
+      <div class="form-floating mb-2 inputs">
+        <input type="email" class="form-control" id="email" placeholder="name@example.com" autocomplete="false" formControlName="email">
+        <label for="email">Email address</label>
+      </div>
+      <div class="form-floating mb-4 inputs">
+        <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="false" formControlName="password">
+        <label for="password">Password</label>
+      </div>
+      <button class="btn btn-primary w-100 py-2 mb-3" type="submit">Sign in</button>
+      <p class="text-end">Don't have an account? <a [routerLink]="['/register']">Create an account</a></p>
+    </form>
+  </div>
+
+</div>
 </div>
