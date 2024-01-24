@@ -1,8 +1,15 @@
 /* Bootstrap overrides */
 @import 'variables';
+@import 'variables-dark';
 
 /* Importing Bootstrap SCSS file. */
 @import 'node_modules/bootstrap/scss/bootstrap';
+
+// Mixins
+@import 'mixins';
+
+// Components
+@import 'buttons';
 
 /*  Vendor */
 @import 'vendor/reset';
