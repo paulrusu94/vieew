@@ -1,26 +1,40 @@
-<div class="form-signin w-100 m-auto">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <img class="mb-4" src="./assets/images/logo_horizontal.png" alt="" width="300">
-    <h1 class="h3 mb-3 fw-normal">Create your account</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+  
+    </div>
+  
+    <div class="form-signin col-6">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h1 class="h3 mb-3 fw-normal">First thing first</h1>
 
-    <div class="form-floating mb-2">
-      <input type="name" class="form-control" id="name" placeholder="Name" autocomplete="false" formControlName="name">
-      <label for="name">Name</label>
-      <p class="text-danger" *ngIf="form.get('name')?.invalid && form.get('name')?.dirty"><strong>Name</strong> is a required field</p>
+        <div class="row">
+          <div class="col-6">
+            <div class="mb-3">
+              <input type="name" class="form-control" id="name" placeholder="Name" autocomplete="false" formControlName="name">
+            </div>
+          </div>
+          <div class="col-6"></div>
+        </div>
+       
+        <div class="mb-3">
+          <input type="email" class="form-control" id="email" placeholder="name@example.com" autocomplete="false" formControlName="email">
+        </div>
+
+        <div class="mb-3">
+          <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="false" formControlName="password">
+        </div>
+
+        <div class="mb-3">
+          <input type="password" class="form-control" id="confirmPassword" placeholder="Password" autocomplete="false" formControlName="confirmPassword">
+        </div>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+        <button class="btn btn-gradient-primary w-100 py-2 mb-3" type="submit">Sign in</button>
+      </form>
     </div>
-    <div class="form-floating mb-2">
-      <input type="email" class="form-control" id="email" placeholder="name@example.com" autocomplete="false" formControlName="email">
-      <label for="email">Email address</label>
-    </div>
-    <div class="form-floating mb-2">
-      <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="false" formControlName="password">
-      <label for="password">Password</label>
-    </div>
-    <div class="form-floating mb-4">
-      <input type="password" class="form-control" id="confirmPassword" placeholder="Password" autocomplete="false" formControlName="confirmPassword">
-      <label for="confirmPassword">Confirm Password</label>
-    </div>
-    <button class="btn btn-primary w-100 py-2 mb-3" type="submit">Create account</button>
-    <p class="text-end">Already have an account? <a [routerLink]="['/login']">Go to login</a></p>
-  </form>
+  
+  </div>
 </div>
