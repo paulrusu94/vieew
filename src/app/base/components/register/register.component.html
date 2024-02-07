@@ -1,38 +1,55 @@
 <div class="container">
+  <div class="row" style="height: 200px;"></div>
   <div class="row">
     <div class="col-6">
-  
-    </div>
-  
-    <div class="form-signin col-6">
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <h1 class="h3 mb-3 fw-normal">First thing first</h1>
-
-        <div class="row">
-          <div class="col-6">
-            <div class="mb-3">
-              <input type="name" class="form-control" id="name" placeholder="Name" autocomplete="false" formControlName="name">
-            </div>
-          </div>
-          <div class="col-6"></div>
+      <div class="row mb-3">
+        <div class="col-8 about-vieew mb-3 py-4 px-5">
+          <h2 class="mb-3">What is Vieew?</h2>
+          <p>A blockchain-enchanced shopping mall where the <br> 
+            sellers display their products and virtual stores and <br> 
+            provide conscious buying alternative.</p>
         </div>
+      </div>
+      <div class="row">
+        <div class="col-8 about-vieew py-4 px-5">
+          <h2 class="mb-3">Why Vieew?</h2>
+          <p mb-1>VIEEW platform will provide you with a wide range of <br> 
+            products as well as an easy search facility for each <br> 
+            product category.</p>
+          <p> VIEEW experience brings the sellers, the buyers, <br> 
+            influencers in one place, giving them the chance to <br> 
+            trade and advertise at the same time.</p>
+        </div>
+      </div>
+    </div>
+    <div class="form-signin col-6">
+      <form [formGroup]="form" (ngSubmit)="onSubmit() ">
+        <h1 class="h3 mb-3 fw-normal">First thing first</h1>
+            <div class="row mb-3">
+              <div class="col-6">
+                <input type="name" class="form-control" id="name" placeholder="First Name" autocomplete="false" formControlName="name">
+              </div>
+              <div class="col-6">
+                <input type="name" class="form-control" id="name" placeholder="Last Name" autocomplete="false" formControlName="name">
+              </div>
+            </div>
        
         <div class="mb-3">
-          <input type="email" class="form-control" id="email" placeholder="name@example.com" autocomplete="false" formControlName="email">
+          <input type="email" class="form-control" id="email" placeholder="Email" autocomplete="false" formControlName="email">
         </div>
 
         <div class="mb-3">
-          <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="false" formControlName="password">
+          <input type="password" class="form-control" id="password" placeholder="Create your password" autocomplete="false" formControlName="password">
         </div>
-
-        <div class="mb-3">
-          <input type="password" class="form-control" id="confirmPassword" placeholder="Password" autocomplete="false" formControlName="confirmPassword">
-        </div>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-        <button class="btn btn-gradient-primary w-100 py-2 mb-3" type="submit">Sign in</button>
+        <p>At least 8 character long.</p>
+        <p>At least one uppercase letter.</p>
+        <p>At least one lowercase letter.</p>
+        <p>At least one special character(&*%$#)</p>
+        <input class="form-check-input me-2 mb-3" type="checkbox" id="bifaCheckbox">
+        <label for="bifaCheckbox">
+          I read & agree to Vieew's <a href="#">Terms & Conditions</a>
+        </label>
+        <button class="btn btn-gradient-primary w-100 py-2 mb-3" type="submit">Continue</button>
       </form>
     </div>
   
