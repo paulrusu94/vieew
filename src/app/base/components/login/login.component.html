@@ -1,31 +1,41 @@
-<div class="container">
-<div class="row">
-  <div class="col-6">
+<div class="container h-100">
+  <div class="row h-100 d-flex align-items-center">
+    <div class="form-signin col-sm-12 col-md-6 col-lg-4 offset-md-6 offset-lg-7">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <h1 class="h3 mb-3 fw-normal">Log in</h1>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">
+            <span class="material-symbols-outlined text-muted">alternate_email</span>
+          </span>
+          <input type="email" class="form-control" id="email" placeholder="name@example.com" autocomplete="false"
+            formControlName="email">
+        </div>
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1">
+            <span class="material-symbols-outlined text-muted">key</span>
+          </span>
+          <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="false"
+            formControlName="password">
+        </div>
+
+        <p class="text-end mb-2"><a [routerLink]="['/register']">Forgot passowrd?</a></p>
+        <div class="text-center mb-5">
+          <button class="btn btn-gradient-primary w-75 py-2 my-5" type="submit">Sign in</button>
+        </div>
+        <button class="btn btn-light w-100 py-2 mb-3 d-flex align-items-center justify-content-center" type="submit">
+          <img class="me-2" src="./assets/images/logos/facebook_logo.png" style="width: 20px;" alt="">Continue with
+          Facebook
+        </button>
+        <button class="btn btn-light w-100 py-2 mb-3 d-flex align-items-center justify-content-center" type="submit">
+          <img class="me-2" src="./assets/images/logos/google_logo.webp" style="width: 25px;" alt="">Continue with
+          Google
+        </button>
+        <button class="btn btn-light w-100 py-2 mb-3 d-flex align-items-center justify-content-center" type="submit">
+          <img class="me-2" src="./assets/images/logos/apple_logo.png" style="width: 25px;" alt="">Continue with Apple
+        </button>
+      </form>
+    </div>
 
   </div>
-
-  <div class="form-signin col-6">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <h1 class="h3 mb-3 fw-normal">Log in</h1>
-      
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">A</span>
-        <input type="email" class="form-control" id="email" placeholder="name@example.com" autocomplete="false" formControlName="email">
-      </div>
-      <div class="input-group">
-        <span class="input-group-text" id="basic-addon1">B</span>
-        <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="false" formControlName="password">
-      </div>
-
-      <p class="text-end mb-2"><a [routerLink]="['/register']">Forgot passowrd?</a></p>
-      <div class="text-center mb-5">
-        <button class="btn btn-gradient-primary w-75 py-2 mb-3" type="submit">Sign in</button>
-      </div>
-      <button class="btn btn-light w-100 py-2 mb-3" type="submit">Continue with Facebook</button>
-      <button class="btn btn-light w-100 py-2 mb-3" type="submit">Continue with Google</button>
-      <button class="btn btn-light w-100 py-2 mb-3" type="submit">Continue with Apple</button>
-    </form>
-  </div>
-
-</div>
 </div>

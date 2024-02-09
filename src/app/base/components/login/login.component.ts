@@ -28,9 +28,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     const { email, password } = this.form.value;
     try {
       const user = await Auth.signIn({username: email, password});
-      console.log(user);
       this.router.navigate(['/dashboard']);
-
     } catch (error) {
       console.log('error signing in', error);
     }

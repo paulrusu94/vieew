@@ -1,11 +1,21 @@
-@import 'src/styles/variables-dark';
+@import 'src/styles/variables';
 
 
-.about-vieew{
-    background-color: $text-bg-gray;
-    border-radius: 16px;
-}
+:host {
+    .form-check {
+        .form-check-input {
+            display: none;
+            padding: 0;
+        }
 
-.form-signin p{
-    color: $text-bg-gray;
+        .form-check-label {
+            display: flex;
+            flex-flow: column;
+            border: 1px solid transparent;
+        }
+        .form-check-input:checked + .form-check-label {
+            border: 1px solid $primary;
+        }
+    }
+
 }

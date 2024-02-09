@@ -34,9 +34,8 @@ $grays: (
 ) !default;
 // scss-docs-end gray-colors-map
 // fusv-enable
-
 // scss-docs-start color-variables
-$blue:    #2D5EF5 !default;
+$blue:    #2c5ef5 !default;
 $indigo:  #6610f2 !default;
 $purple:  #9747FF !default;
 $pink:    #d63384 !default;
@@ -332,3 +331,23 @@ $font-size-lg:                $font-size-base * 1.25 !default;
 $component-active-bg: $dark !default;
 $link-color:          $white !default;
 $nav-link-color:      $white;
+
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+// scss-docs-start border-variables
+// $border-width:                0px;
+
+
+// Buttons + Forms
+//
+// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
+
+// scss-docs-start input-btn-variables
+$input-btn-padding-y:         .875rem !default;
+$input-btn-padding-x:         .75rem !default;
+
+$input-bg: $gray-900;
+$input-group-addon-bg: $gray-900;
