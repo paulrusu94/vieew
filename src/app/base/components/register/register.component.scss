@@ -7,13 +7,14 @@
             display: none;
             padding: 0;
         }
-
+    
         .form-check-label {
             display: flex;
             flex-flow: column;
             border: 1px solid transparent;
         }
-        .form-check-input:checked + .form-check-label {
+
+        .form-check-input:checked+.form-check-label {
             border: 1px solid $primary;
         }
     }

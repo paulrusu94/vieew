@@ -22,104 +22,117 @@
         </div>
       </div>
     </div>
-    <section id="first-step" class="col-6" *ngIf="false">
-      <form [formGroup]="form" (ngSubmit)="onSubmit() ">
-        <h1 class="h3 mb-3 fw-normal">First thing first</h1>
-        <div class="row mb-3">
-          <div class="col-6">
-            <input type="name" class="form-control" id="name" placeholder="First Name" autocomplete="false"
-              formControlName="name">
+    <div class="col-6">
+      <div class="row mb-5">
+        <div class="col-4">
+          <div class="level bg-primary w-100" style="height: 10px;"></div>
+        </div>
+        <div class="col-4">
+          <div class="level w-100" [ngClass]="{'bg-primary': step === 2 || step === 3, 'bg-dark': step === 1}" style="height: 10px;"></div>
+        </div>
+        <div class="col-4">
+          <div class="level w-100" [ngClass]="{'bg-primary': step === 3, 'bg-dark': step === 1}" style="height: 10px;"></div>
+        </div>
+      </div>
+      <div class="row">
+        <section id="first-step" class="col-12" *ngIf="step === 1">
+          <form [formGroup]="form">
+            <h1 class="h3 mb-3 fw-normal">First thing first</h1>
+            <div class="row mb-3">
+              <div class="col-6">
+                <input type="name" class="form-control" id="name" placeholder="First Name" autocomplete="false"
+                  formControlName="name">
+              </div>
+              <div class="col-6">
+                <input type="name" class="form-control" id="name" placeholder="Last Name" autocomplete="false"
+                  formControlName="name">
+              </div>
+            </div>
+    
+            <div class="mb-3">
+              <input type="email" class="form-control" id="email" placeholder="Email" autocomplete="false"
+                formControlName="email">
+            </div>
+    
+            <div class="mb-3">
+              <input type="password" class="form-control" id="password" placeholder="Create your password"
+                autocomplete="false" formControlName="password">
+            </div>
+            <div class="text-muted">
+              <p>At least 8 character long.</p>
+              <p>At least one uppercase letter.</p>
+              <p>At least one lowercase letter.</p>
+              <p>At least one special character(&*%$#)</p>
+            </div>
+            <input class="form-check-input me-2 mb-3" type="checkbox" id="bifaCheckbox">
+            <label for="bifaCheckbox">
+              I read & agree to Vieew's <a href="#">Terms & Conditions</a>
+            </label>
+            <button class="btn btn-gradient-primary w-100 py-2 mt-3" type="button" (click)="goToNextStep('next')">Continue</button>
+          </form>
+        </section>
+        <section id="second-step" class="col-12" *ngIf="step === 2">
+          <form [formGroup]="form">
+            <h1 class="h3 mb-3 fw-normal">Select account type</h1>
+            <div class="form-check p-0">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="personal" checked>
+              <label class="form-check-label rounded bg-dark mb-3 p-3" for="personal">
+                <h4 class="text-primary">Personal</h4>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad, possimus hic. Odio, dicta? Fuga aliquid magnam a tempora aut.</p>
+              </label>
+            </div>
+            <div class="form-check p-0">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="business">
+              <label class="form-check-label rounded bg-dark mb-3 p-3" for="business">
+                <h4 class="text-primary">Business</h4>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad, possimus hic. Odio, dicta? Fuga aliquid magnam a tempora aut.</p>
+              </label>
+            </div>
+            <div class="form-check p-0">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="influenecer">
+              <label class="form-check-label rounded bg-dark mb-3 p-3" for="influenecer">
+                <h4 class="text-primary">Influencer</h4>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad, possimus hic. Odio, dicta? Fuga aliquid magnam a tempora aut.</p>
+              </label>
+            </div>
+            <!-- <div class="border p-3 mb-3">
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus obcaecati adipisci eum. Est accusamus numquam, eos odio necessitatibus et?</p>
+            </div>
+            <div class="border p-3 mb-3">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut unde deleniti aperiam debitis officiis omnis iusto illo dignissimos velit?</p>
+            </div>
+            <div class="border p-3 mb-3">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate suscipit, doloribus maiores blanditiis optio itaque quis obcaecati at atque!
+              </p>
+            </div> -->
+            <div class="btn-group d-flex">
+              <button class="btn btn-outline-primary py-2 me-2" type="button" (click)="goToNextStep('previous')">Back</button>
+              <button class="btn btn-gradient-primary py-2" type="button" (click)="goToNextStep('next')">Continue</button>
+            </div>
+          </form>
+        </section>
+        <section id="third-step" class="col-12" *ngIf="step === 3">
+          <h1 class="h3 mb-5 fw-normal">Select industry</h1>
+          <div class="mb-5">
+            <label class="mb-3" for="typeahead-focus">Please select the industry you activate in</label>
+            <input
+              id="typeahead-focus"
+              type="text"
+              class="form-control"
+              [(ngModel)]="model"
+              [ngbTypeahead]="search"
+              (focus)="focus$.next($any($event).target.value)"
+              (click)="click$.next($any($event).target.value)"
+              #instance="ngbTypeahead"
+            />
           </div>
-          <div class="col-6">
-            <input type="name" class="form-control" id="name" placeholder="Last Name" autocomplete="false"
-              formControlName="name">
+          <div class="btn-group d-flex">
+            <button class="btn btn-outline-primary py-2 me-2" type="button" (click)="goToNextStep('previous')">Back</button>
+            <button class="btn btn-gradient-primary py-2" type="button" (click)="goToNextStep('next')">Continue</button>
           </div>
-        </div>
-
-        <div class="mb-3">
-          <input type="email" class="form-control" id="email" placeholder="Email" autocomplete="false"
-            formControlName="email">
-        </div>
-
-        <div class="mb-3">
-          <input type="password" class="form-control" id="password" placeholder="Create your password"
-            autocomplete="false" formControlName="password">
-        </div>
-        <div class="text-muted">
-          <p>At least 8 character long.</p>
-          <p>At least one uppercase letter.</p>
-          <p>At least one lowercase letter.</p>
-          <p>At least one special character(&*%$#)</p>
-        </div>
-        <input class="form-check-input me-2 mb-3" type="checkbox" id="bifaCheckbox">
-        <label for="bifaCheckbox">
-          I read & agree to Vieew's <a href="#">Terms & Conditions</a>
-        </label>
-        <button class="btn btn-gradient-primary w-100 py-2 mt-3" type="submit">Continue</button>
-      </form>
-    </section>
-    <section id="second-step" class="col-6" *ngIf="false">
-      <form [formGroup]="form" (ngSubmit)="onSubmit() ">
-        <h1 class="h3 mb-3 fw-normal">Select account type</h1>
-        <div class="form-check p-0">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="personal" checked>
-          <label class="form-check-label rounded bg-dark mb-3 p-3" for="personal">
-            <h4 class="text-primary">Personal</h4>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad, possimus hic. Odio, dicta? Fuga aliquid magnam a tempora aut.</p>
-          </label>
-        </div>
-        <div class="form-check p-0">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="business">
-          <label class="form-check-label rounded bg-dark mb-3 p-3" for="business">
-            <h4 class="text-primary">Business</h4>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad, possimus hic. Odio, dicta? Fuga aliquid magnam a tempora aut.</p>
-          </label>
-        </div>
-        <div class="form-check p-0">
-          <input class="form-check-input" type="radio" name="flexRadioDefault" id="influenecer">
-          <label class="form-check-label rounded bg-dark mb-3 p-3" for="influenecer">
-            <h4 class="text-primary">Influencer</h4>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad, possimus hic. Odio, dicta? Fuga aliquid magnam a tempora aut.</p>
-          </label>
-        </div>
-        <!-- <div class="border p-3 mb-3">
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus obcaecati adipisci eum. Est accusamus numquam, eos odio necessitatibus et?</p>
-        </div>
-        <div class="border p-3 mb-3">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut unde deleniti aperiam debitis officiis omnis iusto illo dignissimos velit?</p>
-        </div>
-        <div class="border p-3 mb-3">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate suscipit, doloribus maiores blanditiis optio itaque quis obcaecati at atque!
-          </p>
-        </div> -->
-        <div class="btn-group d-flex">
-          <button class="btn btn-outline-primary py-2 me-2" type="button">Back</button>
-          <button class="btn btn-gradient-primary py-2" type="submit">Continue</button>
-        </div>
-      </form>
-    </section>
-    <section id="third-step" class="col-6">
-      <form [formGroup]="form" (ngSubmit)="onSubmit() ">
-        <h1 class="h3 mb-5 fw-normal">Select industry</h1>
-        <div class="mb-5">
-          <label class="mb-3" for="typeahead-focus">Please select the industry you activate in</label>
-          <input
-            id="typeahead-focus"
-            type="text"
-            class="form-control"
-            [(ngModel)]="model"
-            [ngbTypeahead]="search"
-            (focus)="focus$.next($any($event).target.value)"
-            (click)="click$.next($any($event).target.value)"
-            #instance="ngbTypeahead"
-          />
-        </div>
-        <div class="btn-group d-flex">
-          <button class="btn btn-outline-primary py-2 me-2" type="button">Back</button>
-          <button class="btn btn-gradient-primary py-2" type="submit">Continue</button>
-        </div>
-      </form>
-    </section>
+        </section>
+      </div>
+    </div>
   </div>
 </div>

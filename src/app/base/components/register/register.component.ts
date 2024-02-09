@@ -4,66 +4,55 @@ import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
 import { Auth } from 'aws-amplify';
 import { Subject, OperatorFunction, Observable, debounceTime, distinctUntilChanged, filter, merge, map } from 'rxjs';
 
-const states = [
-	'Alabama',
-	'Alaska',
-	'American Samoa',
-	'Arizona',
-	'Arkansas',
-	'California',
-	'Colorado',
-	'Connecticut',
-	'Delaware',
-	'District Of Columbia',
-	'Federated States Of Micronesia',
-	'Florida',
-	'Georgia',
-	'Guam',
-	'Hawaii',
-	'Idaho',
-	'Illinois',
-	'Indiana',
-	'Iowa',
-	'Kansas',
-	'Kentucky',
-	'Louisiana',
-	'Maine',
-	'Marshall Islands',
-	'Maryland',
-	'Massachusetts',
-	'Michigan',
-	'Minnesota',
-	'Mississippi',
-	'Missouri',
-	'Montana',
-	'Nebraska',
-	'Nevada',
-	'New Hampshire',
-	'New Jersey',
-	'New Mexico',
-	'New York',
-	'North Carolina',
-	'North Dakota',
-	'Northern Mariana Islands',
-	'Ohio',
-	'Oklahoma',
-	'Oregon',
-	'Palau',
-	'Pennsylvania',
-	'Puerto Rico',
-	'Rhode Island',
-	'South Carolina',
-	'South Dakota',
-	'Tennessee',
-	'Texas',
-	'Utah',
-	'Vermont',
-	'Virgin Islands',
-	'Virginia',
-	'Washington',
-	'West Virginia',
-	'Wisconsin',
-	'Wyoming',
+const industries = [
+  'Aerospace',
+  'Agriculture',
+  'Automotive',
+  'Biotechnology',
+  'Chemical',
+  'Construction',
+  'Consumer Electronics',
+  'Consumer Goods',
+  'Defense',
+  'Education',
+  'Energy',
+  'Environmental',
+  'Fashion',
+  'Finance',
+  'Food and Beverage',
+  'Healthcare',
+  'Hospitality',
+  'Information Technology',
+  'Insurance',
+  'Manufacturing',
+  'Media and Entertainment',
+  'Mining',
+  'Oil and Gas',
+  'Pharmaceutical',
+  'Real Estate',
+  'Retail',
+  'Telecommunications',
+  'Transportation',
+  'Utilities',
+  'Water and Wastewater',
+  'Advertising',
+  'Architecture',
+  'Art and Design',
+  'Biomedical',
+  'Consulting',
+  'E-commerce',
+  'Fitness and Wellness',
+  'Government',
+  'Legal',
+  'Logistics',
+  'Marketing',
+  'Nonprofit',
+  'Research',
+  'Social Services',
+  'Technology',
+  'Tourism',
+  'Web Development',
+  'Other'
 ];
 
 @Component({
@@ -73,10 +62,14 @@ const states = [
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   @ViewChild('instance', { static: true })
-
+  
   public instance: NgbTypeahead = new NgbTypeahead;
   public form: FormGroup;
   public model: any;
+  public step: number = 1;
+
+  public focus$ = new Subject<string>();
+  public click$ = new Subject<string>();
 
   constructor(
     private formBuilder: FormBuilder
@@ -91,23 +84,19 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   ngOnInit() {}
 
-	focus$ = new Subject<string>();
-	click$ = new Subject<string>();
+  search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) => {
+    const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
+    const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
+    const inputFocus$ = this.focus$;
 
-	search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) => {
-		const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
-		const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
-		const inputFocus$ = this.focus$;
-
-		return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
-			map((term) =>
-				(term === '' ? states : states.filter((v) => v.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 10),
-			),
-		);
-	};
+    return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
+      map((term) =>
+        (term === '' ? industries : industries.filter((v) => v.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 10),
+      ),
+    );
+  };
 
   async onSubmit() {
-    console.log(this.form);
     try {
       const { name, email, password } = this.form.value;
       const { user } = await Auth.signUp({
@@ -121,11 +110,24 @@ export class RegisterComponent implements OnInit, OnDestroy {
           enabled: true,
         },
       });
-      console.log(user);
     } catch (error) {
       console.log('error signing up:', error);
     }
   }
 
-  ngOnDestroy() {}
+  goToNextStep(step: 'previous' | 'next') {
+    if(step === 'next' && this.step <= 3) {
+      this.step = this.step + 1;
+      console.log(this.step);
+    } else if (step === 'previous' && (this.step > 1 || this.step <= 3)) {
+      this.step = this.step - 1;
+      console.log(this.step);
+    } else {
+      return;
+    }
+
+    
+  }
+
+  ngOnDestroy() { }
 }
