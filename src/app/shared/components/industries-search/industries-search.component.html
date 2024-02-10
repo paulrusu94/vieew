@@ -1,0 +1,17 @@
+<label class="mb-3" for="typeahead-focus">Please select the industry you activate in</label>
+<div class="input-group mb-3">
+  <span class="input-group-text border border-0" id="basic-addon1">
+    <span class="material-symbols-outlined text-muted">search</span>
+  </span>
+  <input
+    id="typeahead-focus"
+    type="text"
+    class="form-control border border-0"
+    [(ngModel)]="model"
+    [ngbTypeahead]="search"
+    (focus)="focus$.next($any($event).target.value)"
+    (click)="click$.next($any($event).target.value)"
+    (selectItem)="onSelectItem($event)"
+    #instance="ngbTypeahead"
+  />
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
 import { Auth } from 'aws-amplify';
@@ -72,13 +73,17 @@ export class RegisterComponent implements OnInit, OnDestroy {
   public click$ = new Subject<string>();
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router,
   ) {
     this.form = this.formBuilder.group({
       name: ['', Validators.compose([Validators.required])],
+      givenName: ['', Validators.compose([Validators.required])],
       email: ['', Validators.compose([Validators.required])],
       password: ['', Validators.compose([Validators.required])],
-      confirmPassword: ['', Validators.compose([Validators.required])]
+      confirmPassword: ['', Validators.compose([Validators.required])],
+      accountType: ['', Validators.compose([Validators.required])],
+      industry: ['', Validators.compose([Validators.required])],
     });
   }
 
@@ -86,7 +91,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) => {
     const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
-    const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
+    const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance?.isPopupOpen()));
     const inputFocus$ = this.focus$;
 
     return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
@@ -98,35 +103,46 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   async onSubmit() {
     try {
-      const { name, email, password } = this.form.value;
+      const { name, email, password, givenName, accountType, industry } = this.form.value;
       const { user } = await Auth.signUp({
         username: email,
         password: password,
         attributes: {
-          name
+          name,
+          given_name: givenName,
+          'custom:account_type': accountType,
+          'custom:industry': industry
         },
         autoSignIn: {
           // optional - enables auto sign in after user is confirmed
           enabled: true,
         },
       });
+
+      this.router.navigate(['/dashboard']);
     } catch (error) {
       console.log('error signing up:', error);
     }
   }
 
   goToNextStep(step: 'previous' | 'next') {
-    if(step === 'next' && this.step <= 3) {
+    if(step === 'next' && this.step < 3) {
       this.step = this.step + 1;
       console.log(this.step);
     } else if (step === 'previous' && (this.step > 1 || this.step <= 3)) {
       this.step = this.step - 1;
       console.log(this.step);
     } else {
+      alert('Ho n-ai ave noroc, unde vrei sa meri?')
       return;
     }
 
     
+  }
+
+  onSelectIndustry(event: any) {
+    console.log(event);
+    this.form.get('industry')?.setValue(event.item);
   }
 
   ngOnDestroy() { }

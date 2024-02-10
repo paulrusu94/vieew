@@ -4,6 +4,9 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+// Shared Components
+import { IndustriesSearchComponent } from './components/industries-search/industries-search.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -12,12 +15,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
   ],
-  declarations: [],
+  declarations: [
+    // Shared components
+    IndustriesSearchComponent,
+  ],
   exports: [
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-
+    // Shared components
+    IndustriesSearchComponent
     ],
   providers: [],
 })
