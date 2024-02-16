@@ -115,11 +115,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
         },
         autoSignIn: {
           // optional - enables auto sign in after user is confirmed
-          enabled: true,
+          enabled: false,
         },
       });
 
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/login']);
     } catch (error) {
       console.log('error signing up:', error);
     }

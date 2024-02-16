@@ -13,6 +13,7 @@ import { PublicLayoutComponent } from './base/components/public-layout/public-la
 import { TopNavigationComponent } from './base/components/public-layout/components/top-navigation/top-navigation.component';
 import { LoginComponent } from './base/components/login/login.component';
 import { RegisterComponent } from './base/components/register/register.component';
+import { PasswordResetComponent } from './base/components/password-reset/password-reset.component';
 import { SecuredLayoutComponent } from './base/components/secured-layout/secured-layout.component';
 import { SideNavigationComponent } from './base/components/secured-layout/components/side-navigation/side-navigation.component';
 // Amplify
@@ -28,6 +29,7 @@ Amplify.configure(awsconfig);
     TopNavigationComponent,
     LoginComponent,
     RegisterComponent,
+    PasswordResetComponent,
     SecuredLayoutComponent,
     // Secured layout components
     SideNavigationComponent

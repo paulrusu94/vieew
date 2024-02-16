@@ -5,6 +5,7 @@ import { PublicLayoutComponent } from './base/components/public-layout/public-la
 import { LoginComponent } from './base/components/login/login.component';
 import { RegisterComponent } from './base/components/register/register.component';
 import { SecuredLayoutComponent } from './base/components/secured-layout/secured-layout.component';
+import { PasswordResetComponent } from './base/components/password-reset/password-reset.component';
 
 export const routes: Routes = [
   {
@@ -35,6 +36,10 @@ export const routes: Routes = [
         path: 'register',
         component: RegisterComponent,
       },
+      {
+        path: 'password-reset',
+        component: PasswordResetComponent,
+      }
     ],
   },
   {
