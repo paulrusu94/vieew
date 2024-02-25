@@ -1,10 +1,9 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Auth } from 'aws-amplify';
-import { Subject, OperatorFunction, Observable, debounceTime, distinctUntilChanged, filter, merge, map } from 'rxjs';
 import { NotificationService } from 'src/app/shared/services/notification.service';
+import { Validators, ValidationMessagesBuilder } from 'src/app/shared/forms';
 
 
 @Component({
@@ -26,12 +25,12 @@ export class PasswordResetComponent implements OnInit, OnDestroy {
   ) {
 
     this.passwordRequestForm = this.formBuilder.group({
-      email: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.required, Validators.email()])],
     });
 
     this.passwordResetForm = this.formBuilder.group({
-      email: [this.route.snapshot.queryParams['email'], Validators.compose([Validators.required])],
-      code: ['', Validators.compose([Validators.required])],
+      email: [this.route.snapshot.queryParams['email'], Validators.compose([Validators.required, Validators.email()])],
+      code: ['', Validators.compose([Validators.required, Validators.digits()])],
       password: ['', Validators.compose([Validators.required])],
     });
   }

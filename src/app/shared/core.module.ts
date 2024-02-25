@@ -14,7 +14,7 @@ import { SessionService } from './services/session.service';
 import { NotificationService } from './services/notification.service';
 // Router Guards
 import { AuthorizedOnlyGuard } from './guards/authorized-only.guard';
-import { CanDeactivateGuard } from './guards/can-deactivate.guard';
+import { CanLoadGuard } from './guards/can-load.guard';
 
 @NgModule({
   imports: [CommonModule, HttpClientModule],
@@ -29,7 +29,7 @@ import { CanDeactivateGuard } from './guards/can-deactivate.guard';
     NotificationService,
     // Router Guards
     AuthorizedOnlyGuard,
-    CanDeactivateGuard,
+    CanLoadGuard,
     // Http Interceptors
     HttpInterceptors,
   ],

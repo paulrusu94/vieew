@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, ValidationMessagesBuilder } from 'src/app/shared/forms';
 import { Router } from '@angular/router';
 import { Auth } from 'aws-amplify';
 
@@ -17,14 +18,16 @@ export class LoginComponent implements OnInit, OnDestroy {
     private router: Router,
   ) {
     this.form = this.formBuilder.group({
-      email: [''],
-      password: [''],
+      email: ['', Validators.compose([Validators.required, Validators.email()])],
+      password: ['', Validators.compose([Validators.required])],
     });
   }
 
   ngOnInit() {}
 
   async onSubmit() {
+    console.log(this.form);
+    return;
     const { email, password } = this.form.value;
     try {
       const user = await Auth.signIn({username: email, password});

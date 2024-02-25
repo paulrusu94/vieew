@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AuthorizedOnlyGuard } from './shared/guards/authorized-only.guard';
+import { CanLoadGuard } from './shared/guards/can-load.guard';
 // Components
 import { PublicLayoutComponent } from './base/components/public-layout/public-layout.component';
 import { LoginComponent } from './base/components/login/login.component';
@@ -16,10 +17,12 @@ export const routes: Routes = [
     children: [
       {
         path: 'dashboard',
+        canLoad: [CanLoadGuard],
         loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
       },
       {
         path: 'services',
+        canLoad: [CanLoadGuard],
         loadChildren: () => import('./modules/services/services.module').then(m => m.ServicesModule),
       },
     ],
@@ -39,11 +42,11 @@ export const routes: Routes = [
       {
         path: 'password-reset',
         component: PasswordResetComponent,
-      }
+      },
     ],
   },
   {
     path: '**',
-    redirectTo: '/dashboard',
+    redirectTo: '/',
   },
 ];

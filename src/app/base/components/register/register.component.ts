@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, ValidationMessagesBuilder } from 'src/app/shared/forms';
 import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
 import { Auth } from 'aws-amplify';
 import { Subject, OperatorFunction, Observable, debounceTime, distinctUntilChanged, filter, merge, map } from 'rxjs';
@@ -79,11 +80,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.form = this.formBuilder.group({
       name: ['', Validators.compose([Validators.required])],
       givenName: ['', Validators.compose([Validators.required])],
-      email: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.required, Validators.email()])],
       password: ['', Validators.compose([Validators.required])],
       confirmPassword: ['', Validators.compose([Validators.required])],
-      accountType: ['', Validators.compose([Validators.required])],
-      industry: ['', Validators.compose([Validators.required])],
+      accountType: ['personal', Validators.compose([Validators.required])],
+    }, {
+      validator: Validators.MatchPassword
     });
   }
 
