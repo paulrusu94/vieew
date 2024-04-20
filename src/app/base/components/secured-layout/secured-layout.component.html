@@ -4,11 +4,10 @@
   <!-- Side Navigation -->
   <aside appSideNavigation></aside>
   
-  <!-- <div
-    appTopNavigation
-    [isMenuActive]=isMenuActive
-    (onToggleMenu)="isMenuActive = !isMenuActive"
-  ></div> -->
-  <main class="h-100">
-    <router-outlet></router-outlet>
-  </main>
+  
+  <div class="d-flex flex-column w-100 h-100">
+    <div appTopNavigation></div>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </div>

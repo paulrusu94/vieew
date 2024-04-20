@@ -1,0 +1,6 @@
+<form class="d-flex" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="w-75">
+      <input type="text" class="form-control border border-0" id="post" placeholder="What is in your mind?" formControlName="post">
+    </div>
+    <button class="btn btn-gradient-primary w-25" type="submit">Publish</button>
+  </form>

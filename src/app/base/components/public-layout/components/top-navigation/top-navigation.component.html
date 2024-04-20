@@ -1,26 +1,12 @@
-<nav class="navbar navbar-expand-lg bg-transparent">
+<nav class="navbar bg-transparent">
   <div class="container-fluid">
-    <a class="navbar-brand" [routerLink]="">
-      <img src="./assets/images/logo.png" alt="" style="width: 30px;">
-    </a>
-    <button class="navbar-toggler btn-gradient-primary" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
-        <li><a [routerLink]="" class="nav-link active">Why Vieew</a></li>
-        <li><a [routerLink]="" class="nav-link">Token Sale</a></li>
-        <li><a [routerLink]="" class="nav-link">Passive Income</a></li>
-        <li><a [routerLink]="" class="nav-link">Roadmap</a></li>
-        <li><a [routerLink]="" class="nav-link">Team</a></li>
-        <li><a [routerLink]="" class="nav-link">Partners</a></li>
-        <li><a [routerLink]="" class="nav-link">Contact</a></li>
-        <li><a [routerLink]="" class="nav-link"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-      </ul>
-      <div class="d-flex flex-column flex-lg-row">
-        <button [routerLink]="['/register']" class="btn btn-gradient-primary me-0 me-lg-2 mb-2 mb-lg-0">Sign Up</button>
-        <button [routerLink]="['/login']" class="btn btn-gradient-primary">Login</button>
-      </div>
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    <div>
+      <button type="button">Clopotel</button>
+      <button type="button">Dropdown</button>
     </div>
   </div>
 </nav>

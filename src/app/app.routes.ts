@@ -12,18 +12,21 @@ export const routes: Routes = [
   {
     path: '',
     component: SecuredLayoutComponent,
-    canActivate: [AuthorizedOnlyGuard],
-    canActivateChild: [AuthorizedOnlyGuard],
     children: [
       {
-        path: 'dashboard',
-        canLoad: [CanLoadGuard],
-        loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+        path: '',
+        loadChildren: () => import('./modules/feed/feed.module').then(m => m.FeedModule),
+      },
+      {
+        path: ':profile',
+        loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule),
       },
       {
         path: 'services',
         canLoad: [CanLoadGuard],
         loadChildren: () => import('./modules/services/services.module').then(m => m.ServicesModule),
+        canActivate: [AuthorizedOnlyGuard],
+        canActivateChild: [AuthorizedOnlyGuard],
       },
     ],
   },

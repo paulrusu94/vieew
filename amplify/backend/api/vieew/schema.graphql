@@ -1,10 +1,107 @@
-# This "input" configures a global authorization rule to enable public access to
-# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
-input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
-
-type Service @model {
+type Service @model @auth(rules: [{ allow: public }]) {
   id: ID!
   name: String!
   description: String!
+  photo: String
   price: Int!
 }
+# The following "type" creates a model type that can be used as a composite type in other models
+# all users will have rolse, basic users will have just the right to view, like and comment
+# influencer/service/brand users will have the right to create, update and delete
+# admin users will have the right to create, update and delete all models
+# the admin user will have the right to create, update and delete all models 
+# the brand has posibility to have multiple owners based on admin role 
+# the influencer has posibility to have multiple owners based on admin role
+# ad campaig ca be text/photo/video  and can be created by brand
+# the ad campaign impllements the Media type thac can b text photo or video
+# the media type is a composite type that can be used in other models
+# media should have a property type that can be text/photo/vide
+# the media should have a property for the media files stored on s3 
+# the media should have a property uploaded by user
+#
+# user base model that will be used to store the user data such as full name, email, username, password, role, profile photo and
+# the user can be an admin, influencer, brand or basic user
+#
+# the user will have the right to view, like and comment
+
+
+# i modified base user as @model to be able to use it in the auth rules
+type BaseUser @model @auth(rules: [{ allow: public }]){
+  id: ID!
+  username: String!
+  email: String!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+# the admin user will have the right to create, update and delete all models 
+type Admin @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  user: BaseUser @hasOne
+  brands: [Brand] @hasMany
+  influencers: [Influencer] @hasMany
+  services: [Service] @hasMany
+  posts: [Post] @hasMany
+  adCampaigns: [AdCampaign] @hasMany
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+# the brand has posibility to have multiple owners based on admin role 
+# the brand implements BaseUser 
+type Brand @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  user: BaseUser @hasOne
+  adCampaign: [AdCampaign] @hasMany
+  posts: [Post] @hasMany
+  followers: [BaseUser] @hasMany
+}
+# the influencer has posibility to have multiple owners based on admin role
+type Influencer @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  user: BaseUser @hasOne
+  services: [Service] @hasMany
+  posts: [Post] @hasMany
+  followers: [BaseUser] @hasMany
+  following: [BaseUser] @hasMany
+}
+
+type Post @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  brand: Brand @belongsTo
+  influencer: Influencer @belongsTo
+  author: Admin @belongsTo
+  photo: String
+  description: String!
+  likes: Int!
+  comments: Int!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+# ad campaig ca be text/photo/video  and can be created by brand
+# the ad campaign impllements the Media type thac can b text photo or video
+type AdCampaign @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  author: Admin @belongsTo
+  brand: Brand @belongsTo
+  media: Media @hasOne
+  description: String!
+  likes: Int!
+  comments: Int!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+# the media type is a composite type that can be used in other models
+# media should have a property type that can be text/photo/vide
+# the media should have a property for the media files stored on s3 
+# the media should have a property uploaded by user
+type Media @model @auth(rules: [{ allow: public }]){
+  id: ID!
+  type: String!
+  file: String!
+  uploadedBy: BaseUser!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+

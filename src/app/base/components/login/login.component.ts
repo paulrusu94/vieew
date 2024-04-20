@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit() {}
 
   async onSubmit() {
-    console.log(this.form);
-    return;
+    // console.log(this.form);
+    // return;
     const { email, password } = this.form.value;
     try {
       const user = await Auth.signIn({username: email, password});
