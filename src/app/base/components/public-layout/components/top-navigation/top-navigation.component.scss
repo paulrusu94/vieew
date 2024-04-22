@@ -1,1 +1,25 @@
-:host {}
+:host {
+    .search-wrap {
+        input {
+            padding-left: 40px;
+        }
+        span {
+            top: calc(50% - 12px);
+            left: 10px;
+        }
+    }
+
+    .dropdown {
+        .dropdown-toggle {
+            box-shadow: none;
+            &:after {
+                display: none;
+            }
+            &:active, 
+            &:focus {
+                border: none;
+                box-shadow: none;
+            }
+        }
+    }
+}

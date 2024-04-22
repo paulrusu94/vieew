@@ -11,27 +11,6 @@ import { PasswordResetComponent } from './base/components/password-reset/passwor
 export const routes: Routes = [
   {
     path: '',
-    component: SecuredLayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('./modules/feed/feed.module').then(m => m.FeedModule),
-      },
-      {
-        path: ':profile',
-        loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule),
-      },
-      {
-        path: 'services',
-        canLoad: [CanLoadGuard],
-        loadChildren: () => import('./modules/services/services.module').then(m => m.ServicesModule),
-        canActivate: [AuthorizedOnlyGuard],
-        canActivateChild: [AuthorizedOnlyGuard],
-      },
-    ],
-  },
-  {
-    path: '',
     component: PublicLayoutComponent,
     children: [
       {
@@ -45,6 +24,31 @@ export const routes: Routes = [
       {
         path: 'password-reset',
         component: PasswordResetComponent,
+      },
+    ],
+  },
+  {
+    path: '',
+    component: SecuredLayoutComponent,
+    children: [
+      {
+        path: 'feed',
+        loadChildren: () => import('./modules/feed/feed.module').then(m => m.FeedModule),
+      },
+      {
+        path: 'search',
+        loadChildren: () => import('./modules/search/search.module').then(m => m.SearchModule),
+      },
+      {
+        path: 'services',
+        canLoad: [CanLoadGuard],
+        loadChildren: () => import('./modules/services/services.module').then(m => m.ServicesModule),
+        canActivate: [AuthorizedOnlyGuard],
+        canActivateChild: [AuthorizedOnlyGuard],
+      },
+      {
+        path: ':profile',
+        loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule),
       },
     ],
   },

@@ -1,7 +1,11 @@
+
+@import 'src/styles/variables';
 :host {
     display: flex;
     height: 100%;
     justify-content: start;
+    background-color: $darker;
+
 
     aside {
         height: 100%;
@@ -11,6 +15,5 @@
         width: 100%;
         height: 100%;
         overflow: auto;
-        padding: 0 15px;
     }
 }

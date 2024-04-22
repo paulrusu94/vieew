@@ -1,6 +1,29 @@
-<form class="d-flex" [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div class="w-75">
-      <input type="text" class="form-control border border-0" id="post" placeholder="What is in your mind?" formControlName="post">
+<form class="d-flex justify-content-between bg-dark p-3 rounded-5" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="d-flex flex-grow-1 align-items-center">
+    <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle me-2" style="width: 50px; height: 50px; object-fit: cover" />
+    <div class="form-group flex-grow-1">
+      <label for="">Add a new post</label>
+      <input
+          id="typeahead-format"
+          type="text"
+          class="form-control border-0 bg-transparent shadow-none p-0 w-100 fs-5"
+          placeholder="What's on your mind?"
+        />
     </div>
-    <button class="btn btn-gradient-primary w-25" type="submit">Publish</button>
-  </form>
+  </div>
+  <div>
+    <div class="btn btn-default">
+      <span class="material-symbols-outlined">image</span>
+    </div>
+    <div class="btn btn-default">
+      <span class="material-symbols-outlined">gif_box</span>
+    </div>
+    <div class="btn btn-default">
+      <span class="material-symbols-outlined">photo_camera</span>
+    </div>
+    <div class="btn btn-default">
+      <span class="material-symbols-outlined">attach_file</span>
+    </div>
+    <div class="btn btn-gradient-primary">Publish</div>
+  </div>
+</form>

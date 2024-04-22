@@ -17,17 +17,17 @@ export class FeedPage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    Auth.currentAuthenticatedUser()
-      .then((response) => {
-        this.isAuthenticated = true;
-      })
-      .catch((error) => {
-        console.log('Error', error);
-        if (!this.errorHandled) {
-          this.errorHandled = true;
-          this.isAuthenticated = false;
-        }
-      });
+    // Auth.currentAuthenticatedUser()
+    //   .then((response) => {
+    //     this.isAuthenticated = true;
+    //   })
+    //   .catch((error) => {
+    //     console.log('Error', error);
+    //     if (!this.errorHandled) {
+    //       this.errorHandled = true;
+    //       this.isAuthenticated = false;
+    //     }
+    //   });
   }
 
   async logOut() {
