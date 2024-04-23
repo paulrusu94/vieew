@@ -3,9 +3,13 @@
     <div class="d-flex justify-content-between">
       <!-- avatar -->
       <div class="d-flex">
-        <img [src]="feed.avatar" alt="avatar" class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
+        <a [routerLink]="['/', feed.author]">
+          <img [src]="feed.avatar" alt="avatar" class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
+        </a>
         <div>
-          <p class="m-0 fw-bold">{{ feed.author }}</p>
+          <p class="m-0 fw-bold">
+            <a [routerLink]="['/', feed.author]">{{ feed.author }}</a>
+          </p>
           <span class="text-muted fs-7">{{ feed.timestamp }}</span>
         </div>
       </div>

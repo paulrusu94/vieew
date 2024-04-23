@@ -4,8 +4,11 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-// Shared Components
+// Components
 import { IndustriesSearchComponent } from './components/industries-search/industries-search.component';
+import { FeedsComponent } from './components/feeds/feeds.component';
+// Modals
+import { FullScreenFeedComponent } from './components/feeds/components/fullscreen-feed/fullscreen-feed.component';
 
 @NgModule({
   imports: [
@@ -18,13 +21,17 @@ import { IndustriesSearchComponent } from './components/industries-search/indust
   declarations: [
     // Shared components
     IndustriesSearchComponent,
+    FeedsComponent,
+    // Modals
+    FullScreenFeedComponent
   ],
   exports: [
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
     // Shared components
-    IndustriesSearchComponent
+    IndustriesSearchComponent,
+    FeedsComponent,
     ],
   providers: [],
 })

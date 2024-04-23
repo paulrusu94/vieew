@@ -1,3 +1,96 @@
-<div class="container-fluid">
-  <h1>Profile page</h1>
+<div class="profile-wrapper mt-5">
+  <div class="profile d-flex mb-5">
+    <div class="profile-image">
+      <img class="rounded" src="https://source.unsplash.com/collection/happy-people" alt="" style="max-width: 200px;">
+    </div>
+    <div class="profile-details">
+      <h1>{{ profile }}</h1>
+      <h6>Bucharest, Romania</h6>
+      <h4>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam quo enim facilis aliquam vitae in sint beatae
+        minus laudantium voluptate a, illum tenetur quod exercitationem earum non est perspiciatis atque!</h4>
+      <div class="d-flex justify-content-between">
+        <div class="d-flex align-items-center">
+          <div class="d-flex">
+            <a>
+              <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle me-2"
+                style="width: 38px; height: 38px; object-fit: cover" />
+            </a>
+            <a>
+              <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle me-2"
+                style="width: 38px; height: 38px; object-fit: cover; margin-left: -15px" />
+            </a>
+            <a>
+              <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle me-2"
+                style="width: 38px; height: 38px; object-fit: cover; margin-left: -15px" />
+            </a>
+            <a>
+              <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle me-2"
+                style="width: 38px; height: 38px; object-fit: cover; margin-left: -15px" />
+            </a>
+            <a>
+              <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle me-2"
+                style="width: 38px; height: 38px; object-fit: cover; margin-left: -15px" />
+            </a>
+          </div>
+          <p class="m-0">Followed by Radu, Ion and 12+ others</p>
+        </div>
+        <div class="d-flex flex-row">
+          <span>6,281 <br> Followers</span>
+          <span>6,281 <br> Following</span>
+          <button type="button" class="btn btn-gradient-primary">Follow</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <ul ngbNav #nav="ngbNav" class="nav-tabs">
+      <li ngbNavItem>
+        <button ngbNavLink>Dashboard</button>
+        <ng-template ngbNavContent>
+          <p>Asta trebuie sa fie activ doar daca intra userul logat pe profilul lui.</p>
+        </ng-template>
+      </li>
+      <li ngbNavItem>
+        <button ngbNavLink>Posts</button>
+        <ng-template ngbNavContent>
+          <div appFeeds class="px-4"></div>
+        </ng-template>
+      </li>
+      <li ngbNavItem>
+        <button ngbNavLink>Services</button>
+        <ng-template ngbNavContent>
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="https://source.unsplash.com/collection/happy-people" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="https://source.unsplash.com/collection/happy-people" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </li>
+    </ul>
+    <div [ngbNavOutlet]="nav"></div>
+  </div>
 </div>

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './top-navigation.component.html',
   styleUrls: ['./top-navigation.component.scss'],
 })
+
 export class TopNavigationComponent implements OnInit, OnDestroy {
 
   public states = [

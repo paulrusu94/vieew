@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Auth } from 'aws-amplify';
 
 @Component({
@@ -9,14 +9,17 @@ import { Auth } from 'aws-amplify';
 })
 export class ProfilePage implements OnInit, OnDestroy {
   private errorHandled = false;
-
+  
+  public profile: string = '';
   public isAuthenticated: boolean = false;
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
+    this.profile = this.route.snapshot.params['profile'];
     Auth.currentAuthenticatedUser()
       .then((response) => {
         this.isAuthenticated = true;

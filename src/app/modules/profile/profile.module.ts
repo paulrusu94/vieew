@@ -6,9 +6,6 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfilePage } from './pages/profile/profile.page';
 // Components
 import { AddPostComponent } from './pages/profile/components/add-post/add-post.component';
-import { FeedsComponent } from './pages/profile/components/feeds/feeds.component';
-// Modals
-import { FullScreenFeedComponent } from './pages/profile/components/feeds/components/fullscreen-feed/fullscreen-feed.component';
 
 @NgModule({
   imports: [CommonModule, ProfileRoutingModule, SharedModule],
@@ -17,9 +14,6 @@ import { FullScreenFeedComponent } from './pages/profile/components/feeds/compon
     ProfilePage,
     // Components
     AddPostComponent,
-    FeedsComponent,
-    // Modals
-    FullScreenFeedComponent
   ],
   providers: [],
 })
