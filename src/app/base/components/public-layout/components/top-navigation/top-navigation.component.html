@@ -27,9 +27,24 @@
         <p class="m-0 fw-bold">{{ 'USER_NAME'}}</p>
       </div>
 			<div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-				<button ngbDropdownItem>Action - 1</button>
-				<button ngbDropdownItem>Another Action</button>
-				<button ngbDropdownItem>Something else is here</button>
+				<button ngbDropdownItem class="d-flex align-items-center">
+          <span class="material-symbols-outlined me-2">account_circle </span>My Profile
+        </button>
+				<button ngbDropdownItem class="d-flex align-items-center">
+          <span class="material-symbols-outlined me-2">settings</span>Account Settings
+        </button>
+				<button ngbDropdownItem class="d-flex align-items-center">
+          <span class="material-symbols-outlined me-2">description</span>Legal
+        </button>
+        <button ngbDropdownItem class="d-flex align-items-center">
+          <span class="material-symbols-outlined me-2">info</span>About Vieew
+        </button>
+        <button ngbDropdownItem class="d-flex align-items-center">
+          <span class="material-symbols-outlined me-2">help</span>Help & Support
+        </button>
+        <button ngbDropdownItem class="d-flex align-items-center">
+          <span class="material-symbols-outlined me-2">logout</span>Log Out
+        </button>
 			</div>
 		</div>
   </div>
