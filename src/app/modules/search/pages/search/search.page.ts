@@ -11,4 +11,6 @@ export class SearchPage implements OnInit, OnDestroy {
   ngOnInit() {}
   
   ngOnDestroy() {}
+
+  
 }

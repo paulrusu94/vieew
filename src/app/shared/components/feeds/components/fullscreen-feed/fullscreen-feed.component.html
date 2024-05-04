@@ -1,16 +1,16 @@
 
-<div class="modal-body overflow-hidden" style="max-height: 100vh;">
+<div class="modal-body overflow-hidden py-0" style="max-height: 100vh;">
   <div class="row">
-    <div class="col-8 d-flex justify-content-between align-items-center">
-      <button type="button" class="btn-close align-self-start" aria-label="Close" (click)="activeModal.close()"></button>
+    <div class="col-8 d-flex justify-content-between align-items-center bg-dark-subtle">
+      <button type="button" class="btn-close align-self-start mt-3" aria-label="Close" (click)="activeModal.close()"></button>
       <img src="https://source.unsplash.com/collection/happy-people" alt="" style="max-width: 70%;">
-      <div class="d-flex flex-column ">
-        <div class=" d-flex align-self-start">
-          <button class="btn btn-primary bg-dark me-md-2 border-0 mb-5" type="button">Report</button>
+      <div class="d-flex flex-column align-items-center">
+        <div class=" d-flex align-self-start mt-3">
+          <button class="btn btn-primary bg-secondary me-md-2 border-0 mb-5 rounded-pill px-3x py-1" type="button">Report</button>
         </div>
         <div class="d-flex flex-column align-self-center">
-          <button class="btn btn-primary bg-dark me-md-2 border-0"><span class="material-symbols-outlined">expand_less</span></button>
-          <button class="btn btn-primary bg-dark me-md-2 border-0"><span class="material-symbols-outlined">expand_more</span></button>
+          <button class="btn btn-primary bg-secondary me-md-2 border-0 rounded-pill px-4 py-1 mb-3"><span class="material-symbols-outlined">expand_less</span></button>
+          <button class="btn btn-primary bg-secondary me-md-2 border-0 rounded-pill px-4 py-1"><span class="material-symbols-outlined">expand_more</span></button>
         </div>
       </div>
     </div>
@@ -19,7 +19,9 @@
         <div class="d-flex">
           <img [src]="feed.avatar" alt="avatar" class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
           <div>
+           <a routerLink="">
             <p class="m-0 fw-bold">{{ feed.author }}</p>
+           </a> 
             <span class="text-muted fs-7">{{ feed.timestamp }}</span>
           </div>
         </div>
@@ -42,7 +44,7 @@
           124
         </button>
       </div>
-      <div class="py-4 border-bottom mb-4">
+      <div class="py-4 mb-4">
         <p class="mb-3">Comments</p>
         <div class="d-flex flex-column justify-content-between">
           <div class="d-flex justify-content-between mb-3">
@@ -81,7 +83,8 @@
         </div>
         </div>
       </div>
-      <form class="d-flex justify-content-between bg-dark p-3 rounded-5 align-items-center align-self-end">
+      <div class="border-top py-4 mt-auto bg-black p-3 position-absolute bottom-0 w-100">
+        <form class="d-flex justify-content-between bg-dark p-0 ps-3 mt-auto rounded-5 align-items-center">
         <div class="d-flex flex-grow-1 align-items-center">
           <div class="form-group flex-grow-1">
             <input
@@ -93,11 +96,12 @@
           </div>
         </div>
         <div>
-          <div class="btn btn-gradient-primary rounded-circle"><span class="material-symbols-outlined text-center">
+          <button class="btn btn-gradient-primary rounded-circle p-0 rounded-5"><span class="material-symbols-outlined m-0 d-block">
             keyboard_arrow_right
-            </span></div>
+            </span></button>
         </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </div>
