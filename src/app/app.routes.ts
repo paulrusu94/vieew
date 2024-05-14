@@ -10,29 +10,23 @@ import { PasswordResetComponent } from './base/components/password-reset/passwor
 
 export const routes: Routes = [
   {
-    path: '',
-    component: PublicLayoutComponent,
-    children: [
-      {
-        path: 'login',
-        component: LoginComponent,
-      },
-      {
-        path: 'register',
-        component: RegisterComponent,
-      },
-      {
-        path: 'password-reset',
-        component: PasswordResetComponent,
-      },
-    ],
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'password-reset',
+    component: PasswordResetComponent,
   },
   {
     path: '',
     component: SecuredLayoutComponent,
     children: [
       {
-        path: 'feed',
+        path: '',
         loadChildren: () => import('./modules/feed/feed.module').then(m => m.FeedModule),
       },
       {

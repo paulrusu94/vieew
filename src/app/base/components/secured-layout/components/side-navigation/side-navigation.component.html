@@ -1,28 +1,33 @@
-<div class="d-flex flex-column p-3 text-bg-dark bg-darker" style="width: 280px; height: 100%;">
-  <a routerLink="/feed" class="d-flex align-items-center justify-content-center mb-5 p-3 border-0 text-white text-decoration-none">
-    <img src="./assets/images/logo_horizontal.png" alt="" style="width: 7rem;">
-  </a>
-  <ul class="nav nav-pills flex-column">
-    <li class="nav-item mb-2">
-      <button [routerLink]="['/']" routerLinkActive="active" class="nav-link text-white text-start d-flex align-items-center" aria-current="page" style="width: 100%;">
-        <span class="material-symbols-outlined me-2">add</span> New Post 
-      </button>
-    </li>
-    <li class="nav-item" >
-      <button [routerLink]="['/feed']" routerLinkActive="active" class="nav-link text-white text-start d-flex align-items-center justify-content-between" aria-current="page" style="width: 100%;">
-        <span class="d-flex align-items-center"><span class="material-symbols-outlined me-2">dashboard</span>Feed</span> <span class="float-end pe-2">></span>
-      </button>
-    </li>
-    <li class="nav-item" >
-      <button [routerLink]="['/']" routerLinkActive="active" class="nav-link text-white text-start d-flex align-items-center justify-content-between" aria-current="page" style="width: 100%;">
-        <span class="d-flex align-items-center"><span class="material-symbols-outlined me-2">account_balance_wallet</span>Wallet</span> <span class="float-end pe-2">></span>
-      </button>
-    </li>
-    <li class="nav-item mt-5" >
-      <button [routerLink]="['/']" routerLinkActive="active" class="nav-link btn btn-gradient-primary text-white text-start d-flex align-items-center justify-content-between" aria-current="page" style="width: 100%;">
-        <span class="d-flex align-items-center"><span class="material-symbols-outlined me-2 me-1">upload</span>Become a Vieewer</span> <span class="float-end pe-2">></span>
-      </button>
-    </li>
-  </ul>
-</div>
-
+<ul class="nav nav-pills flex-column px-2">
+  <li class="nav-item mb-3">
+    <button [routerLink]="['/']" routerLinkActive="active"
+      class="nav-link text-white bg-primary text-start d-flex align-items-center" aria-current="page" style="width: 100%;">
+      <span class="material-symbols-outlined me-2">add</span> New Post
+    </button>
+  </li>
+  <li class="nav-item mb-3">
+    <button [routerLink]="['/']" routerLinkActive="active"
+      class="nav-link text-white text-start d-flex align-items-center justify-content-between" aria-current="page"
+      style="width: 100%;">
+      <span class="d-flex align-items-center"><span class="material-symbols-outlined me-2">dashboard</span>Feed</span>
+      <span class="float-end pe-2">></span>
+    </button>
+  </li>
+  <li class="nav-item">
+    <button [routerLink]="['/']" routerLinkActive="active"
+      class="nav-link text-primary bg-transparent text-start d-flex align-items-center justify-content-between" aria-current="page"
+      style="width: 100%;">
+      <span class="d-flex align-items-center"><span
+          class="material-symbols-outlined me-2">account_balance_wallet</span>Wallet</span> <span
+        class="float-end pe-2">></span>
+    </button>
+  </li>
+  <li class="nav-item mt-5">
+    <button [routerLink]="['/']" routerLinkActive="active"
+      class="nav-link btn btn-gradient-primary text-white text-start d-flex align-items-center justify-content-between"
+      aria-current="page" style="width: 100%;">
+      <span class="d-flex align-items-center"><span class="material-symbols-outlined me-2 me-1">upload</span>Become a
+        Vieewer</span> <span class="float-end pe-2"></span>
+    </button>
+  </li>
+</ul>

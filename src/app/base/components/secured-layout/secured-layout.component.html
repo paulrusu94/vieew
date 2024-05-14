@@ -2,10 +2,9 @@
   <!-- <app-top-navigation></app-top-navigation> -->
 
   <!-- Side Navigation -->
-  <aside appSideNavigation></aside>
-  
-  <div class="container-sm bg-darker">
-    <nav appTopNavigation class="navbar bg-transparent d-flex"></nav>
+  <nav appTopNavigation class="navbar fixed-top d-flex py-0 pe-4"></nav>
+  <div class="main-wrapper">
+    <aside appSideNavigation></aside>
     <main>
       <router-outlet></router-outlet>
     </main>
