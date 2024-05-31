@@ -1,4 +1,44 @@
 {
+  "backup": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-vieew-backup-7d752-authRole",
+      "UnauthRoleArn": "arn:aws:iam::142236685220:role/amplify-vieew-backup-7d752-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::142236685220:role/amplify-vieew-backup-7d752-authRole",
+      "Region": "eu-north-1",
+      "DeploymentBucketName": "amplify-vieew-backup-7d752-deployment",
+      "UnauthRoleName": "amplify-vieew-backup-7d752-unauthRole",
+      "StackName": "amplify-vieew-backup-7d752",
+      "StackId": "arn:aws:cloudformation:eu-north-1:142236685220:stack/amplify-vieew-backup-7d752/a682e2b0-1948-11ef-9e9e-064f6d61111f",
+      "AmplifyAppId": "dbqdaz6jubzzf",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-vieew-backup-7d752-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "function": {
+        "vieewCustomMessage": {
+          "EMAILMESSAGE": "LINK: ",
+          "EMAILSUBJECT": "Link",
+          "REDIRECTURL": "http://localhost:4200/confirmation",
+          "deploymentBucketName": "amplify-vieew-backup-7d752-deployment",
+          "s3Key": "amplify-builds/vieewCustomMessage-70642f66384b6b465357-build.zip"
+        },
+        "vieewPostConfirmation": {
+          "GROUP": "users",
+          "deploymentBucketName": "amplify-vieew-backup-7d752-deployment",
+          "s3Key": "amplify-builds/vieewPostConfirmation-6a786b796c6d4e2b5730-build.zip"
+        },
+        "authConfirmUserEmail": {
+          "deploymentBucketName": "amplify-vieew-backup-7d752-deployment",
+          "s3Key": "amplify-builds/authConfirmUserEmail-2b6435305a7742714843-build.zip"
+        }
+      },
+      "auth": {
+        "vieew": {}
+      },
+      "api": {
+        "vieew": {}
+      }
+    }
+  },
   "dev": {
     "awscloudformation": {
       "AuthRoleName": "amplify-vieew-dev-174314-authRole",

@@ -75,7 +75,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
+    private router: Router
   ) {
     this.form = this.formBuilder.group({
       name: ['', Validators.compose([Validators.required])],
@@ -106,14 +106,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
   async onSubmit() {
     try {
       const { name, email, password, givenName, accountType, industry } = this.form.value;
-      const { user } = await Auth.signUp({
+      const { user }: any = await Auth.signUp({
         username: email,
         password: password,
         attributes: {
-          name,
-          given_name: givenName,
-          'custom:account_type': accountType,
-          'custom:industry': industry
+          name
         },
         autoSignIn: {
           // optional - enables auto sign in after user is confirmed

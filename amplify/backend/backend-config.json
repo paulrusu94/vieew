@@ -1,32 +1,15 @@
 {
   "api": {
     "vieew": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "UserPoolId"
-          ],
-          "category": "auth",
-          "resourceName": "vieew30ef4bc7"
-        }
-      ],
+      "dependsOn": [],
       "output": {
         "authConfig": {
-          "additionalAuthenticationProviders": [
-            {
-              "apiKeyConfig": {
-                "apiKeyExpirationDate": "2024-03-28T16:47:47.411Z",
-                "apiKeyExpirationDays": 7,
-                "description": ""
-              },
-              "authenticationType": "API_KEY"
-            }
-          ],
+          "additionalAuthenticationProviders": [],
           "defaultAuthentication": {
-            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-            "userPoolConfig": {
-              "userPoolId": "authvieew30ef4bc7"
-            }
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7
+            },
+            "authenticationType": "API_KEY"
           }
         }
       },
@@ -35,9 +18,28 @@
     }
   },
   "auth": {
-    "vieew30ef4bc7": {
+    "vieew": {
       "customAuth": false,
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "vieewCustomMessage",
+          "triggerProvider": "Cognito"
+        },
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "vieewPostConfirmation",
+          "triggerProvider": "Cognito"
+        }
+      ],
       "frontendAuthConfig": {
         "mfaConfiguration": "OFF",
         "mfaTypes": [
@@ -48,7 +50,6 @@
           "passwordPolicyMinLength": 8
         },
         "signupAttributes": [
-          "EMAIL",
           "NAME"
         ],
         "socialProviders": [],
@@ -63,5 +64,103 @@
       "service": "Cognito"
     }
   },
-  "function": {}
+  "function": {
+    "authConfirmUserEmail": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "vieewCustomMessage": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "vieewPostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_authConfirmUserEmail_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "authConfirmUserEmail"
+        }
+      ]
+    },
+    "AMPLIFY_function_authConfirmUserEmail_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "authConfirmUserEmail"
+        }
+      ]
+    },
+    "AMPLIFY_function_vieewCustomMessage_EMAILMESSAGE": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "vieewCustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_vieewCustomMessage_EMAILSUBJECT": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "vieewCustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_vieewCustomMessage_REDIRECTURL": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "vieewCustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_vieewCustomMessage_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "vieewCustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_vieewCustomMessage_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "vieewCustomMessage"
+        }
+      ]
+    },
+    "AMPLIFY_function_vieewPostConfirmation_GROUP": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "vieewPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_vieewPostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "vieewPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_vieewPostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "vieewPostConfirmation"
+        }
+      ]
+    }
+  }
 }

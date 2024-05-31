@@ -5,6 +5,7 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { Auth } from 'aws-amplify';
 
 @Component({
   selector: '[appTopNavigation]',
@@ -104,6 +105,10 @@ export class TopNavigationComponent implements OnInit, OnDestroy {
     this.router.navigate(['search'], {
       queryParams: {q: this.model}
     })
+  }
+
+  async logout() {
+    await Auth.signOut({ global: true });
   }
 
 
