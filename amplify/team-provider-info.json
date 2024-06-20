@@ -19,7 +19,7 @@
           "EMAILSUBJECT": "Link",
           "REDIRECTURL": "http://localhost:4200/confirmation",
           "deploymentBucketName": "amplify-vieew-backup-7d752-deployment",
-          "s3Key": "amplify-builds/vieewCustomMessage-70642f66384b6b465357-build.zip"
+          "s3Key": "amplify-builds/vieewCustomMessage-4c46534f763256466e6d-build.zip"
         },
         "vieewPostConfirmation": {
           "GROUP": "users",
@@ -28,14 +28,15 @@
         },
         "authConfirmUserEmail": {
           "deploymentBucketName": "amplify-vieew-backup-7d752-deployment",
-          "s3Key": "amplify-builds/authConfirmUserEmail-2b6435305a7742714843-build.zip"
+          "s3Key": "amplify-builds/authConfirmUserEmail-4c49355a2b6459654557-build.zip"
         }
       },
       "auth": {
         "vieew": {}
       },
       "api": {
-        "vieew": {}
+        "vieew": {},
+        "view2functions": {}
       }
     }
   },

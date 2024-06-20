@@ -680,26 +680,10 @@ export type CreateUserMutation = {
   viewerId?: string | null;
   brands?: {
     __typename: "ModelBrandAdminsConnection";
-    items: Array<{
-      __typename: "BrandAdmins";
-      id: string;
-      userId: string;
-      brandId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   viewers?: {
     __typename: "ModelViewerAdminsConnection";
-    items: Array<{
-      __typename: "ViewerAdmins";
-      id: string;
-      userId: string;
-      viewerId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   viewer?: {
@@ -708,60 +692,15 @@ export type CreateUserMutation = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   services?: {
     __typename: "ModelServiceConnection";
-    items: Array<{
-      __typename: "Service";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   updatedAt?: string | null;
@@ -779,26 +718,10 @@ export type UpdateUserMutation = {
   viewerId?: string | null;
   brands?: {
     __typename: "ModelBrandAdminsConnection";
-    items: Array<{
-      __typename: "BrandAdmins";
-      id: string;
-      userId: string;
-      brandId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   viewers?: {
     __typename: "ModelViewerAdminsConnection";
-    items: Array<{
-      __typename: "ViewerAdmins";
-      id: string;
-      userId: string;
-      viewerId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   viewer?: {
@@ -807,60 +730,15 @@ export type UpdateUserMutation = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   services?: {
     __typename: "ModelServiceConnection";
-    items: Array<{
-      __typename: "Service";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   updatedAt?: string | null;
@@ -878,26 +756,10 @@ export type DeleteUserMutation = {
   viewerId?: string | null;
   brands?: {
     __typename: "ModelBrandAdminsConnection";
-    items: Array<{
-      __typename: "BrandAdmins";
-      id: string;
-      userId: string;
-      brandId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   viewers?: {
     __typename: "ModelViewerAdminsConnection";
-    items: Array<{
-      __typename: "ViewerAdmins";
-      id: string;
-      userId: string;
-      viewerId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   viewer?: {
@@ -906,60 +768,15 @@ export type DeleteUserMutation = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   services?: {
     __typename: "ModelServiceConnection";
-    items: Array<{
-      __typename: "Service";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   updatedAt?: string | null;
@@ -981,73 +798,19 @@ export type CreateViewerMutation = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
   admins?: {
     __typename: "ModelViewerAdminsConnection";
-    items: Array<{
-      __typename: "ViewerAdmins";
-      id: string;
-      userId: string;
-      viewerId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   services?: {
     __typename: "ModelServiceConnection";
-    items: Array<{
-      __typename: "Service";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt?: string | null;
@@ -1069,73 +832,19 @@ export type UpdateViewerMutation = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
   admins?: {
     __typename: "ModelViewerAdminsConnection";
-    items: Array<{
-      __typename: "ViewerAdmins";
-      id: string;
-      userId: string;
-      viewerId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   services?: {
     __typename: "ModelServiceConnection";
-    items: Array<{
-      __typename: "Service";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt?: string | null;
@@ -1157,73 +866,19 @@ export type DeleteViewerMutation = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
   admins?: {
     __typename: "ModelViewerAdminsConnection";
-    items: Array<{
-      __typename: "ViewerAdmins";
-      id: string;
-      userId: string;
-      viewerId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   services?: {
     __typename: "ModelServiceConnection";
-    items: Array<{
-      __typename: "Service";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt?: string | null;
@@ -1239,29 +894,10 @@ export type CreateBrandMutation = {
   ownerId: string;
   admins?: {
     __typename: "ModelBrandAdminsConnection";
-    items: Array<{
-      __typename: "BrandAdmins";
-      id: string;
-      userId: string;
-      brandId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt?: string | null;
@@ -1277,29 +913,10 @@ export type UpdateBrandMutation = {
   ownerId: string;
   admins?: {
     __typename: "ModelBrandAdminsConnection";
-    items: Array<{
-      __typename: "BrandAdmins";
-      id: string;
-      userId: string;
-      brandId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt?: string | null;
@@ -1315,29 +932,10 @@ export type DeleteBrandMutation = {
   ownerId: string;
   admins?: {
     __typename: "ModelBrandAdminsConnection";
-    items: Array<{
-      __typename: "BrandAdmins";
-      id: string;
-      userId: string;
-      brandId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt?: string | null;
@@ -1359,31 +957,6 @@ export type CreatePostMutation = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
@@ -1394,14 +967,6 @@ export type CreatePostMutation = {
     logo?: string | null;
     description: string;
     ownerId: string;
-    admins?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -1413,30 +978,6 @@ export type CreatePostMutation = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -1459,31 +1000,6 @@ export type UpdatePostMutation = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
@@ -1494,14 +1010,6 @@ export type UpdatePostMutation = {
     logo?: string | null;
     description: string;
     ownerId: string;
-    admins?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -1513,30 +1021,6 @@ export type UpdatePostMutation = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -1559,31 +1043,6 @@ export type DeletePostMutation = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
@@ -1594,14 +1053,6 @@ export type DeletePostMutation = {
     logo?: string | null;
     description: string;
     ownerId: string;
-    admins?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -1613,30 +1064,6 @@ export type DeletePostMutation = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -1659,31 +1086,6 @@ export type CreateServiceMutation = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
@@ -1694,30 +1096,6 @@ export type CreateServiceMutation = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -1740,31 +1118,6 @@ export type UpdateServiceMutation = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
@@ -1775,30 +1128,6 @@ export type UpdateServiceMutation = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -1821,31 +1150,6 @@ export type DeleteServiceMutation = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
@@ -1856,30 +1160,6 @@ export type DeleteServiceMutation = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -1901,31 +1181,6 @@ export type CreateBrandAdminsMutation = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   };
@@ -1936,14 +1191,6 @@ export type CreateBrandAdminsMutation = {
     logo?: string | null;
     description: string;
     ownerId: string;
-    admins?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   };
@@ -1965,31 +1212,6 @@ export type UpdateBrandAdminsMutation = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   };
@@ -2000,14 +1222,6 @@ export type UpdateBrandAdminsMutation = {
     logo?: string | null;
     description: string;
     ownerId: string;
-    admins?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   };
@@ -2029,31 +1243,6 @@ export type DeleteBrandAdminsMutation = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   };
@@ -2064,14 +1253,6 @@ export type DeleteBrandAdminsMutation = {
     logo?: string | null;
     description: string;
     ownerId: string;
-    admins?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   };
@@ -2093,31 +1274,6 @@ export type CreateViewerAdminsMutation = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   };
@@ -2127,30 +1283,6 @@ export type CreateViewerAdminsMutation = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   };
@@ -2172,31 +1304,6 @@ export type UpdateViewerAdminsMutation = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   };
@@ -2206,30 +1313,6 @@ export type UpdateViewerAdminsMutation = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   };
@@ -2251,31 +1334,6 @@ export type DeleteViewerAdminsMutation = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   };
@@ -2285,30 +1343,6 @@ export type DeleteViewerAdminsMutation = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   };
@@ -2327,26 +1361,10 @@ export type GetUserQuery = {
   viewerId?: string | null;
   brands?: {
     __typename: "ModelBrandAdminsConnection";
-    items: Array<{
-      __typename: "BrandAdmins";
-      id: string;
-      userId: string;
-      brandId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   viewers?: {
     __typename: "ModelViewerAdminsConnection";
-    items: Array<{
-      __typename: "ViewerAdmins";
-      id: string;
-      userId: string;
-      viewerId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   viewer?: {
@@ -2355,60 +1373,15 @@ export type GetUserQuery = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   services?: {
     __typename: "ModelServiceConnection";
-    items: Array<{
-      __typename: "Service";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   updatedAt?: string | null;
@@ -2426,31 +1399,6 @@ export type ListUsersQuery = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null>;
@@ -2472,73 +1420,19 @@ export type GetViewerQuery = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
   admins?: {
     __typename: "ModelViewerAdminsConnection";
-    items: Array<{
-      __typename: "ViewerAdmins";
-      id: string;
-      userId: string;
-      viewerId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   services?: {
     __typename: "ModelServiceConnection";
-    items: Array<{
-      __typename: "Service";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt?: string | null;
@@ -2553,30 +1447,6 @@ export type ListViewersQuery = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null>;
@@ -2592,29 +1462,10 @@ export type GetBrandQuery = {
   ownerId: string;
   admins?: {
     __typename: "ModelBrandAdminsConnection";
-    items: Array<{
-      __typename: "BrandAdmins";
-      id: string;
-      userId: string;
-      brandId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt?: string | null;
@@ -2630,14 +1481,6 @@ export type ListBrandsQuery = {
     logo?: string | null;
     description: string;
     ownerId: string;
-    admins?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null>;
@@ -2659,31 +1502,6 @@ export type GetPostQuery = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
@@ -2694,14 +1512,6 @@ export type GetPostQuery = {
     logo?: string | null;
     description: string;
     ownerId: string;
-    admins?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -2713,30 +1523,6 @@ export type GetPostQuery = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -2752,39 +1538,8 @@ export type ListPostsQuery = {
     title: string;
     content: string;
     authorId: string;
-    author?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    brand?: {
-      __typename: "Brand";
-      id: string;
-      name: string;
-      logo?: string | null;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
     brandID?: string | null;
     viewerID?: string | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null>;
@@ -2806,31 +1561,6 @@ export type GetServiceQuery = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
@@ -2841,30 +1571,6 @@ export type GetServiceQuery = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -2880,28 +1586,7 @@ export type ListServicesQuery = {
     title: string;
     content: string;
     authorId: string;
-    author?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
     viewerID?: string | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null>;
@@ -2922,31 +1607,6 @@ export type GetBrandAdminsQuery = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   };
@@ -2957,14 +1617,6 @@ export type GetBrandAdminsQuery = {
     logo?: string | null;
     description: string;
     ownerId: string;
-    admins?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   };
@@ -2979,28 +1631,6 @@ export type ListBrandAdminsQuery = {
     id: string;
     userId: string;
     brandId: string;
-    user: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    };
-    brand: {
-      __typename: "Brand";
-      id: string;
-      name: string;
-      logo?: string | null;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    };
     createdAt: string;
     updatedAt: string;
   } | null>;
@@ -3021,31 +1651,6 @@ export type GetViewerAdminsQuery = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   };
@@ -3055,30 +1660,6 @@ export type GetViewerAdminsQuery = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   };
@@ -3093,27 +1674,6 @@ export type ListViewerAdminsQuery = {
     id: string;
     userId: string;
     viewerId: string;
-    user: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    };
-    viewer: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    };
     createdAt: string;
     updatedAt: string;
   } | null>;
@@ -3131,31 +1691,6 @@ export type UsersByViewerIdQuery = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null>;
@@ -3170,30 +1705,6 @@ export type ViewersByOwnerIdQuery = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null>;
@@ -3209,14 +1720,6 @@ export type BrandsByOwnerIdQuery = {
     logo?: string | null;
     description: string;
     ownerId: string;
-    admins?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null>;
@@ -3231,39 +1734,8 @@ export type PostsByAuthorIdQuery = {
     title: string;
     content: string;
     authorId: string;
-    author?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    brand?: {
-      __typename: "Brand";
-      id: string;
-      name: string;
-      logo?: string | null;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
     brandID?: string | null;
     viewerID?: string | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null>;
@@ -3278,39 +1750,8 @@ export type PostsByBrandIDQuery = {
     title: string;
     content: string;
     authorId: string;
-    author?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    brand?: {
-      __typename: "Brand";
-      id: string;
-      name: string;
-      logo?: string | null;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
     brandID?: string | null;
     viewerID?: string | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null>;
@@ -3325,39 +1766,8 @@ export type PostsByViewerIDQuery = {
     title: string;
     content: string;
     authorId: string;
-    author?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    brand?: {
-      __typename: "Brand";
-      id: string;
-      name: string;
-      logo?: string | null;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
     brandID?: string | null;
     viewerID?: string | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null>;
@@ -3372,28 +1782,7 @@ export type ServicesByAuthorIdQuery = {
     title: string;
     content: string;
     authorId: string;
-    author?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
     viewerID?: string | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null>;
@@ -3408,28 +1797,7 @@ export type ServicesByViewerIDQuery = {
     title: string;
     content: string;
     authorId: string;
-    author?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
     viewerID?: string | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null>;
@@ -3443,28 +1811,6 @@ export type BrandAdminsByUserIdQuery = {
     id: string;
     userId: string;
     brandId: string;
-    user: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    };
-    brand: {
-      __typename: "Brand";
-      id: string;
-      name: string;
-      logo?: string | null;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    };
     createdAt: string;
     updatedAt: string;
   } | null>;
@@ -3478,28 +1824,6 @@ export type BrandAdminsByBrandIdQuery = {
     id: string;
     userId: string;
     brandId: string;
-    user: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    };
-    brand: {
-      __typename: "Brand";
-      id: string;
-      name: string;
-      logo?: string | null;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    };
     createdAt: string;
     updatedAt: string;
   } | null>;
@@ -3513,27 +1837,6 @@ export type ViewerAdminsByUserIdQuery = {
     id: string;
     userId: string;
     viewerId: string;
-    user: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    };
-    viewer: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    };
     createdAt: string;
     updatedAt: string;
   } | null>;
@@ -3547,27 +1850,6 @@ export type ViewerAdminsByViewerIdQuery = {
     id: string;
     userId: string;
     viewerId: string;
-    user: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    };
-    viewer: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    };
     createdAt: string;
     updatedAt: string;
   } | null>;
@@ -3585,26 +1867,10 @@ export type OnCreateUserSubscription = {
   viewerId?: string | null;
   brands?: {
     __typename: "ModelBrandAdminsConnection";
-    items: Array<{
-      __typename: "BrandAdmins";
-      id: string;
-      userId: string;
-      brandId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   viewers?: {
     __typename: "ModelViewerAdminsConnection";
-    items: Array<{
-      __typename: "ViewerAdmins";
-      id: string;
-      userId: string;
-      viewerId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   viewer?: {
@@ -3613,60 +1879,15 @@ export type OnCreateUserSubscription = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   services?: {
     __typename: "ModelServiceConnection";
-    items: Array<{
-      __typename: "Service";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   updatedAt?: string | null;
@@ -3684,26 +1905,10 @@ export type OnUpdateUserSubscription = {
   viewerId?: string | null;
   brands?: {
     __typename: "ModelBrandAdminsConnection";
-    items: Array<{
-      __typename: "BrandAdmins";
-      id: string;
-      userId: string;
-      brandId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   viewers?: {
     __typename: "ModelViewerAdminsConnection";
-    items: Array<{
-      __typename: "ViewerAdmins";
-      id: string;
-      userId: string;
-      viewerId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   viewer?: {
@@ -3712,60 +1917,15 @@ export type OnUpdateUserSubscription = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   services?: {
     __typename: "ModelServiceConnection";
-    items: Array<{
-      __typename: "Service";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   updatedAt?: string | null;
@@ -3783,26 +1943,10 @@ export type OnDeleteUserSubscription = {
   viewerId?: string | null;
   brands?: {
     __typename: "ModelBrandAdminsConnection";
-    items: Array<{
-      __typename: "BrandAdmins";
-      id: string;
-      userId: string;
-      brandId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   viewers?: {
     __typename: "ModelViewerAdminsConnection";
-    items: Array<{
-      __typename: "ViewerAdmins";
-      id: string;
-      userId: string;
-      viewerId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   viewer?: {
@@ -3811,60 +1955,15 @@ export type OnDeleteUserSubscription = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   services?: {
     __typename: "ModelServiceConnection";
-    items: Array<{
-      __typename: "Service";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   updatedAt?: string | null;
@@ -3886,73 +1985,19 @@ export type OnCreateViewerSubscription = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
   admins?: {
     __typename: "ModelViewerAdminsConnection";
-    items: Array<{
-      __typename: "ViewerAdmins";
-      id: string;
-      userId: string;
-      viewerId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   services?: {
     __typename: "ModelServiceConnection";
-    items: Array<{
-      __typename: "Service";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt?: string | null;
@@ -3974,73 +2019,19 @@ export type OnUpdateViewerSubscription = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
   admins?: {
     __typename: "ModelViewerAdminsConnection";
-    items: Array<{
-      __typename: "ViewerAdmins";
-      id: string;
-      userId: string;
-      viewerId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   services?: {
     __typename: "ModelServiceConnection";
-    items: Array<{
-      __typename: "Service";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt?: string | null;
@@ -4062,73 +2053,19 @@ export type OnDeleteViewerSubscription = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
   admins?: {
     __typename: "ModelViewerAdminsConnection";
-    items: Array<{
-      __typename: "ViewerAdmins";
-      id: string;
-      userId: string;
-      viewerId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   services?: {
     __typename: "ModelServiceConnection";
-    items: Array<{
-      __typename: "Service";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt?: string | null;
@@ -4144,29 +2081,10 @@ export type OnCreateBrandSubscription = {
   ownerId: string;
   admins?: {
     __typename: "ModelBrandAdminsConnection";
-    items: Array<{
-      __typename: "BrandAdmins";
-      id: string;
-      userId: string;
-      brandId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt?: string | null;
@@ -4182,29 +2100,10 @@ export type OnUpdateBrandSubscription = {
   ownerId: string;
   admins?: {
     __typename: "ModelBrandAdminsConnection";
-    items: Array<{
-      __typename: "BrandAdmins";
-      id: string;
-      userId: string;
-      brandId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt?: string | null;
@@ -4220,29 +2119,10 @@ export type OnDeleteBrandSubscription = {
   ownerId: string;
   admins?: {
     __typename: "ModelBrandAdminsConnection";
-    items: Array<{
-      __typename: "BrandAdmins";
-      id: string;
-      userId: string;
-      brandId: string;
-      createdAt: string;
-      updatedAt: string;
-    } | null>;
     nextToken?: string | null;
   } | null;
   posts?: {
     __typename: "ModelPostConnection";
-    items: Array<{
-      __typename: "Post";
-      id: string;
-      title: string;
-      content: string;
-      authorId: string;
-      brandID?: string | null;
-      viewerID?: string | null;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null>;
     nextToken?: string | null;
   } | null;
   createdAt?: string | null;
@@ -4264,31 +2144,6 @@ export type OnCreatePostSubscription = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
@@ -4299,14 +2154,6 @@ export type OnCreatePostSubscription = {
     logo?: string | null;
     description: string;
     ownerId: string;
-    admins?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -4318,30 +2165,6 @@ export type OnCreatePostSubscription = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -4364,31 +2187,6 @@ export type OnUpdatePostSubscription = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
@@ -4399,14 +2197,6 @@ export type OnUpdatePostSubscription = {
     logo?: string | null;
     description: string;
     ownerId: string;
-    admins?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -4418,30 +2208,6 @@ export type OnUpdatePostSubscription = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -4464,31 +2230,6 @@ export type OnDeletePostSubscription = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
@@ -4499,14 +2240,6 @@ export type OnDeletePostSubscription = {
     logo?: string | null;
     description: string;
     ownerId: string;
-    admins?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -4518,30 +2251,6 @@ export type OnDeletePostSubscription = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -4564,31 +2273,6 @@ export type OnCreateServiceSubscription = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
@@ -4599,30 +2283,6 @@ export type OnCreateServiceSubscription = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -4645,31 +2305,6 @@ export type OnUpdateServiceSubscription = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
@@ -4680,30 +2315,6 @@ export type OnUpdateServiceSubscription = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -4726,31 +2337,6 @@ export type OnDeleteServiceSubscription = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   } | null;
@@ -4761,30 +2347,6 @@ export type OnDeleteServiceSubscription = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   } | null;
@@ -4806,31 +2368,6 @@ export type OnCreateBrandAdminsSubscription = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   };
@@ -4841,14 +2378,6 @@ export type OnCreateBrandAdminsSubscription = {
     logo?: string | null;
     description: string;
     ownerId: string;
-    admins?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   };
@@ -4870,31 +2399,6 @@ export type OnUpdateBrandAdminsSubscription = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   };
@@ -4905,14 +2409,6 @@ export type OnUpdateBrandAdminsSubscription = {
     logo?: string | null;
     description: string;
     ownerId: string;
-    admins?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   };
@@ -4934,31 +2430,6 @@ export type OnDeleteBrandAdminsSubscription = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   };
@@ -4969,14 +2440,6 @@ export type OnDeleteBrandAdminsSubscription = {
     logo?: string | null;
     description: string;
     ownerId: string;
-    admins?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   };
@@ -4998,31 +2461,6 @@ export type OnCreateViewerAdminsSubscription = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   };
@@ -5032,30 +2470,6 @@ export type OnCreateViewerAdminsSubscription = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   };
@@ -5077,31 +2491,6 @@ export type OnUpdateViewerAdminsSubscription = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   };
@@ -5111,30 +2500,6 @@ export type OnUpdateViewerAdminsSubscription = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   };
@@ -5156,31 +2521,6 @@ export type OnDeleteViewerAdminsSubscription = {
     profilePhoto?: string | null;
     bio?: string | null;
     viewerId?: string | null;
-    brands?: {
-      __typename: "ModelBrandAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewers?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    viewer?: {
-      __typename: "Viewer";
-      id: string;
-      name: string;
-      description: string;
-      ownerId: string;
-      createdAt?: string | null;
-      updatedAt?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     updatedAt?: string | null;
     createdAt?: string | null;
   };
@@ -5190,30 +2530,6 @@ export type OnDeleteViewerAdminsSubscription = {
     name: string;
     description: string;
     ownerId: string;
-    owner?: {
-      __typename: "User";
-      id: string;
-      firstName?: string | null;
-      lastName?: string | null;
-      email: string;
-      profilePhoto?: string | null;
-      bio?: string | null;
-      viewerId?: string | null;
-      updatedAt?: string | null;
-      createdAt?: string | null;
-    } | null;
-    admins?: {
-      __typename: "ModelViewerAdminsConnection";
-      nextToken?: string | null;
-    } | null;
-    posts?: {
-      __typename: "ModelPostConnection";
-      nextToken?: string | null;
-    } | null;
-    services?: {
-      __typename: "ModelServiceConnection";
-      nextToken?: string | null;
-    } | null;
     createdAt?: string | null;
     updatedAt?: string | null;
   };
@@ -5241,26 +2557,10 @@ export class APIService {
           viewerId
           brands {
             __typename
-            items {
-              __typename
-              id
-              userId
-              brandId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           viewers {
             __typename
-            items {
-              __typename
-              id
-              userId
-              viewerId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           viewer {
@@ -5269,60 +2569,15 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           services {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           updatedAt
@@ -5356,26 +2611,10 @@ export class APIService {
           viewerId
           brands {
             __typename
-            items {
-              __typename
-              id
-              userId
-              brandId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           viewers {
             __typename
-            items {
-              __typename
-              id
-              userId
-              viewerId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           viewer {
@@ -5384,60 +2623,15 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           services {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           updatedAt
@@ -5471,26 +2665,10 @@ export class APIService {
           viewerId
           brands {
             __typename
-            items {
-              __typename
-              id
-              userId
-              brandId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           viewers {
             __typename
-            items {
-              __typename
-              id
-              userId
-              viewerId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           viewer {
@@ -5499,60 +2677,15 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           services {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           updatedAt
@@ -5590,73 +2723,19 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
           admins {
             __typename
-            items {
-              __typename
-              id
-              userId
-              viewerId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           services {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           createdAt
@@ -5694,73 +2773,19 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
           admins {
             __typename
-            items {
-              __typename
-              id
-              userId
-              viewerId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           services {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           createdAt
@@ -5798,73 +2823,19 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
           admins {
             __typename
-            items {
-              __typename
-              id
-              userId
-              viewerId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           services {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           createdAt
@@ -5896,29 +2867,10 @@ export class APIService {
           ownerId
           admins {
             __typename
-            items {
-              __typename
-              id
-              userId
-              brandId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           createdAt
@@ -5950,29 +2902,10 @@ export class APIService {
           ownerId
           admins {
             __typename
-            items {
-              __typename
-              id
-              userId
-              brandId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           createdAt
@@ -6004,29 +2937,10 @@ export class APIService {
           ownerId
           admins {
             __typename
-            items {
-              __typename
-              id
-              userId
-              brandId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           createdAt
@@ -6064,31 +2978,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -6099,14 +2988,6 @@ export class APIService {
             logo
             description
             ownerId
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -6118,30 +2999,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -6180,31 +3037,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -6215,14 +3047,6 @@ export class APIService {
             logo
             description
             ownerId
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -6234,30 +3058,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -6296,31 +3096,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -6331,14 +3106,6 @@ export class APIService {
             logo
             description
             ownerId
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -6350,30 +3117,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -6412,31 +3155,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -6447,30 +3165,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -6509,31 +3203,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -6544,30 +3213,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -6606,31 +3251,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -6641,30 +3261,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -6702,31 +3298,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -6737,14 +3308,6 @@ export class APIService {
             logo
             description
             ownerId
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -6782,31 +3345,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -6817,14 +3355,6 @@ export class APIService {
             logo
             description
             ownerId
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -6862,31 +3392,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -6897,14 +3402,6 @@ export class APIService {
             logo
             description
             ownerId
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -6942,31 +3439,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -6976,30 +3448,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -7037,31 +3485,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -7071,30 +3494,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -7132,31 +3531,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -7166,30 +3540,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -7221,26 +3571,10 @@ export class APIService {
           viewerId
           brands {
             __typename
-            items {
-              __typename
-              id
-              userId
-              brandId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           viewers {
             __typename
-            items {
-              __typename
-              id
-              userId
-              viewerId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           viewer {
@@ -7249,60 +3583,15 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           services {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           updatedAt
@@ -7334,31 +3623,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -7397,73 +3661,19 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
           admins {
             __typename
-            items {
-              __typename
-              id
-              userId
-              viewerId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           services {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           createdAt
@@ -7492,30 +3702,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -7548,29 +3734,10 @@ export class APIService {
           ownerId
           admins {
             __typename
-            items {
-              __typename
-              id
-              userId
-              brandId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           createdAt
@@ -7600,14 +3767,6 @@ export class APIService {
             logo
             description
             ownerId
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -7646,31 +3805,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -7681,14 +3815,6 @@ export class APIService {
             logo
             description
             ownerId
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -7700,30 +3826,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -7753,39 +3855,8 @@ export class APIService {
             title
             content
             authorId
-            author {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            brand {
-              __typename
-              id
-              name
-              logo
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
             brandID
             viewerID
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
             createdAt
             updatedAt
           }
@@ -7824,31 +3895,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -7859,30 +3905,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -7912,28 +3934,7 @@ export class APIService {
             title
             content
             authorId
-            author {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
             viewerID
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
             createdAt
             updatedAt
           }
@@ -7971,31 +3972,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -8006,14 +3982,6 @@ export class APIService {
             logo
             description
             ownerId
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -8042,28 +4010,6 @@ export class APIService {
             id
             userId
             brandId
-            user {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            brand {
-              __typename
-              id
-              name
-              logo
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
             createdAt
             updatedAt
           }
@@ -8101,31 +4047,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -8135,30 +4056,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -8187,27 +4084,6 @@ export class APIService {
             id
             userId
             viewerId
-            user {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
             createdAt
             updatedAt
           }
@@ -8254,31 +4130,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -8327,30 +4178,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -8400,14 +4227,6 @@ export class APIService {
             logo
             description
             ownerId
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -8456,39 +4275,8 @@ export class APIService {
             title
             content
             authorId
-            author {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            brand {
-              __typename
-              id
-              name
-              logo
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
             brandID
             viewerID
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
             createdAt
             updatedAt
           }
@@ -8537,39 +4325,8 @@ export class APIService {
             title
             content
             authorId
-            author {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            brand {
-              __typename
-              id
-              name
-              logo
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
             brandID
             viewerID
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
             createdAt
             updatedAt
           }
@@ -8618,39 +4375,8 @@ export class APIService {
             title
             content
             authorId
-            author {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            brand {
-              __typename
-              id
-              name
-              logo
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
             brandID
             viewerID
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
             createdAt
             updatedAt
           }
@@ -8699,28 +4425,7 @@ export class APIService {
             title
             content
             authorId
-            author {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
             viewerID
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
             createdAt
             updatedAt
           }
@@ -8769,28 +4474,7 @@ export class APIService {
             title
             content
             authorId
-            author {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
             viewerID
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
             createdAt
             updatedAt
           }
@@ -8838,28 +4522,6 @@ export class APIService {
             id
             userId
             brandId
-            user {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            brand {
-              __typename
-              id
-              name
-              logo
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
             createdAt
             updatedAt
           }
@@ -8907,28 +4569,6 @@ export class APIService {
             id
             userId
             brandId
-            user {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            brand {
-              __typename
-              id
-              name
-              logo
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
             createdAt
             updatedAt
           }
@@ -8976,27 +4616,6 @@ export class APIService {
             id
             userId
             viewerId
-            user {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
             createdAt
             updatedAt
           }
@@ -9044,27 +4663,6 @@ export class APIService {
             id
             userId
             viewerId
-            user {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
             createdAt
             updatedAt
           }
@@ -9108,26 +4706,10 @@ export class APIService {
           viewerId
           brands {
             __typename
-            items {
-              __typename
-              id
-              userId
-              brandId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           viewers {
             __typename
-            items {
-              __typename
-              id
-              userId
-              viewerId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           viewer {
@@ -9136,60 +4718,15 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           services {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           updatedAt
@@ -9224,26 +4761,10 @@ export class APIService {
           viewerId
           brands {
             __typename
-            items {
-              __typename
-              id
-              userId
-              brandId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           viewers {
             __typename
-            items {
-              __typename
-              id
-              userId
-              viewerId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           viewer {
@@ -9252,60 +4773,15 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           services {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           updatedAt
@@ -9340,26 +4816,10 @@ export class APIService {
           viewerId
           brands {
             __typename
-            items {
-              __typename
-              id
-              userId
-              brandId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           viewers {
             __typename
-            items {
-              __typename
-              id
-              userId
-              viewerId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           viewer {
@@ -9368,60 +4828,15 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           services {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           updatedAt
@@ -9460,73 +4875,19 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
           admins {
             __typename
-            items {
-              __typename
-              id
-              userId
-              viewerId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           services {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           createdAt
@@ -9565,73 +4926,19 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
           admins {
             __typename
-            items {
-              __typename
-              id
-              userId
-              viewerId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           services {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           createdAt
@@ -9670,73 +4977,19 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
           admins {
             __typename
-            items {
-              __typename
-              id
-              userId
-              viewerId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           services {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           createdAt
@@ -9769,29 +5022,10 @@ export class APIService {
           ownerId
           admins {
             __typename
-            items {
-              __typename
-              id
-              userId
-              brandId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           createdAt
@@ -9824,29 +5058,10 @@ export class APIService {
           ownerId
           admins {
             __typename
-            items {
-              __typename
-              id
-              userId
-              brandId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           createdAt
@@ -9879,29 +5094,10 @@ export class APIService {
           ownerId
           admins {
             __typename
-            items {
-              __typename
-              id
-              userId
-              brandId
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           posts {
             __typename
-            items {
-              __typename
-              id
-              title
-              content
-              authorId
-              brandID
-              viewerID
-              createdAt
-              updatedAt
-            }
             nextToken
           }
           createdAt
@@ -9940,31 +5136,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -9975,14 +5146,6 @@ export class APIService {
             logo
             description
             ownerId
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -9994,30 +5157,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -10057,31 +5196,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -10092,14 +5206,6 @@ export class APIService {
             logo
             description
             ownerId
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -10111,30 +5217,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -10174,31 +5256,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -10209,14 +5266,6 @@ export class APIService {
             logo
             description
             ownerId
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -10228,30 +5277,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -10291,31 +5316,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -10326,30 +5326,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -10389,31 +5365,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -10424,30 +5375,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -10487,31 +5414,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -10522,30 +5424,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -10584,31 +5462,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -10619,14 +5472,6 @@ export class APIService {
             logo
             description
             ownerId
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -10665,31 +5510,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -10700,14 +5520,6 @@ export class APIService {
             logo
             description
             ownerId
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -10746,31 +5558,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -10781,14 +5568,6 @@ export class APIService {
             logo
             description
             ownerId
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -10827,31 +5606,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -10861,30 +5615,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -10925,31 +5655,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -10959,30 +5664,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }
@@ -11023,31 +5704,6 @@ export class APIService {
             profilePhoto
             bio
             viewerId
-            brands {
-              __typename
-              nextToken
-            }
-            viewers {
-              __typename
-              nextToken
-            }
-            viewer {
-              __typename
-              id
-              name
-              description
-              ownerId
-              createdAt
-              updatedAt
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             updatedAt
             createdAt
           }
@@ -11057,30 +5713,6 @@ export class APIService {
             name
             description
             ownerId
-            owner {
-              __typename
-              id
-              firstName
-              lastName
-              email
-              profilePhoto
-              bio
-              viewerId
-              updatedAt
-              createdAt
-            }
-            admins {
-              __typename
-              nextToken
-            }
-            posts {
-              __typename
-              nextToken
-            }
-            services {
-              __typename
-              nextToken
-            }
             createdAt
             updatedAt
           }

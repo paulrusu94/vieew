@@ -12,6 +12,7 @@ export class ConfirmComponent implements OnInit, OnDestroy {
   constructor(private router: Router) {}
 
   ngOnInit() {
+    console.log("salsal")
     // Navigate to feed page after confirming
     // this.router.navigate(['/']);
   }
