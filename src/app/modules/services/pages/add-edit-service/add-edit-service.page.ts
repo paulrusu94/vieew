@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { APIService } from 'src/app/API.service';
 
 
 @Component({
@@ -16,7 +15,6 @@ export class AddEditServicesPage implements OnInit, OnDestroy {
   public form: FormGroup;
 
   constructor(
-    private apiService: APIService,
     private formBuilder: FormBuilder,
     private router: Router,
   ) {
@@ -30,8 +28,7 @@ export class AddEditServicesPage implements OnInit, OnDestroy {
   ngOnInit() {}
 
   onSubmit() {
-    console.log(this.apiService);
-    this.apiService.CreateService(this.form.value)
+   
   }
   
   ngOnDestroy() {}

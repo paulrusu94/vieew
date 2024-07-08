@@ -1,21 +1,18 @@
 /**
  * @type {import('@types/aws-lambda').CustomMessageTriggerHandler}
  */
-exports.handler = async (event, context, callback) => {
-  
-  console.log('event', event);
-  console.log(Object.keys(event));
-
+exports.handler = async (event) => {
   // Define the URL that you want the user to be directed to after verification is complete
   if (event.triggerSource === 'CustomMessage_SignUp') {
     const confirmFuctionURL = 'https://lkwwdknkcj.execute-api.eu-north-1.amazonaws.com/backup/confirmUser'
-    
+
     const { codeParameter } = event.request;
     const { region, userName } = event;
+  
     const { clientId } = event.callerContext;
 
 
-    const redirectUrl = `${process.env.REDIRECTURL}/?username=${userName}`;
+    const redirectUrl = `${process.env.REDIRECTURL}`;
 
     const payload = Buffer.from(
       JSON.stringify({
@@ -33,7 +30,6 @@ exports.handler = async (event, context, callback) => {
     event.response.smsMessage = message;
     event.response.emailSubject = process.env.EMAILSUBJECT;
     event.response.emailMessage = message;
-    console.log('event.response', event.response);
   }
 
   return event;

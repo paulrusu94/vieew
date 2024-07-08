@@ -51,6 +51,9 @@
     },
     "s3Key": {
       "Type": "String"
+    },
+    "redirecturl": {
+      "Type": "String"
     }
   },
   "Conditions": {
@@ -101,9 +104,6 @@
             "REGION": {
               "Ref": "AWS::Region"
             },
-            "REDIRECTURL": {
-              "Ref": "REDIRECTURL"
-            },
             "EMAILSUBJECT": {
               "Ref": "EMAILSUBJECT"
             },
@@ -112,6 +112,9 @@
             },
             "RESOURCENAME": {
               "Ref": "resourceName"
+            },
+            "REDIRECTURL": {
+              "Ref": "redirecturl"
             }
           }
         },

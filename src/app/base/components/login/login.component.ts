@@ -2,8 +2,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators, ValidationMessagesBuilder } from 'src/app/shared/forms';
 import { Router } from '@angular/router';
-import { Auth } from 'aws-amplify';
-import { APIService } from 'src/app/API.service';
+import { signIn } from 'aws-amplify/auth';
+import { generateClient,  } from 'aws-amplify/api';
+import { getUser } from 'src/graphql/queries';
+import { createUser } from 'src/graphql/mutations';
 
 @Component({
   selector: '[appLogin]',
@@ -17,7 +19,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private apiService: APIService
   ) {
     this.form = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email()])],
@@ -32,19 +33,19 @@ export class LoginComponent implements OnInit, OnDestroy {
     // return;
     const { email, password } = this.form.value;
     try {
-      const user = await Auth.signIn({username: email, password});
-      const { attributes } = user;
-      let dynamoUser = await this.apiService.GetUser(attributes.sub);
+      const user = await signIn({username: email, password});
+      console.log("Logedin user:", user)
+      const { attributes } = user as any;
+
+      const client = generateClient()
+      let dynamoUser: any = await client.graphql({query: getUser})
       console.log(dynamoUser);
       if(!dynamoUser) {
-        dynamoUser = await this.apiService.CreateUser({
+        dynamoUser = await client.graphql({query: createUser, variables: {
           id: attributes.sub,
           email: attributes.email,
-        })
-      }
-      // const dynamoUser = await this.apiService.CreateService
-      console.log(user);
-      console.log(dynamoUser);
+      } as any})
+    }
       this.router.navigate(['/']);
     } catch (error) {
       console.log('error signing in', error);

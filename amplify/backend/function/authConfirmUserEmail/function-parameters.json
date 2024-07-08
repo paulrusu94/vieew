@@ -1,4 +1,10 @@
 {
   "lambdaLayers": [],
-  "permissions": {}
+  "permissions": {},
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "challengeanswear",
+      "environmentVariableName": "CHALLENGEANSWEAR"
+    }
+  ]
 }

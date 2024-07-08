@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators, ValidationMessagesBuilder } from 'src/app/shared/forms';
 import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
-import { Auth } from 'aws-amplify';
+import { signUp } from 'aws-amplify/auth';
 import { Subject, OperatorFunction, Observable, debounceTime, distinctUntilChanged, filter, merge, map } from 'rxjs';
 
 const industries = [
@@ -106,16 +106,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
   async onSubmit() {
     try {
       const { name, email, password, givenName, accountType, industry } = this.form.value;
-      const { user }: any = await Auth.signUp({
+      const { user }: any = await signUp({
         username: email,
         password: password,
-        attributes: {
-          name
-        },
-        autoSignIn: {
-          // optional - enables auto sign in after user is confirmed
-          enabled: false,
-        },
+        options: {
+          userAttributes: {
+            name
+          }
+        }
       });
 
       this.router.navigate(['/login']);

@@ -5,7 +5,7 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 import { Router } from '@angular/router';
-import { Auth } from 'aws-amplify';
+import { signOut, getCurrentUser } from 'aws-amplify/auth';
 
 @Component({
   selector: '[appTopNavigation]',
@@ -78,6 +78,7 @@ export class TopNavigationComponent implements OnInit, OnDestroy {
   ];
 
   model: any;
+  userName: string | null = null;
 
   constructor(
     private router: Router
@@ -108,11 +109,20 @@ export class TopNavigationComponent implements OnInit, OnDestroy {
   }
 
   async logout() {
-    await Auth.signOut({ global: true });
+    await signOut({ global: true });
   }
 
 
-  ngOnInit() {}
+  async ngOnInit() {
+    try {
+      const user = await getCurrentUser();
+      console.log(user)
+      this.userName = user.username; // Or use 'user.username' if you want the username
+    } catch (error) {
+      console.log('Error fetching user: ', error);
+    }
+  }
+
 
   ngOnDestroy() {}
 }

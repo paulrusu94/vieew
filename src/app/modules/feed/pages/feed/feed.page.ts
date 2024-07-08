@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Auth } from 'aws-amplify';
+import { signOut, getCurrentUser } from 'aws-amplify/auth';
 
 @Component({
   selector: '[appFeed]',
@@ -17,22 +17,13 @@ export class FeedPage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    // Auth.currentAuthenticatedUser()
-    //   .then((response) => {
-    //     this.isAuthenticated = true;
-    //   })
-    //   .catch((error) => {
-    //     console.log('Error', error);
-    //     if (!this.errorHandled) {
-    //       this.errorHandled = true;
-    //       this.isAuthenticated = false;
-    //     }
-    //   });
+    // const currentUser = getCurrentUser();
+    // console.log(currentUser)
   }
 
   async logOut() {
     try {
-      await Auth.signOut({ global: true });
+      await signOut({ global: true });
       this.router.navigate(['/login']);
     } catch (error) {
       console.log('error signing out: ', error);

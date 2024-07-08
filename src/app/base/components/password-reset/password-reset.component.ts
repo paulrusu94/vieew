@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Auth } from 'aws-amplify';
+import { resetPassword, confirmResetPassword } from 'aws-amplify/auth';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { Validators, ValidationMessagesBuilder } from 'src/app/shared/forms';
 
@@ -12,7 +12,7 @@ import { Validators, ValidationMessagesBuilder } from 'src/app/shared/forms';
   styleUrls: ['./password-reset.component.scss'],
 })
 export class PasswordResetComponent implements OnInit, OnDestroy {
-  
+
   public passwordRequestForm: FormGroup;
   public passwordResetForm: FormGroup;
   public email: string | undefined;
@@ -43,13 +43,13 @@ export class PasswordResetComponent implements OnInit, OnDestroy {
   async onSubmitPasswordRequest() {
     try {
       const { email } = this.passwordRequestForm.value;
-      
-      await Auth.forgotPassword(email);
+
+      await resetPassword({ username: email });
 
       this.email = email;
-      this.router.navigate(['/password-reset'], { 
+      this.router.navigate(['/password-reset'], {
         queryParams: { email },
-        onSameUrlNavigation: 'reload' 
+        onSameUrlNavigation: 'reload'
       });
       this.passwordResetForm.get('email')?.setValue(this.email);
 
@@ -64,9 +64,9 @@ export class PasswordResetComponent implements OnInit, OnDestroy {
 
   async onSubmitPasswordReset() {
     try {
-      const { email, code, password} = this.passwordResetForm.value;
-      
-      await Auth.forgotPasswordSubmit(email, code, password);
+      const { email, code, password } = this.passwordResetForm.value;
+
+      await confirmResetPassword({ username: email, newPassword: password, confirmationCode: code });
 
       this.router.navigate(['/login']);
     } catch (error) {

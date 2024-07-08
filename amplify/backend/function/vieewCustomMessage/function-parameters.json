@@ -13,5 +13,11 @@
   "triggerTemplate": "CustomMessage.json.ejs",
   "triggerEventPath": "CustomMessage.event.json",
   "roleName": "vieewCustomMessage",
-  "skipEdit": true
+  "skipEdit": true,
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "redirecturl",
+      "environmentVariableName": "REDIRECTURL"
+    }
+  ]
 }
