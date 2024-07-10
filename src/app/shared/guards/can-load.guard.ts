@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Route, Router, UrlSegment} from '@angular/router';
 import { Observable } from 'rxjs';
-import { Auth } from 'aws-amplify';
+import {  getCurrentUser } from 'aws-amplify/auth';
 
 @Injectable()
 export class CanLoadGuard {
@@ -14,12 +14,12 @@ export class CanLoadGuard {
     segments: UrlSegment[]
   ): Observable<boolean> | Promise<boolean> | boolean {
     // Check if the user is authenticated
-    return Auth.currentAuthenticatedUser()
-      .then((response) => {
+    return getCurrentUser()
+      .then((response: any) => {
         console.log('Success', response);
         return true;
       })
-      .catch((error) => {
+      .catch((error: any) => {
         console.log(error);
         if (!this.errorHandled) {
           this.errorHandled = true;

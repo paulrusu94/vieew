@@ -22,7 +22,7 @@ export const routes: Routes = [
     component: PasswordResetComponent,
   },
   {
-    path: 'confirm',
+    path: 'confirmation',
     component: ConfirmComponent,
   },
   {

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Auth } from 'aws-amplify';
+import { getCurrentUser, signOut } from 'aws-amplify/auth';
 
 @Component({
   selector: '[appProfile]',
@@ -20,7 +20,7 @@ export class ProfilePage implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.profile = this.route.snapshot.params['profile'];
-    Auth.currentAuthenticatedUser()
+    getCurrentUser()
       .then((response) => {
         this.isAuthenticated = true;
       })
@@ -35,7 +35,7 @@ export class ProfilePage implements OnInit, OnDestroy {
 
   async logOut() {
     try {
-      await Auth.signOut({ global: true });
+      await signOut({ global: true });
       this.router.navigate(['/login']);
     } catch (error) {
       console.log('error signing out: ', error);

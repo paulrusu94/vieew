@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import { Observable } from 'rxjs';
-import { Auth } from 'aws-amplify';
+import { getCurrentUser } from 'aws-amplify/auth';
 
 @Injectable()
 export class AuthorizedOnlyGuard {
@@ -10,7 +10,7 @@ export class AuthorizedOnlyGuard {
   constructor(private router: Router) {}
 
   canActivate(router: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return Auth.currentAuthenticatedUser()
+    return getCurrentUser()
       .then((response) => {
         console.log('Success', response);
         return true;

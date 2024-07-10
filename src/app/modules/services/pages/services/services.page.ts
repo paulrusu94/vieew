@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Auth } from 'aws-amplify';
+import { Router } from '@angular/router';;
 
 @Component({
   selector: '[appServicesPage]',
