@@ -12,7 +12,7 @@ import { throwError } from 'rxjs';
 import { catchError, share } from 'rxjs/operators';
 import { ObservableInput } from 'rxjs/internal/types';
 
-import { SessionService } from './session.service';
+
 import { NotificationService } from './notification.service';
 
 @Injectable()
@@ -20,7 +20,6 @@ import { NotificationService } from './notification.service';
 export class ApiService {
   constructor(
     protected http: HttpClient,
-    private sessionService: SessionService,
     private router: Router,
     private notificationService: NotificationService
   ) { }
@@ -116,7 +115,6 @@ export class ApiService {
       // generic bad request, most likely failed backend validation
       //   this.notificationService.error(httpErrorRes);
     } else if (httpErrorRes.status === 401) {
-      this.sessionService.clear();
       window.location.href = '/login';
       //   this.notificationService.error(httpErrorRes, { title: 'Unauthorized' });
     } else if (httpErrorRes.status === 404) {

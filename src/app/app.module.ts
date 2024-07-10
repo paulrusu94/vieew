@@ -19,9 +19,10 @@ import { SecuredLayoutComponent } from './base/components/secured-layout/secured
 import { SideNavigationComponent } from './base/components/secured-layout/components/side-navigation/side-navigation.component';
 // Amplify
 import { Amplify } from 'aws-amplify';
-import amplifyconfig from './../amplifyconfiguration.json';
+import outputs from "./../../amplify_outputs.json"
 
-Amplify.configure(amplifyconfig);
+
+Amplify.configure(outputs);
 
 @NgModule({
   declarations: [
