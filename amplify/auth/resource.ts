@@ -8,17 +8,9 @@ import { customMessage } from './custom-message/resource'
 export const auth = defineAuth({
   name: "vieewauthservice",
   loginWith: {
-    email: {
-      verificationEmailStyle: 'LINK',
-      verificationEmailSubject: "Welcome to vieeww!",
-      verificationEmailBody: (createLink) => `Use this code to confirm your account: ${createLink()}`,
-      userInvitation: {
-        
-      }
-    },
-    phone: true
+    email: true
   },
-  accountRecovery: 'PHONE_AND_EMAIL',
+  accountRecovery: 'EMAIL_ONLY',
   triggers: {
     customMessage: customMessage
   }

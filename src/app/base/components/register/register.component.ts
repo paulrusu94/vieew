@@ -111,7 +111,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         password: password,
         options: {
           userAttributes: {
-            name
+            name,
           }
         }
       });

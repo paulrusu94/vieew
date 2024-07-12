@@ -1,62 +1,40 @@
-# Vieew
+## README
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
+### AWS CLI
 
-## Development server
+#### Install the AWS CLI
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Get the latest documentation from here:
+[https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+#### Configure the AWS CLI
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-## Amplify CLI
-
-#### Install the Amplify CLI
+Install aws CLI from here:
 
 ```bash
-  npm install -g @aws-amplify/cli
+aws configure --profile {IAM_PROFILE}
 ```
-
-#### Configure the Amplify CLI
+You'll be prompted to enter the following:
 
 ```bash
-  amplify configure
+WS Access Key ID [None]: {YOUR_ACCESS_KEY}
+AWS Secret Access Key [None]: {YOUR_SECRET_ACCESS_KEY}
+Default region name [None]: eu-north-1
+Default output format [None]: json
 ```
-
-`amplify configure` will ask you to sign into the AWS Console and ask for a new user creation. Once the user is created, Amplify CLI will ask you to provide the `accessKeyId` and the `secretAccessKey` to connect Amplify CLI with your newly created IAM user.
-
+Install dependencies
 ```bash
-Enter the access key of the newly created user:
-? accessKeyId:  # YOUR_ACCESS_KEY_ID
-? secretAccessKey:  # YOUR_SECRET_ACCESS_KEY
-This would update/create the AWS Profile in your local machine
-? Profile Name:  # (default)
-
-Successfully set up the new user.
+npm install
 ```
 
-#### Initialize Amplify CLI
-
-After you install the CLI, navigate to a JavaScript, iOS, or Android project root, initialize AWS Amplify in the new directory by running `amplify init`. After a few configuration questions, you can use amplify help at any time to see the overall command structure. When you’re ready to add a feature, run amplify add <category>.
-
+Start the sandbox
 ```bash
-  amplify init
+npx ampx sandbox --profile bogdan
 ```
-    
+
+After the sandbox is ready, you can run the Angular app:
+```bash
+ng serve
+```
