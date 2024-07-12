@@ -31,7 +31,7 @@ npm install
 
 Start the sandbox
 ```bash
-npx ampx sandbox --profile bogdan
+npx ampx sandbox --profile {IAM_PROFILE}
 ```
 
 After the sandbox is ready, you can run the Angular app:

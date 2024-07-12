@@ -5,6 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "bogdan":"npx ampx sandbox --profile bogdan",
+    "ionut":"npx ampx sandbox --profile ionut",
+    "paul":"npx ampx sandbox --profile paul_rusu",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
