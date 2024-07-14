@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { getCurrentUser, signIn, confirmSignIn} from 'aws-amplify/auth';
-import { Amplify } from 'aws-amplify';
+import { autoSignIn, confirmSignUp, getCurrentUser} from 'aws-amplify/auth';
+
 
 @Component({
   selector: '[appConfirm]',
@@ -15,20 +15,19 @@ export class ConfirmComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.route.queryParams.subscribe(async (params) => {
-      const token = params['idToken'];
-      if (token) {
+      const payload = JSON.parse(atob(params['v']));
+      const code = params['code'];
+      console.log(payload)
+
+      if (code && payload) {
         try {
-          const payload = JSON.parse(atob(token.split('.')[1]))
-          const email = payload['email'];
-          await signIn({
-            username: email, 
-            options: {
-              authFlowType: "CUSTOM_WITHOUT_SRP",
-              // clientMetadata: payload
-            }
-          });
-          const NO_SRP_CHALLENGE_ANSWEAR = "nuareparola" // needs to be added in another lambda that has this value encapsulated in env vars
-          await confirmSignIn({challengeResponse: NO_SRP_CHALLENGE_ANSWEAR })
+          const {userName} = payload;
+          
+          const {userId, isSignUpComplete, nextStep } = await confirmSignUp({username: userName, confirmationCode: code });
+          console.log(userId, isSignUpComplete, nextStep)
+          const x = await autoSignIn();
+          console.log(x)
+         
           
 
         } catch (error) {

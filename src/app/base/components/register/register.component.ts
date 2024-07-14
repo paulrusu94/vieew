@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators, ValidationMessagesBuilder } from 'src/app/shared/forms';
 import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
-import { signUp } from 'aws-amplify/auth';
+import { signUp, SignUpOutput } from 'aws-amplify/auth';
 import { Subject, OperatorFunction, Observable, debounceTime, distinctUntilChanged, filter, merge, map } from 'rxjs';
 
 const industries = [
@@ -64,7 +64,7 @@ const industries = [
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   @ViewChild('instance', { static: true })
-  
+
   public instance: NgbTypeahead = new NgbTypeahead;
   public form: FormGroup;
   public model: any;
@@ -78,8 +78,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private router: Router
   ) {
     this.form = this.formBuilder.group({
-      name: ['', Validators.compose([Validators.required])],
-      givenName: ['', Validators.compose([Validators.required])],
+      firstName: ['', Validators.compose([Validators.required])],
+      lastName: ['', Validators.compose([Validators.required])],
       email: ['', Validators.compose([Validators.required, Validators.email()])],
       password: ['', Validators.compose([Validators.required])],
       confirmPassword: ['', Validators.compose([Validators.required])],
@@ -89,7 +89,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) => {
     const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
@@ -105,25 +105,35 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   async onSubmit() {
     try {
-      const { name, email, password, givenName, accountType, industry } = this.form.value;
-      const { user }: any = await signUp({
-        username: email,
-        password: password,
-        options: {
-          userAttributes: {
-            name,
-          }
-        }
-      });
+      const { email, password, firstName, lastName } = this.form.value;
+      const {
+        isSignUpComplete,
+        userId,
+        nextStep
+      }: SignUpOutput = await signUp({
+                                    username: email,
+                                    password: password,
+                                    options: {
+                                      autoSignIn: {authFlowType: 'USER_SRP_AUTH', clientMetadata: { email, firstName, lastName}},
+                                      userAttributes: {
+                                        family_name: lastName,
+                                        given_name: firstName
+                                      }
+                                    }
+                                  });
 
-      this.router.navigate(['/login']);
+      console.log(isSignUpComplete, userId, nextStep)
+
+      if (isSignUpComplete && nextStep.signUpStep) {
+        // this.router.navigate(['/login']);
+      }
     } catch (error) {
       console.log('error signing up:', error);
     }
   }
 
   goToNextStep(step: 'previous' | 'next') {
-    if(step === 'next' && this.step < 3) {
+    if (step === 'next' && this.step < 3) {
       this.step = this.step + 1;
       console.log(this.step);
     } else if (step === 'previous' && (this.step > 1 || this.step <= 3)) {
@@ -133,8 +143,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
       alert('Ho n-ai ave noroc, unde vrei sa meri?')
       return;
     }
-
-    
   }
 
   onSelectIndustry(event: any) {
