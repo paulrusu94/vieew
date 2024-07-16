@@ -9,6 +9,8 @@ import { IndustriesSearchComponent } from './components/industries-search/indust
 import { FeedsComponent } from './components/feeds/feeds.component';
 // Modals
 import { FullScreenFeedComponent } from './components/feeds/components/fullscreen-feed/fullscreen-feed.component';
+import { LoginDialogComponent } from './modals/login/login-dialog.component';
+import { RegisterDialogComponent } from './modals/register/register-dialog.component';
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import { FullScreenFeedComponent } from './components/feeds/components/fullscree
     IndustriesSearchComponent,
     FeedsComponent,
     // Modals
-    FullScreenFeedComponent
+    FullScreenFeedComponent,
+    LoginDialogComponent,
+    RegisterDialogComponent
   ],
   exports: [
     NgbModule,

@@ -111,16 +111,16 @@ export class RegisterComponent implements OnInit, OnDestroy {
         userId,
         nextStep
       }: SignUpOutput = await signUp({
-                                    username: email,
-                                    password: password,
-                                    options: {
-                                      autoSignIn: {authFlowType: 'USER_SRP_AUTH', clientMetadata: { email, firstName, lastName}},
-                                      userAttributes: {
-                                        family_name: lastName,
-                                        given_name: firstName
-                                      }
-                                    }
-                                  });
+        username: email,
+        password: password,
+        options: {
+          autoSignIn: { authFlowType: 'USER_SRP_AUTH', clientMetadata: { email, firstName, lastName } },
+          userAttributes: {
+            family_name: lastName,
+            given_name: firstName
+          }
+        }
+      });
 
       console.log(isSignUpComplete, userId, nextStep)
 

@@ -1,0 +1,7 @@
+@import 'src/styles/variables';
+
+:host {
+    #typeahead-format::placeholder {
+        color: blue; /* Schimbă culoarea placeholder-ului în albastru */
+      }
+}

@@ -1,0 +1,58 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="activeModal.dismiss()"
+  ></button>
+</div>
+<div class="modal-body">
+  <div class="d-flex flex-column gap-1" *ngIf="!loginWithEmail; else loginForm">
+    <button class="btn btn-light w-100 py-2 mb-3 d-flex align-items-center justify-content-center" type="submit">
+      <img class="me-2" src="./assets/images/logos/facebook_logo.png" style="width: 20px;" alt="">Continue with
+      Facebook
+    </button>
+    <button class="btn btn-light w-100 py-2 mb-3 d-flex align-items-center justify-content-center" type="submit">
+      <img class="me-2" src="./assets/images/logos/google_logo.webp" style="width: 25px;" alt="">Continue with
+      Google
+    </button>
+    <button class="btn btn-light w-100 py-2 mb-3 d-flex align-items-center justify-content-center" type="submit">
+      <img class="me-2" src="./assets/images/logos/apple_logo.png" style="width: 25px;" alt="">Continue with Apple
+    </button>
+    <button type="button" class="btn btn-primary" (click)="handleLoginWithEmail()">Continue with email</button>
+  </div>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-outline-secondary"
+    (click)="activeModal.close()"
+  >
+    Save
+  </button>
+</div>
+
+<ng-template #loginForm>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h1 class="h3 mb-3 fw-normal">Log in</h1>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text border border-0" id="basic-addon1">
+        <span class="material-symbols-outlined text-muted">alternate_email</span>
+      </span>
+      <input type="email" class="form-control border border-0" id="email" placeholder="Email" formControlName="email">
+    </div>
+    <div class="input-group">
+      <span class="input-group-text border border-0" id="basic-addon1">
+        <span class="material-symbols-outlined text-muted">key</span>
+      </span>
+      <input type="password" class="form-control border border-0" id="password" placeholder="Password" formControlName="password">
+    </div>
+
+    <p class="text-end mb-2"><a [routerLink]="['/password-reset']">Forgot passowrd?</a></p>
+    <div class="text-center mb-5">
+      <button class="btn btn-gradient-primary w-75 py-2 my-5" type="submit">Sign in</button>
+    </div>
+  </form>
+</ng-template>
