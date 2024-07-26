@@ -1,19 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ModalService } from 'src/app/shared/services/modal.service';
 import { FullScreenFeedComponent } from './components/fullscreen-feed/fullscreen-feed.component';
-// Amplify
-import { Client, generateClient } from 'aws-amplify/api';
-// import { listPosts } from 'src/graphql/queries';
-// import { onCreatePost } from 'src/graphql/subscriptions';
 
-interface Post {
-  id?: string,
-  brand: any // Brand
-  authorId: string;
-  content: string;
-  title?: string;
-  createdAt?: string
-}
+// Amplify
+import { generateClient } from 'aws-amplify/data';
+import { type Schema } from 'src/../amplify/data/resource';
+
+const client = generateClient<Schema>();
+type Post = Schema['Post']['type'];
+
+
 @Component({
   selector: '[appFeeds]',
   templateUrl: './feeds.component.html',
@@ -21,7 +17,7 @@ interface Post {
 })
 export class FeedsComponent implements OnInit, OnDestroy {
 
-  public feeds: Array<any> = [];
+  public feeds: Array<Post> = [];
   // private subscription: any;
   constructor(
     private modalService: ModalService
@@ -37,9 +33,20 @@ export class FeedsComponent implements OnInit, OnDestroy {
   // }
 
   async ngOnInit() {
-  //   const client = generateClient()
-  //   this.fetchPosts(client)
     
+    try {
+      const { data, errors } = await client.models.Post.list();
+      console.log(data)
+      this.feeds = data
+    } catch (err) {
+      console.log(err);
+    }
+  //   this.subscription = client
+  //     .graphql({ query: onCreatePost })
+  //     .subscribe(({ next: ({ data }) => {
+  //       this.fetchPosts(client)
+  //     }}))
+
   //   this.subscription = client
   //     .graphql({ query: onCreatePost })
   //     .subscribe(({ next: ({ data }) => {

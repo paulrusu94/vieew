@@ -21,17 +21,17 @@
         </div>
       </div>
     </div>
-    <div class="col-12 col-lg-6">
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div [ngSwitch]="registerStep" class="col-12 col-lg-6">
+      <form *ngSwitchCase="''" [formGroup]="formRegister" (ngSubmit)="onSubmitRegister()">
         <div class="row">
           <section id="first-step" class="col-12" *ngIf="step === 1">
-              <h1 class="h3 mb-3 fw-normal">First thing first</h1>
+              <h1 class="h3 mb-3 fw-normal">First thing fasdasdirst</h1>
               <div class="row mb-3">
                 <div class="col-6">
-                  <input type="text" class="form-control border border-0" id="firstName" placeholder="First Name" formControlName="firstName">
+                  <input type="name" class="form-control border border-0" id="givenName" placeholder="First Name" formControlName="givenName">
                 </div>
                 <div class="col-6">
-                  <input type="text" class="form-control border border-0" id="name" placeholder="Last Name" formControlName="lastName">
+                  <input type="name" class="form-control border border-0" id="name" placeholder="Last Name" formControlName="name">
                 </div>
               </div>
       
@@ -53,10 +53,23 @@
                 <p>At least one lowercase letter.</p>
                 <p>At least one special character(&*%$#)</p>
               </div>
-              <input class="form-check-input me-2 mb-3" type="checkbox" id="agreeTC">
-              <label for="agreeTC">
+              <input class="form-check-input me-2 mb-3" type="checkbox" id="bifaCheckbox">
+              <label for="bifaCheckbox">
                 I read & agree to Vieew's <a href="#">Terms & Conditions</a>
               </label>
+              <button class="btn btn-gradient-primary w-100 py-2 mt-3" type="submit">Continue</button>
+          </section>
+        </div>
+      </form>
+      <form *ngSwitchCase="'CONFIRM_SIGN_UP'" [formGroup]="formConfirmation" (ngSubmit)="onSubmitConfirm()">
+        <div class="row">
+          <section id="first-step" class="col-12" *ngIf="step === 1">
+              <h1 class="h3 mb-3 fw-normal">First thing first</h1>
+              <div class="row mb-3">
+                <div class="col">
+                  <input type="text" class="form-control border border-0" id="cofirmationCode" placeholder="Code" formControlName="confirmationCode">
+                </div>
+              </div>        
               <button class="btn btn-gradient-primary w-100 py-2 mt-3" type="submit">Continue</button>
           </section>
         </div>
