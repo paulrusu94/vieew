@@ -37,9 +37,11 @@ export class ConfirmDialogComponent implements OnInit, OnDestroy {
     const { verificationCode } = this.form.value;
     try {
       const {userId, isSignUpComplete, nextStep } = await confirmSignUp({username: this.email, confirmationCode: verificationCode });
-      console.log(userId);
-      console.log(isSignUpComplete);
-      console.log(nextStep);
+      if(isSignUpComplete && nextStep.signUpStep === 'DONE') {
+        this.activeModal.close({
+           
+        })
+      }
     } catch (error) {
       console.log('error confirming in', error);
     }

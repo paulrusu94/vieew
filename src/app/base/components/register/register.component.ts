@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators, ValidationMessagesBuilder } from 'src/app/shared/forms';
 import { NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
-import { signUp, SignUpOutput } from 'aws-amplify/auth';
+import { signUp, SignUpOutput, confirmSignUp, ConfirmSignUpOutput, autoSignIn } from 'aws-amplify/auth';
 import { Subject, OperatorFunction, Observable, debounceTime, distinctUntilChanged, filter, merge, map } from 'rxjs';
 
 const industries = [
@@ -64,11 +64,14 @@ const industries = [
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   @ViewChild('instance', { static: true })
-
+  
   public instance: NgbTypeahead = new NgbTypeahead;
-  public form: FormGroup;
+  public formRegister: FormGroup;
+  public formConfirmation: FormGroup;
   public model: any;
   public step: number = 1;
+  public registerStep = ""
+  public email = "s"
 
   public focus$ = new Subject<string>();
   public click$ = new Subject<string>();
@@ -77,7 +80,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private router: Router
   ) {
-    this.form = this.formBuilder.group({
+    this.formRegister = this.formBuilder.group({
       firstName: ['', Validators.compose([Validators.required])],
       lastName: ['', Validators.compose([Validators.required])],
       email: ['', Validators.compose([Validators.required, Validators.email()])],
@@ -87,9 +90,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }, {
       validator: Validators.MatchPassword
     });
+
+    this.formConfirmation = this.formBuilder.group({
+      confirmationCode: ['', Validators.compose([Validators.required])],
+    });
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) => {
     const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
@@ -103,9 +110,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
     );
   };
 
-  async onSubmit() {
+  async onSubmitRegister() {
     try {
-      const { email, password, firstName, lastName } = this.form.value;
+      const { email, password, firstName, lastName } = this.formRegister.value;
       const {
         isSignUpComplete,
         userId,
@@ -114,7 +121,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         username: email,
         password: password,
         options: {
-          autoSignIn: { authFlowType: 'USER_SRP_AUTH', clientMetadata: { email, firstName, lastName } },
+          autoSignIn: true,
           userAttributes: {
             family_name: lastName,
             given_name: firstName
@@ -124,16 +131,40 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
       console.log(isSignUpComplete, userId, nextStep)
 
+
+      this.email = email;
+      this.registerStep = nextStep.signUpStep;
+
+    } catch (error) {
+      console.log('error signing up:', error);
+    }
+  }
+
+  async onSubmitConfirm() {
+    try {
+      const { confirmationCode } = this.formConfirmation.value;
+      const {
+        isSignUpComplete,
+        userId,
+        nextStep
+      }: ConfirmSignUpOutput = await confirmSignUp({
+        username: this.email, confirmationCode
+      });
+
+      console.log(isSignUpComplete, userId, nextStep)
+
       if (isSignUpComplete && nextStep.signUpStep) {
-        // this.router.navigate(['/login']);
+        await autoSignIn()
       }
+
+      this.router.navigate(['/'])
     } catch (error) {
       console.log('error signing up:', error);
     }
   }
 
   goToNextStep(step: 'previous' | 'next') {
-    if (step === 'next' && this.step < 3) {
+    if(step === 'next' && this.step < 3) {
       this.step = this.step + 1;
       console.log(this.step);
     } else if (step === 'previous' && (this.step > 1 || this.step <= 3)) {
@@ -143,11 +174,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
       alert('Ho n-ai ave noroc, unde vrei sa meri?')
       return;
     }
+
+    
   }
 
   onSelectIndustry(event: any) {
     console.log(event);
-    this.form.get('industry')?.setValue(event.item);
+    this.formRegister.get('industry')?.setValue(event.item);
   }
 
   ngOnDestroy() { }

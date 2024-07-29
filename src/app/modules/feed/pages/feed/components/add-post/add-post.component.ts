@@ -3,8 +3,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators, ValidationMessagesBuilder } from 'src/app/shared/forms';
 import { Router } from '@angular/router';
 // Amplify
-// import { generateClient } from 'aws-amplify/api';
-// import { createPost } from 'src/graphql/mutations';
+import { generateClient } from 'aws-amplify/data';
+import { type Schema } from 'src/../amplify/data/resource'
+
+const client = generateClient<Schema>();
+
 
 @Component({
   selector: '[appAddPost]',
@@ -26,24 +29,15 @@ export class AddPostComponent implements OnInit, OnDestroy {
   ngOnInit() {}
 
   async onSubmit() {
-    
-    const { content } = this.form.value;
-    this.form.reset()
-    // try {
-    //   const client = generateClient()
-    //   await client.graphql({
-    //     query: createPost, variables: {
-    //       input: {
-    //         "brandID": "createdForBrandId",
-    //         "authorId": "creatorUserID",
-    //         "content": content,
-    //         "title": "titleIfExists"
-    //       }
-    //     }
-    //   })
-    // } catch (error) {
-    //   console.log('error creating post', error);
-    // }
+    try {
+      const { content } = this.form.value;
+      const { errors, data } = await client.models.Post.create({
+        content,
+      })
+      this.form.reset()
+    } catch (error) {
+      console.log('error creating post', error);
+    }
   }
   
   ngOnDestroy() {}
