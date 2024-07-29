@@ -2,7 +2,9 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators, ValidationMessagesBuilder } from 'src/app/shared/forms';
 import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { signIn } from 'aws-amplify/auth';
 import { RegisterDialogComponent } from '../register/register-dialog.component';
+import { ConfirmDialogComponent } from '../confirm/confirm-dialog.component';
 // Services
 import { ModalService } from 'src/app/shared/services/modal.service';
 
@@ -33,8 +35,29 @@ export class LoginDialogComponent implements OnInit, OnDestroy {
     this.loginWithEmail = true;
   }
 
-  onSubmit() {
-    console.log('SUBMIT');
+  async onSubmit() {
+    // console.log(this.form);
+    // return;
+    const { email, password } = this.form.value;
+    try {
+      const {isSignedIn, nextStep } = await signIn({username: email, password});
+      
+      if(!isSignedIn && nextStep.signInStep === 'CONFIRM_SIGN_UP') {
+        this.openConfirm();
+      }
+      
+    } catch (error) {
+      console.log('error logging in', error);
+    }
+  }
+
+  public openConfirm(): void {
+    const dialog = this.modalService.open(ConfirmDialogComponent, { size: 'md' });
+    dialog.componentInstance.email = this.form.value.email;
+    dialog.result.then(
+      () => { },
+      () => { },
+    );
   }
 
   public openRegister(): void {

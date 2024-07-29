@@ -8,9 +8,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { IndustriesSearchComponent } from './components/industries-search/industries-search.component';
 import { FeedsComponent } from './components/feeds/feeds.component';
 // Modals
-import { FullScreenFeedComponent } from './components/feeds/components/fullscreen-feed/fullscreen-feed.component';
 import { LoginDialogComponent } from './modals/login/login-dialog.component';
 import { RegisterDialogComponent } from './modals/register/register-dialog.component';
+import { ConfirmDialogComponent } from './modals/confirm/confirm-dialog.component';
+import { FullScreenFeedComponent } from './components/feeds/components/fullscreen-feed/fullscreen-feed.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { RegisterDialogComponent } from './modals/register/register-dialog.compo
     // Modals
     FullScreenFeedComponent,
     LoginDialogComponent,
-    RegisterDialogComponent
+    RegisterDialogComponent,
+    ConfirmDialogComponent
   ],
   exports: [
     NgbModule,
