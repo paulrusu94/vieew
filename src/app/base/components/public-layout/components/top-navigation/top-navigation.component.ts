@@ -1,11 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, OperatorFunction } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-import { FormsModule } from '@angular/forms';
-import { JsonPipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { signOut, getCurrentUser } from 'aws-amplify/auth';
+// Services
+import { ModalService } from 'src/app/shared/services/modal.service';
+// Modals
+import { LoginDialogComponent } from 'src/app/shared/modals/login/login-dialog.component';
+import { RegisterDialogComponent } from 'src/app/shared/modals/register/register-dialog.component';
 
 @Component({
   selector: '[appTopNavigation]',
@@ -81,8 +83,18 @@ export class TopNavigationComponent implements OnInit, OnDestroy {
   userName: string | null = null;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private modalService: ModalService
   ) {}
+
+  async ngOnInit() {
+    try {
+      const user = await getCurrentUser();
+      this.userName = user.username; // Or use 'user.username' if you want the username
+    } catch (error) {
+      console.log('Error fetching user: ', error);
+    }
+  }
 
 	formatter = (result: string) => result.toUpperCase();
 
@@ -112,15 +124,20 @@ export class TopNavigationComponent implements OnInit, OnDestroy {
     await signOut({ global: true });
   }
 
+  public openLogin(): void {
+    const dialog = this.modalService.open(LoginDialogComponent, { size: 'md' });
+    dialog.result.then(
+      () => { },
+      () => { },
+    );
+  }
 
-  async ngOnInit() {
-    try {
-      const user = await getCurrentUser();
-      console.log(user)
-      this.userName = user.username; // Or use 'user.username' if you want the username
-    } catch (error) {
-      console.log('Error fetching user: ', error);
-    }
+  public openRegister(): void {
+    const dialog = this.modalService.open(RegisterDialogComponent, { size: 'md' });
+    dialog.result.then(
+      () => { },
+      () => { },
+    );
   }
 
 

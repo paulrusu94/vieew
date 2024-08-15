@@ -1,0 +1,57 @@
+<div class="modal-header d-flex flex-column align-items-center position-relative pt-5 border-0 rounded-5">
+  <button
+    type="button"
+    class="btn-close position-absolute"
+    style="top: 15px; right: 15px;"
+    aria-label="Close"
+    (click)="activeModal.dismiss()"
+  ></button>
+  <h1 class="modal-title" id="modal-basic-title">Login to Vieew</h1>
+  <p class="pt-2">You need to login to access more content.</p>
+</div>
+
+<div class="modal-body px-5">
+  <div class="d-flex flex-column gap-1" *ngIf="!loginWithEmail; else loginForm">
+    <button class="btn btn-light w-100 py-2 mb-3 d-flex align-items-center justify-content-center" type="submit" style="width: 50%;">
+      <img class="me-2" src="./assets/images/logos/facebook_logo.png" style="width: 20px;" alt="">Continue with
+      Facebook
+    </button>
+    <button class="btn btn-light w-100 py-2 mb-3 d-flex align-items-center justify-content-center" type="submit">
+      <img class="me-2" src="./assets/images/logos/google_logo.webp" style="width: 25px;" alt="">Continue with
+      Google
+    </button>
+    <button class="btn btn-light w-100 py-2 mb-3 d-flex align-items-center justify-content-center" type="submit">
+      <img class="me-2" src="./assets/images/logos/apple_logo.png" style="width: 25px;" alt="">Continue with Apple
+    </button>
+    <button type="button" class="btn btn-light w-100 py-2 mb-3 d-flex align-items-center justify-content-center" (click)="handleLoginWithEmail()">
+      <img class="me-2" src="./assets/images/logos/email_logo.png" style="width: 25px;" alt="">Continue with email</button>
+  </div>
+</div>
+<div class="modal-footer border-0 d-flex justify-content-center align-items-center flex-column mb-3">
+    <p class="text-center text-secondary mb-2">By continuing, you agree to Vieew's <a routerLink="">Terms of Service</a> and <br> that you have read Vieew's <a routerLink="">Privacy Policy</a>.</p>
+    <h5>Don't have an account?  <a class="custom-link" (click)="openRegister()">Sign Up!</a></h5>
+</div>
+
+<ng-template #loginForm>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h1 class="h3 mb-3 fw-normal">Log in</h1>
+
+    <div class="input-group mb-3">
+      <span class="input-group-text border border-0" id="basic-addon1">
+        <span class="material-symbols-outlined text-muted">alternate_email</span>
+      </span>
+      <input type="email" class="form-control border border-0" id="email" placeholder="Email" formControlName="email">
+    </div>
+    <div class="input-group">
+      <span class="input-group-text border border-0" id="basic-addon1">
+        <span class="material-symbols-outlined text-muted">key</span>
+      </span>
+      <input type="password" class="form-control border border-0" id="password" placeholder="Password" formControlName="password">
+    </div>
+
+    <p class="text-end mb-2"><a [routerLink]="['/password-reset']">Forgot passowrd?</a></p>
+    <div class="text-center mb-5">
+      <button class="btn btn-gradient-primary w-75 py-2 my-5" type="submit">Sign in</button>
+    </div>
+  </form>
+</ng-template>
