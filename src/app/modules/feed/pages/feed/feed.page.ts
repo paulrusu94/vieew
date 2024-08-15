@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { signOut, getCurrentUser } from 'aws-amplify/auth';
+import { signOut, getCurrentUser, fetchUserAttributes } from 'aws-amplify/auth';
 
 @Component({
   selector: '[appFeed]',
@@ -9,16 +9,19 @@ import { signOut, getCurrentUser } from 'aws-amplify/auth';
 })
 export class FeedPage implements OnInit, OnDestroy {
   private errorHandled = false;
-
+  public email = '';
   public isAuthenticated: boolean = false;
 
   constructor(
     private router: Router,
   ) {}
 
-  ngOnInit() {
-    // const currentUser = getCurrentUser();
-    // console.log(currentUser)
+  async ngOnInit() {
+    const currentUser = await getCurrentUser();
+    const userAttributes = await fetchUserAttributes();
+    console.log(currentUser)
+    console.log(userAttributes)
+    this.email = userAttributes.email!
   }
 
   async logOut() {
