@@ -1,4 +1,5 @@
 import { defineAuth } from '@aws-amplify/backend';
+import { postConfirmation } from './post-connfirmation/resource';
 
 
 /**
@@ -9,5 +10,8 @@ export const auth = defineAuth({
   name: "vieewauthservice",
   loginWith: {
     email: true
+  },
+  triggers: {
+    postConfirmation: postConfirmation
   }
 });

@@ -3,8 +3,9 @@ import { ModalService } from 'src/app/shared/services/modal.service';
 import { FullScreenFeedComponent } from './components/fullscreen-feed/fullscreen-feed.component';
 
 // Amplify
-import { generateClient } from 'aws-amplify/data';
+import { Client, generateClient } from 'aws-amplify/data';
 import { type Schema } from 'src/../amplify/data/resource';
+import { getUrl } from 'aws-amplify/storage';
 
 const client = generateClient<Schema>();
 type Post = Schema['Post']['type'];
@@ -17,41 +18,33 @@ type Post = Schema['Post']['type'];
 })
 export class FeedsComponent implements OnInit, OnDestroy {
 
-  public feeds: Array<Post> = [];
+  public feeds: Array<any> = [];
   // private subscription: any;
   constructor(
     private modalService: ModalService
   ) { }
 
-  // private async fetchPosts(client: Client) {
-  //   const {data} = await client.graphql({query: listPosts, variables: { limit: 100 }})
-  //   const {nextToken, items} = data.listPosts;
-  //   this.feeds.push(...items as Post[])
-  //   this.feeds.sort((postA, postB) => {
-  //     return new Date(postA.createdAt!).getTime() < new Date(postB.createdAt!).getTime() ? 1 : -1
-  //   })
-  // }
+  private async fetchPosts() {
+    const { data } = await client.models.Post.postsByDate({ type: "Post" }, { sortDirection: "DESC", limit: 10 });
+    this.feeds = await Promise.all([...data as Post[]].map(
+      async (feed) => ({
+        ...feed,
+        createdAt: new Date(feed.createdAt!).toLocaleDateString(),
+        author: await feed.author(),
+        medias: await Promise.all((await feed.medias()).data.map(
+          async media => ({
+            ...media,
+            url: await getUrl({ path: media.path!, options: { contentDisposition: 'inline'} })
+          }))
+        )
+      })
+    ));
+    console.log("adaasdads", this.feeds)
+  }
 
   async ngOnInit() {
-    
-    try {
-      const { data, errors } = await client.models.Post.list();
-      console.log(data)
-      this.feeds = data
-    } catch (err) {
-      console.log(err);
-    }
-  //   this.subscription = client
-  //     .graphql({ query: onCreatePost })
-  //     .subscribe(({ next: ({ data }) => {
-  //       this.fetchPosts(client)
-  //     }}))
 
-  //   this.subscription = client
-  //     .graphql({ query: onCreatePost })
-  //     .subscribe(({ next: ({ data }) => {
-  //       this.fetchPosts(client)
-  //     }}))
+    this.fetchPosts()
   }
 
   public goFullScreen(feed: any): void {
@@ -64,6 +57,6 @@ export class FeedsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-  //   this.subscription.unsubscribe()
-   }
+    //   this.subscription.unsubscribe()
+  }
 }

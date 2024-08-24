@@ -1,29 +1,104 @@
-import { type ClientSchema, a, defineData } from '@aws-amplify/backend';
+import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
 
-/*== STEP 1 ===============================================================
-The section below creates a Todo database table with a "content" field. Try
-adding a new "isDone" field as a boolean. The authorization rule below
-specifies that any unauthenticated user can "create", "read", "update", 
-and "delete" any "Todo" records.
-=========================================================================*/
 const schema = a.schema({
+  EntityTypes: a
+    .enum([
+      "SERVICES", 
+      "ADS", 
+      "AGENCY"
+    ]),
+    PostTypes: a
+    .enum([
+      "TEXT", 
+      "MEDIA_PHOTO", 
+      "MEDIA",
+    ]),
+    PostStatus: a
+    .enum([
+      "IN_DRAFT", 
+      "IN_REVIEW", 
+      "IN_ARCHIVE",
+      "STATUS"
+    ]),
+    MediaContentTypes: a
+    .enum([
+      "image_png", 
+      "image_jpg", 
+      "video_mp4"
+    ]),
   User: a
     .model({
-      id: a.id(),
+      userId: a.id().required(),
       sub: a.string().required(),
       email: a.string().required(),
       firstName: a.string().required(),
       lastName: a.string().required(),
+      entities: a.hasMany("Entity", "ownerId"),
+      posts: a.hasMany("Post", "authorId"),
+      medias: a.hasMany("Media", "ownerId")
     })
+    .identifier(["userId"])
+    .secondaryIndexes(index => [
+      index("email"),
+      index("sub").queryField("getUserBySub"),
+    ])
     .authorization((allow) => [allow.publicApiKey()]),
-    Post: a
+  Post: a
     .model({
-      content: a.string().required(),
+      type: a.string().default("Post"),
+      status: a.ref("PostStatus").required(),
+      postType: a.ref("PostTypes").required(),
+      postId: a.id().required(),
+      content: a.string(),
       title: a.string(),
-      authorId: a.string(), // user id/sub that created the post
-      ownerId: a.string(), // account id for which the post has been created
+      authorId: a.id().required(),
+      author: a.belongsTo("User", "authorId"),
+      ownerEntityId: a.id().required(),
+      ownerEntity: a.belongsTo("Entity", "ownerEntityId"),
+      createdAt: a.datetime(),
+      medias: a.hasMany("Media", "postId")
     })
-    .authorization((allow) =>[allow.publicApiKey()])
+    .identifier(["postId"])
+    .secondaryIndexes(index => [
+      index("ownerEntityId"),
+      index("authorId"),
+      index("type").sortKeys(["createdAt"]).queryField("postsByDate"),
+    ])
+    .authorization((allow) =>[allow.publicApiKey()]),
+  Entity: a
+    .model({
+      entityId: a.id().required(),
+      type: a.ref("EntityTypes").required(),
+      name: a.string().required(),
+      posts: a.hasMany("Post", "ownerEntityId"), // user id/sub that created the post
+      ownerId: a.id().required(),
+      owner: a.belongsTo("User", "ownerId")
+    })
+    .identifier(["entityId"])
+    .secondaryIndexes(index => [
+      index("ownerId")
+    ])
+    .authorization((allow) =>[allow.publicApiKey()]),
+  Media: a.model({
+      type: a.string().default("Media"),
+      mediaId: a.id().required(),
+      fileName: a.string().required(),
+      contentType: a.ref("MediaContentTypes"),
+      path: a.string(),
+      createdAt: a.datetime(),
+      ownerId: a.id().required(),
+      owner: a.belongsTo("User", "ownerId"),
+      postId: a.id(),
+      post: a.belongsTo("Post", "postId")
+
+    })
+    .identifier(["mediaId"])
+    .secondaryIndexes(index => [
+      index("type").sortKeys(["createdAt"]).queryField("listMediaByDate"),
+      index("ownerId").sortKeys(["createdAt"]).queryField("listMediaByOwner"),
+      index("postId").sortKeys(["createdAt"]).queryField("listMediaByPost")
+    ])
+    .authorization((allow) =>[allow.publicApiKey()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
@@ -37,32 +112,3 @@ export const data = defineData({
     },
   },
 });
-
-/*== STEP 2 ===============================================================
-Go to your frontend source code. From your client-side code, generate a
-Data client to make CRUDL requests to your table. (THIS SNIPPET WILL ONLY
-WORK IN THE FRONTEND CODE FILE.)
-
-Using JavaScript or Next.js React Server Components, Middleware, Server 
-Actions or Pages Router? Review how to generate Data clients for those use
-cases: https://docs.amplify.aws/gen2/build-a-backend/data/connect-to-API/
-=========================================================================*/
-
-/*
-"use client"
-import { generateClient } from "aws-amplify/data";
-import type { Schema } from "@/amplify/data/resource";
-
-const client = generateClient<Schema>() // use this Data client for CRUDL requests
-*/
-
-/*== STEP 3 ===============================================================
-Fetch records from the database and use them in your frontend component.
-(THIS SNIPPET WILL ONLY WORK IN THE FRONTEND CODE FILE.)
-=========================================================================*/
-
-/* For example, in a React component, you can use this snippet in your
-  function's RETURN statement */
-// const { data: todos } = await client.models.Todo.list()
-
-// return <ul>{todos.map(todo => <li key={todo.id}>{todo.content}</li>)}</ul>

@@ -8,7 +8,11 @@ import { ModalService } from 'src/app/shared/services/modal.service';
 // Modals
 import { LoginDialogComponent } from 'src/app/shared/modals/login/login-dialog.component';
 import { RegisterDialogComponent } from 'src/app/shared/modals/register/register-dialog.component';
+import { generateClient } from 'aws-amplify/api';
+import { Schema } from 'amplify/data/resource';
 
+const client = generateClient<Schema>();
+type User = Schema['User']['type'];
 @Component({
   selector: '[appTopNavigation]',
   templateUrl: './top-navigation.component.html',
@@ -81,47 +85,50 @@ export class TopNavigationComponent implements OnInit, OnDestroy {
 
   model: any;
   userName: string | null = null;
+  user: User | null = null;
 
   constructor(
     private router: Router,
     private modalService: ModalService
-  ) {}
+  ) { }
 
   async ngOnInit() {
     try {
-      const user = await getCurrentUser();
-      this.userName = user.username; // Or use 'user.username' if you want the username
+      const userCognnito = await getCurrentUser();
+      const response = await client.models.User.getUserBySub({sub: userCognnito.userId})
+      this.user = response.data[0];
     } catch (error) {
       console.log('Error fetching user: ', error);
     }
   }
 
-	formatter = (result: string) => result.toUpperCase();
+  formatter = (result: string) => result.toUpperCase();
 
-	search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) => {
-		return text$.pipe(
-			debounceTime(200),
-			distinctUntilChanged(),
-			map((term) =>
-				term === '' ? [] : this.states.filter((v) => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10),
+  search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) => {
+    return text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      map((term) =>
+        term === '' ? [] : this.states.filter((v) => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10),
       ),
     );
   }
 
   selectItem(item: any) {
     this.router.navigate(['search'], {
-      queryParams: {q: item.item}
+      queryParams: { q: item.item }
     })
   }
 
   onKeypress() {
     this.router.navigate(['search'], {
-      queryParams: {q: this.model}
+      queryParams: { q: this.model }
     })
   }
 
   async logout() {
     await signOut({ global: true });
+    this.userName = null;
   }
 
   public openLogin(): void {
@@ -141,5 +148,5 @@ export class TopNavigationComponent implements OnInit, OnDestroy {
   }
 
 
-  ngOnDestroy() {}
+  ngOnDestroy() { }
 }
