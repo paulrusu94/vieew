@@ -3,7 +3,7 @@ import { ModalService } from 'src/app/shared/services/modal.service';
 import { FullScreenFeedComponent } from './components/fullscreen-feed/fullscreen-feed.component';
 
 // Amplify
-import { generateClient } from 'aws-amplify/data';
+import { Client, generateClient } from 'aws-amplify/data';
 import { type Schema } from 'src/../amplify/data/resource';
 
 const client = generateClient<Schema>();
@@ -23,35 +23,14 @@ export class FeedsComponent implements OnInit, OnDestroy {
     private modalService: ModalService
   ) { }
 
-  // private async fetchPosts(client: Client) {
-  //   const {data} = await client.graphql({query: listPosts, variables: { limit: 100 }})
-  //   const {nextToken, items} = data.listPosts;
-  //   this.feeds.push(...items as Post[])
-  //   this.feeds.sort((postA, postB) => {
-  //     return new Date(postA.createdAt!).getTime() < new Date(postB.createdAt!).getTime() ? 1 : -1
-  //   })
-  // }
+  private async fetchPosts() {
+    const {data} = await client.models.Post.postsByDate({type: "Post"}, {sortDirection: "DESC", limit: 5});
+    this.feeds = [...data as Post[]];
+  }
 
   async ngOnInit() {
     
-    try {
-      const { data, errors } = await client.models.Post.list();
-      console.log(data)
-      this.feeds = data
-    } catch (err) {
-      console.log(err);
-    }
-  //   this.subscription = client
-  //     .graphql({ query: onCreatePost })
-  //     .subscribe(({ next: ({ data }) => {
-  //       this.fetchPosts(client)
-  //     }}))
-
-  //   this.subscription = client
-  //     .graphql({ query: onCreatePost })
-  //     .subscribe(({ next: ({ data }) => {
-  //       this.fetchPosts(client)
-  //     }}))
+    this.fetchPosts()
   }
 
   public goFullScreen(feed: any): void {
