@@ -14,18 +14,11 @@ const client = generateClient<Schema>();
 
 const mapContentType = (fileCotentType: string): any => {
   const contentType = client.enums.MediaContentTypes.values().find(contentType => contentType ===  fileCotentType.split("/").join("_"))
-
   if (!contentType) {
     throw new Error('Invalid content type for this file');
   }
-
   return contentType
 }
-
-const createPost = () => {
-
-}
-
 
 @Component({
   selector: '[appAddPost]',
@@ -37,7 +30,7 @@ export class AddPostComponent implements OnInit, OnDestroy {
   public file: File | null = null
   public fileArrayBuffer: FileReader["result"] | null = null;
   public user: Schema["User"]["type"] | null = null;
-  public uploadedMedia: Schema["Media"]["type"] | null = null;
+  public postId: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -49,22 +42,23 @@ export class AddPostComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit() {
+    this.postId = uuid();
     const userCognnito = await getCurrentUser();
     const response = await client.models.User.getUserBySub({sub: userCognnito.userId})
     this.user = response.data[0];
-    const mediasOfUser = await this.user.medias();
+    const {data: mediasOfUser} = await this.user.medias();
     console.log(mediasOfUser)
+    console.log(await mediasOfUser[0].post())
   }
 
   async onSubmit() {
     if (this.user) {
       try {
         const { content } = this.form.value;
-        const newPostId = uuid();
         
         const { errors, data } = await client.models.Post.create({
           postType: "TEXT",
-          postId: newPostId,
+          postId: this.postId,
           status: "IN_DRAFT",
           authorId: this.user!.userId,
           ownerEntityId: uuid(),
@@ -88,8 +82,8 @@ export class AddPostComponent implements OnInit, OnDestroy {
         this.file = input.files[0];
         console.log(this.file);
         const fileReader = new FileReader();
-        // fileReader.readAsArrayBuffer(this.file);
-        fileReader.readAsDataURL(this.file)
+        fileReader.readAsArrayBuffer(this.file);
+        // fileReader.readAsDataURL(this.file)
 
         fileReader.onload = async (event) => {
           console.log("Loaded file", event.target?.result)
@@ -109,13 +103,12 @@ export class AddPostComponent implements OnInit, OnDestroy {
             const newMediaId = uuid()
             const {data, errors} = await client.models.Media.create({
               mediaId: newMediaId,
+              postId: this.postId,
               contentType: mapContentType(this.file!.type!),
-              path: `media/cotent/${this.file!.name}`,
+              path: `media/content/${this.file!.name}`,
               fileName: this.file!.name,
               ownerId: this.user!.userId,
             })
-
-            this.uploadedMedia = data;
 
             console.log(data)
           } catch (e) {
