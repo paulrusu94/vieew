@@ -3,10 +3,6 @@ import { defineStorage } from '@aws-amplify/backend';
 export const storage = defineStorage({
     name: 'vieewBucket',
     access: (allow) => ({
-        'media/*': [
-            allow.guest.to(['read']),
-            allow.authenticated.to(['read', 'write', 'delete'])
-        ],
         'media/content/*': [
             allow.guest.to(['read']),
             allow.authenticated.to(['read', 'write', 'delete'])
