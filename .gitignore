@@ -11,15 +11,6 @@
 npm-debug.log
 yarn-error.log
 
-# amplify@vieew.io
-# Vi33wAmplify
-
-
-# amplify-dev
-# AKIAVRUVSJZ6A6TJXAY3
-# BXPFFByfSazPa3Klt3Yk5ROLQfe025Ierr8zJgnB
-
-
 # Some next steps:
 # "amplify status" will show you what you've added already and if it's locally configured or deployed
 # "amplify add <category>" will allow you to add features like user login or a backend API
