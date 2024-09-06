@@ -129,6 +129,7 @@ export class TopNavigationComponent implements OnInit, OnDestroy {
   async logout() {
     await signOut({ global: true });
     this.userName = null;
+    window.location.reload();
   }
 
   public openLogin(): void {

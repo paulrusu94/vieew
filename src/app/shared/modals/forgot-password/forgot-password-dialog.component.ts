@@ -8,12 +8,12 @@ import { RegisterDialogComponent } from '../register/register-dialog.component';
 import { ModalService } from 'src/app/shared/services/modal.service';
 
 @Component({
-  selector: '[appConfirmDialog]',
-  templateUrl: './confirm-dialog.component.html',
-  styleUrls: ['./confirm-dialog.component.scss'],
+  selector: '[appForgotPasswordDialog]',
+  templateUrl: './forgot-password-dialog.component.html',
+  styleUrls: ['./forgot-password-dialog.component.scss'],
   providers: [],
 })
-export class ConfirmDialogComponent implements OnInit, OnDestroy {
+export class ForgotPasswordDialogComponent implements OnInit, OnDestroy {
   @Input() email: string = '';
   @Input() password: string = ''; 
   public form: FormGroup;

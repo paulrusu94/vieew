@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators, ValidationMessagesBuilder } from 'src/app/shared/forms';
 import { NgbActiveModal, NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
-import { autoSignIn, confirmSignUp, ConfirmSignUpOutput, signUp, SignUpOutput } from 'aws-amplify/auth';
+import { signIn, confirmSignUp, ConfirmSignUpOutput, signUp, SignUpOutput } from 'aws-amplify/auth';
 import { Subject, OperatorFunction, Observable, debounceTime, distinctUntilChanged, filter, merge, map } from 'rxjs';
 
 const industries = [
@@ -72,7 +72,9 @@ export class RegisterDialogComponent implements OnInit, OnDestroy {
   public formRegister: FormGroup;
   public formConfirmation: FormGroup;
   public step = "REGISTER";
-  public user: any = {}
+  public user: any = {};
+  public errorMessages: any;
+  public serverError: string = '';
 
   public focus$ = new Subject<string>();
   public click$ = new Subject<string>();
@@ -88,7 +90,7 @@ export class RegisterDialogComponent implements OnInit, OnDestroy {
       email: ['', Validators.compose([Validators.required, Validators.email()])],
       password: ['', Validators.compose([Validators.required])],
       confirmPassword: ['', Validators.compose([Validators.required])],
-      accountType: ['personal', Validators.compose([Validators.required])],
+      agreeWithTerms: [false, Validators.compose([Validators.requiredTrue])],
     }, {
       validator: Validators.MatchPassword
     });
@@ -112,51 +114,59 @@ export class RegisterDialogComponent implements OnInit, OnDestroy {
     );
   };
 
-  async onSubmitRegister() {
-    try {
-      const { email, password, firstName, lastName } = this.formRegister.value;
-      const {
-        isSignUpComplete,
-        userId,
-        nextStep
-      }: SignUpOutput = await signUp({
-        username: email,
-        password: password,
-        options: {
-          autoSignIn: true,
-          userAttributes: {
-            family_name: lastName,
-            given_name: firstName
-          }
-        }
-      });
+  private forceValidation() {
+    const controls = this.formRegister.controls;
 
-      console.log(isSignUpComplete, userId, nextStep)
-      if (nextStep.signUpStep === "CONFIRM_SIGN_UP") {
-        this.user = {email, firstName, lastName};
-        this.step = REGISTER_FORM_STEPTS.CONFIRM
+    Object.keys(controls).map(key => controls[key].markAllAsTouched());
+
+    this.errorMessages = ValidationMessagesBuilder.buildValidationMessages(this.formRegister);
+  }
+
+  async onSubmitRegister() {
+    this.serverError = '';
+    this.forceValidation();
+    console.log(this.errorMessages);
+    if(this.formRegister.valid) {
+      try {
+        const { email, password, firstName, lastName } = this.formRegister.value;
+        const { nextStep }: SignUpOutput = await signUp({
+          username: email,
+          password: password,
+          options: {
+            autoSignIn: true,
+            userAttributes: {
+              family_name: lastName,
+              given_name: firstName
+            }
+          }
+        });
+  
+        if (nextStep.signUpStep === "CONFIRM_SIGN_UP") {
+          this.user = {email, firstName, lastName};
+          this.step = REGISTER_FORM_STEPTS.CONFIRM;
+        }
+
+      } catch (error: any) {
+        this.serverError = error.message;
+        this.formRegister.reset();
       }
-    } catch (error) {
-      console.log('error signing up:', error);
     }
   }
 
   async onSubmitConfirm() {
     try {
       const { confirmationCode } = this.formConfirmation.value;
-      const {
-        isSignUpComplete,
-        userId,
-        nextStep
-      }: ConfirmSignUpOutput = await confirmSignUp({
+      const { isSignUpComplete }: ConfirmSignUpOutput = await confirmSignUp({
         username: this.user.email, confirmationCode
       });
 
-      console.log(isSignUpComplete, userId, nextStep)
-
-      if (isSignUpComplete) {
-        await autoSignIn()
-        this.activeModal.close()
+      try {
+        const signInTheUser = await signIn({username: this.formRegister.value.email, password: this.formRegister.value.password})
+        if(signInTheUser) {
+          window.location.reload();
+        }
+      } catch(error) {
+        console.log(error);
       }
 
     } catch (error) {
