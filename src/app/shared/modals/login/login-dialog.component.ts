@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators, ValidationMessagesBuilder } from 'src/app/shared/forms';
 import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
@@ -8,8 +8,6 @@ import { ConfirmDialogComponent } from '../confirm/confirm-dialog.component';
 import { ForgotPasswordDialogComponent } from '../forgot-password/forgot-password-dialog.component';
 // Services
 import { ModalService } from 'src/app/shared/services/modal.service';
-import { Subject, takeUntil } from 'rxjs';
-import { Size } from 'aws-cdk-lib';
 
 @Component({
   selector: '[appLoginDialog]',
@@ -18,7 +16,6 @@ import { Size } from 'aws-cdk-lib';
   providers: [],
 })
 export class LoginDialogComponent implements OnInit, OnDestroy {
-  private _unsubscribe: Subject<boolean> = new Subject<boolean>();
   
   public loginWithEmail: boolean = false;
   public form: FormGroup;
@@ -83,6 +80,7 @@ export class LoginDialogComponent implements OnInit, OnDestroy {
       () => { },
       () => { },
     );
+    this.activeModal.close();
   }
 
   public openRegister(): void {
@@ -92,6 +90,7 @@ export class LoginDialogComponent implements OnInit, OnDestroy {
       () => { },
       () => { },
     );
+    this.activeModal.close();
   }
 
   public openForgotPassword() {
@@ -101,6 +100,7 @@ export class LoginDialogComponent implements OnInit, OnDestroy {
       () => {},
       () => {},
     );
+    this.activeModal.close();
   }
   ngOnDestroy() {}
 }

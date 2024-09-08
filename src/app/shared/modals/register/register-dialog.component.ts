@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators, ValidationMessagesBuilder } from 'src/app/shared/forms';
 import { NgbActiveModal, NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
-import { signIn, confirmSignUp, ConfirmSignUpOutput, signUp, SignUpOutput } from 'aws-amplify/auth';
+import { signUp, SignUpOutput } from 'aws-amplify/auth';
 import { Subject, OperatorFunction, Observable, debounceTime, distinctUntilChanged, filter, merge, map } from 'rxjs';
+import { ModalService } from '../../services/modal.service';
+import { ConfirmDialogComponent } from '../confirm/confirm-dialog.component';
 
 const industries = [
   'Aerospace',
@@ -57,10 +58,6 @@ const industries = [
   'Other'
 ];
 
-enum REGISTER_FORM_STEPTS {
-  REGISTER = "REGISTER", CONFIRM = "CONFIRM"
-}
-
 @Component({
   selector: '[appRegisterDialog]',
   templateUrl: './register-dialog.component.html',
@@ -69,9 +66,7 @@ enum REGISTER_FORM_STEPTS {
 export class RegisterDialogComponent implements OnInit, OnDestroy {
   @ViewChild('instance', { static: true })
   public instance: NgbTypeahead = new NgbTypeahead;
-  public formRegister: FormGroup;
-  public formConfirmation: FormGroup;
-  public step = "REGISTER";
+  public form: FormGroup;
   public user: any = {};
   public errorMessages: any;
   public serverError: string = '';
@@ -81,10 +76,10 @@ export class RegisterDialogComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
+    private modalService: ModalService,
     public activeModal: NgbActiveModal
   ) {
-    this.formRegister = this.formBuilder.group({
+    this.form = this.formBuilder.group({
       firstName: ['', Validators.compose([Validators.required])],
       lastName: ['', Validators.compose([Validators.required])],
       email: ['', Validators.compose([Validators.required, Validators.email()])],
@@ -93,10 +88,6 @@ export class RegisterDialogComponent implements OnInit, OnDestroy {
       agreeWithTerms: [false, Validators.compose([Validators.requiredTrue])],
     }, {
       validator: Validators.MatchPassword
-    });
-
-    this.formConfirmation = this.formBuilder.group({
-      confirmationCode: ['', Validators.compose([Validators.required])],
     });
   }
 
@@ -115,20 +106,19 @@ export class RegisterDialogComponent implements OnInit, OnDestroy {
   };
 
   private forceValidation() {
-    const controls = this.formRegister.controls;
+    const controls = this.form.controls;
 
     Object.keys(controls).map(key => controls[key].markAllAsTouched());
 
-    this.errorMessages = ValidationMessagesBuilder.buildValidationMessages(this.formRegister);
+    this.errorMessages = ValidationMessagesBuilder.buildValidationMessages(this.form);
   }
 
-  async onSubmitRegister() {
+  async onSubmit() {
     this.serverError = '';
     this.forceValidation();
-    console.log(this.errorMessages);
-    if(this.formRegister.valid) {
+    if(this.form.valid) {
       try {
-        const { email, password, firstName, lastName } = this.formRegister.value;
+        const { email, password, firstName, lastName } = this.form.value;
         const { nextStep }: SignUpOutput = await signUp({
           username: email,
           password: password,
@@ -143,37 +133,25 @@ export class RegisterDialogComponent implements OnInit, OnDestroy {
   
         if (nextStep.signUpStep === "CONFIRM_SIGN_UP") {
           this.user = {email, firstName, lastName};
-          this.step = REGISTER_FORM_STEPTS.CONFIRM;
+          this.openConfirm();
         }
 
       } catch (error: any) {
         this.serverError = error.message;
-        this.formRegister.reset();
+        this.form.reset();
       }
     }
   }
 
-  async onSubmitConfirm() {
-    try {
-      const { confirmationCode } = this.formConfirmation.value;
-      const { isSignUpComplete }: ConfirmSignUpOutput = await confirmSignUp({
-        username: this.user.email, confirmationCode
-      });
-
-      try {
-        const signInTheUser = await signIn({username: this.formRegister.value.email, password: this.formRegister.value.password})
-        if(signInTheUser) {
-          window.location.reload();
-        }
-      } catch(error) {
-        console.log(error);
-      }
-
-    } catch (error) {
-      console.log('error signing up:', error);
-    }
+  public openConfirm(): void {
+    const dialog = this.modalService.open(ConfirmDialogComponent, { size: 'md' });
+    dialog.componentInstance.email = this.form.value.email;
+    dialog.componentInstance.password = this.form.value.password;
+    dialog.result.then(
+      () => { },
+      () => { },
+    );
   }
-
 
   ngOnDestroy() { }
 }

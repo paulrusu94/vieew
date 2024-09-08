@@ -1,11 +1,21 @@
+<div class="modal-header d-flex flex-column align-items-center position-relative pt-5 border-0 rounded-5">
+  <button
+    type="button"
+    class="btn-close position-absolute"
+    style="top: 15px; right: 15px;"
+    aria-label="Close"
+    (click)="activeModal.dismiss()"
+  ></button>
+  <h1 class="modal-title" id="modal-basic-title">Register</h1>
+  <p class="pt-2">Create your account and become a vieweer</p>
+</div>
 <div class="modal-body">
   <div class="container h-100">
     <div class="row h-100 d-flex align-items-center">
-      <div [ngSwitch]="step" class="col-12">
-        <form *ngSwitchCase="'REGISTER'" [formGroup]="formRegister" (ngSubmit)="onSubmitRegister()">
+      <div class="col-12">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="row">
             <section id="first-step" class="col-12">
-                <h1 class="h3 mb-5 fw-normal">First thing first</h1>
                 <div *ngIf="serverError" class="alert alert-default text-danger ps-0">
                   {{ serverError }}
                 </div>
@@ -47,19 +57,6 @@
                     I read & agree to Vieew's <a href="#">Terms & Conditions</a>
                   </label>
                 </div>
-                <button class="btn btn-gradient-primary w-100 py-2 mt-3" type="submit">Continue</button>
-            </section>
-          </div>
-        </form>
-        <form *ngSwitchCase="'CONFIRM'" [formGroup]="formConfirmation" (ngSubmit)="onSubmitConfirm()">
-          <div class="row">
-            <section id="first-step" class="col-12">
-                <h1 class="h3 mb-3 fw-normal">First thing first</h1>
-                <div class="row mb-3">
-                  <div class="col">
-                    <input type="text" class="form-control border border-0" id="cofirmationCode" placeholder="Code" formControlName="confirmationCode">
-                  </div>
-                </div>        
                 <button class="btn btn-gradient-primary w-100 py-2 mt-3" type="submit">Continue</button>
             </section>
           </div>
