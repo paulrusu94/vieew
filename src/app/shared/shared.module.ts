@@ -11,8 +11,9 @@ import { FeedsComponent } from './components/feeds/feeds.component';
 import { LoginDialogComponent } from './modals/login/login-dialog.component';
 import { RegisterDialogComponent } from './modals/register/register-dialog.component';
 import { ConfirmDialogComponent } from './modals/confirm/confirm-dialog.component';
-import { ForgotPasswordDialogComponent } from './modals/forgot-password/forgot-password-dialog.component';
+
 import { FullScreenFeedComponent } from './components/feeds/components/fullscreen-feed/fullscreen-feed.component';
+import { ForgotPasswordDialogComponent } from './modals/forgot-password/forgot-password-dialog.component';
 
 @NgModule({
   imports: [

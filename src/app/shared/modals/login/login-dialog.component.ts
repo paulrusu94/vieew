@@ -5,9 +5,11 @@ import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { signIn } from 'aws-amplify/auth';
 import { RegisterDialogComponent } from '../register/register-dialog.component';
 import { ConfirmDialogComponent } from '../confirm/confirm-dialog.component';
+import { ForgotPasswordDialogComponent } from '../forgot-password/forgot-password-dialog.component';
 // Services
 import { ModalService } from 'src/app/shared/services/modal.service';
 import { Subject, takeUntil } from 'rxjs';
+import { Size } from 'aws-cdk-lib';
 
 @Component({
   selector: '[appLoginDialog]',
@@ -84,6 +86,7 @@ export class LoginDialogComponent implements OnInit, OnDestroy {
   }
 
   public openRegister(): void {
+    console.log('aici merge clickul');
     const dialog = this.modalService.open(RegisterDialogComponent, { size: 'md' });
     dialog.result.then(
       () => { },
@@ -91,5 +94,13 @@ export class LoginDialogComponent implements OnInit, OnDestroy {
     );
   }
 
+  public openForgotPassword() {
+    console.log('Se face click!');
+    const dialog = this.modalService.open(ForgotPasswordDialogComponent, { size: 'md'});
+    dialog.result.then(
+      () => {},
+      () => {},
+    );
+  }
   ngOnDestroy() {}
 }
