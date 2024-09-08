@@ -14,6 +14,8 @@ import { ConfirmDialogComponent } from './modals/confirm/confirm-dialog.componen
 
 import { FullScreenFeedComponent } from './components/feeds/components/fullscreen-feed/fullscreen-feed.component';
 import { ForgotPasswordDialogComponent } from './modals/forgot-password/forgot-password-dialog.component';
+// Services
+import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
   imports: [
@@ -42,6 +44,8 @@ import { ForgotPasswordDialogComponent } from './modals/forgot-password/forgot-p
     IndustriesSearchComponent,
     FeedsComponent,
     ],
-  providers: [],
+  providers: [
+    AuthenticationService
+  ],
 })
 export class SharedModule {}

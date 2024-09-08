@@ -2,10 +2,10 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators, ValidationMessagesBuilder } from 'src/app/shared/forms';
 import { NgbActiveModal, NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
-import { signUp, SignUpOutput } from 'aws-amplify/auth';
 import { Subject, OperatorFunction, Observable, debounceTime, distinctUntilChanged, filter, merge, map } from 'rxjs';
 import { ModalService } from '../../services/modal.service';
 import { ConfirmDialogComponent } from '../confirm/confirm-dialog.component';
+import { AuthenticationService } from '../../services/authentication.service';
 
 const industries = [
   'Aerospace',
@@ -77,7 +77,8 @@ export class RegisterDialogComponent implements OnInit, OnDestroy {
   constructor(
     private formBuilder: FormBuilder,
     private modalService: ModalService,
-    public activeModal: NgbActiveModal
+    public activeModal: NgbActiveModal,
+    private authenticationService: AuthenticationService,
   ) {
     this.form = this.formBuilder.group({
       firstName: ['', Validators.compose([Validators.required])],
@@ -117,29 +118,21 @@ export class RegisterDialogComponent implements OnInit, OnDestroy {
     this.serverError = '';
     this.forceValidation();
     if(this.form.valid) {
-      try {
-        const { email, password, firstName, lastName } = this.form.value;
-        const { nextStep }: SignUpOutput = await signUp({
-          username: email,
-          password: password,
-          options: {
-            autoSignIn: true,
-            userAttributes: {
-              family_name: lastName,
-              given_name: firstName
-            }
-          }
-        });
-  
-        if (nextStep.signUpStep === "CONFIRM_SIGN_UP") {
-          this.user = {email, firstName, lastName};
-          this.openConfirm();
-        }
+      const { email, password, firstName, lastName } = this.form.value;
+      this.authenticationService.signUp(email, password, firstName, lastName).subscribe({
+        next: (response) => {
+          const { nextStep } = response;
 
-      } catch (error: any) {
-        this.serverError = error.message;
-        this.form.reset();
-      }
+          if (nextStep.signUpStep === "CONFIRM_SIGN_UP") {
+            this.user = {email, firstName, lastName};
+            this.openConfirm();
+          }
+        },
+        error: (error) => {
+          this.serverError = error.message;
+          this.form.reset();
+        },
+      });
     }
   }
 
@@ -151,6 +144,7 @@ export class RegisterDialogComponent implements OnInit, OnDestroy {
       () => { },
       () => { },
     );
+    this.activeModal.close();
   }
 
   ngOnDestroy() { }

@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators, ValidationMessagesBuilder } from 'src/app/shared/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { resetPassword, confirmResetPassword } from 'aws-amplify/auth';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { ModalService } from '../../services/modal.service';
+import { LoginDialogComponent } from '../login/login-dialog.component';
 
 @Component({
   selector: '[appForgotPasswordDialog]',
@@ -19,7 +21,9 @@ export class ForgotPasswordDialogComponent {
 
   constructor(
     public activeModal: NgbActiveModal,
+    private modalService: ModalService,
     private formBuilder: FormBuilder,
+    private authenticationService: AuthenticationService
   ) {
     this.requestPasswordReset = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email()])],
@@ -49,15 +53,19 @@ export class ForgotPasswordDialogComponent {
 
     if(this.requestPasswordReset.valid) {
       const { email } = this.requestPasswordReset.value;
-      try {
-        const { nextStep } = await resetPassword({username: email });
-        if(nextStep.resetPasswordStep === 'CONFIRM_RESET_PASSWORD_WITH_CODE') {
-          this.step = 'RESET';
-        }
 
-      } catch (error: any) {
-        this.serverError = error.message;
-      }
+      this.authenticationService.resetPassword(email).subscribe({
+        next: (response: any) => {
+          const { nextStep } = response;
+
+          if(nextStep.resetPasswordStep === 'CONFIRM_RESET_PASSWORD_WITH_CODE') {
+            this.step = 'RESET';
+          }
+        },
+        error: (error: any) => {
+          this.serverError = error.message;
+        },
+      });
     }
   }
 
@@ -66,14 +74,25 @@ export class ForgotPasswordDialogComponent {
     this.forceValidation(this.passwordReset);
     if(this.passwordReset.valid) {
       const { email, password, confirmationCode } = this.passwordReset.value;
-      try {
-        const confirmation = await confirmResetPassword({username: email, newPassword: password, confirmationCode });
-        console.log(confirmation);
-        this.step = 'COMPLETE';
-      } catch (error: any) {
-        this.serverError = error.message;
-      }
+
+      this.authenticationService.confirmResetPassword(email, password, confirmationCode).subscribe({
+        next: _ => {
+          this.step = 'COMPLETE';
+        },
+        error: (error: any) => {
+          this.serverError = error.message;
+        },
+      });
     }
+  }
+
+  public openLogin(): void {
+    const dialog = this.modalService.open(LoginDialogComponent, { size: 'md' });
+    dialog.result.then(
+      () => { },
+      () => { },
+    );
+    this.activeModal.dismiss();
   }
   
 }

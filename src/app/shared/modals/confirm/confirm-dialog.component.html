@@ -6,7 +6,7 @@
     aria-label="Close"
     (click)="activeModal.dismiss()"
   ></button>
-  <h1 class="modal-title" id="modal-basic-title">Enter verification code</h1>
+  <h1 class="modal-title" id="modal-basic-title">Enter confirmation code</h1>
   <p class="pt-2">We need you to confirm account with the code we sent you by email.</p>
 </div>
 
@@ -16,12 +16,12 @@
       {{ serverError }}
     </div>
     <div class="mb-3">
-      <input type="text" class="form-control border border-0" id="verificationCode" placeholder="Verification Code" formControlName="verificationCode">
+      <input type="text" class="form-control border border-0" id="confirmationCode" placeholder="Confirmation Code" formControlName="confirmationCode">
     </div>
 
     <p class="text-end mb-2"><a href="#">Do you need another one?</a></p>
     <div class="text-center mb-5">
-      <button class="btn btn-gradient-primary w-75 py-2 my-5" type="submit">Send the verification code</button>
+      <button class="btn btn-gradient-primary w-75 py-2 my-5" type="submit">Send the confirmation code</button>
     </div>
   </form>
 </div>

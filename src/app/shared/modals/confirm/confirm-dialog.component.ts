@@ -2,10 +2,11 @@ import { Component, OnInit, OnDestroy, Input, input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators, ValidationMessagesBuilder } from 'src/app/shared/forms';
 import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import { signIn, confirmSignUp, autoSignIn } from 'aws-amplify/auth';
 import { RegisterDialogComponent } from '../register/register-dialog.component';
 // Services
 import { ModalService } from 'src/app/shared/services/modal.service';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { of, switchMap } from 'rxjs';
 
 @Component({
   selector: '[appConfirmDialog]',
@@ -22,10 +23,11 @@ export class ConfirmDialogComponent implements OnInit, OnDestroy {
   constructor(
     private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private authenticationService: AuthenticationService
   ) {
     this.form = this.formBuilder.group({
-      verificationCode: ['', Validators.compose([Validators.required, Validators.email()])],
+      confirmationCode: ['', Validators.compose([Validators.required, Validators.email()])],
     });
   }
 
@@ -35,40 +37,30 @@ export class ConfirmDialogComponent implements OnInit, OnDestroy {
 
   async onSubmit() {
     this.serverError = '';
-    const { verificationCode } = this.form.value;
-    try {
-      const {userId, isSignUpComplete, nextStep } = await confirmSignUp({username: this.email, confirmationCode: verificationCode });
-      console.log(isSignUpComplete);
-      console.log(nextStep);
-      if(isSignUpComplete) {
-        if(nextStep.signUpStep === 'DONE') {
-          try {
-            const signInTheUser = await signIn({username: this.email, password: this.password})
-            if(signInTheUser) {
-              window.location.reload();
-            }
-          } catch(error) {
-            console.log(error);
-          }
+    const { confirmationCode } = this.form.value;
+
+    this.authenticationService.confirmSignup(this.email, confirmationCode)
+    .pipe(
+      switchMap((confirmSignup: any) => {
+        console.log(confirmSignup);
+        const { nextStep } = confirmSignup;
+        
+        if(nextStep.signUpStep === 'COMPLETE_AUTO_SIGN_IN') {
+          return this.authenticationService.autoSignIn();
         }
 
-        if(nextStep.signUpStep === 'COMPLETE_AUTO_SIGN_IN') {
-          
-          try {
-            const autoSign = await autoSignIn();
-            if(autoSign) {
-              window.location.reload();
-            }
-          } catch(error) {
-            console.log(error);
-          }
-        }
-        
-      }
-    } catch (error: any) {
-      this.serverError = error.message;
-      this.form.reset();
-    }
+        return this.authenticationService.signIn(this.email, this.password);
+      }),
+    )
+    .subscribe({
+      next: (response: any) => {
+        window.location.reload();
+      },
+      error: (error: any) => {
+        this.serverError = error.message;
+        this.form.reset();
+      },
+    });
   }
 
   public openRegister(): void {
