@@ -1,0 +1,35 @@
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, switchMap } from 'rxjs';
+
+import { UsersService } from 'src/app/shared/api/users.service';
+
+@Injectable({ providedIn: 'root' })
+export class UserStore {
+  private readonly curentUserSource = new BehaviorSubject<any>(null);
+
+  readonly currentUser$ = this.curentUserSource.asObservable();
+
+  constructor(private usersService: UsersService) {}
+
+  public setUser(user: any): void {
+    this.curentUserSource.next(user);
+  }
+
+  public fetchUser(): void {
+    this.usersService
+      .getCurrentCognitoUser()
+      .pipe(
+        switchMap((cognitoUser: any) => {
+          return this.usersService.getCurrentDynamoUser(cognitoUser);
+        })
+      )
+      .subscribe({
+        next: (response: any) => {
+          this.setUser(response);
+        },
+        error: (error: any) => {
+          console.log(error);
+        },
+      });
+  }
+}

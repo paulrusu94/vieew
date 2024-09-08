@@ -1,51 +1,82 @@
-<div *ngFor="let feed of feeds" class="shadow mt-3 mb-5 border-bottom">
-    <!-- author -->
-    <div class="d-flex justify-content-between">
-      <!-- avatar -->
-      <div class="d-flex">
-        <a [routerLink]="['/', feed.authorId]">
-          <img [src]="feed.authorId" alt="avatar" class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
-        </a>
-        <div>
-          <p class="m-0 fw-bold">
-            <a [routerLink]="['/', feed.authorId]">{{ feed.author.data.firstName }} {{ feed.author.data.lastName }}</a>
-          </p>
-          <span class="text-muted fs-7">{{ feed.createdAt }}</span>
-        </div>
-      </div>
-      <!-- feed content -->
-      <i class="fas fa-ellipsis-h" type="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
-      <!-- edit menu -->
-      <ul class="dropdown-menu border-0 shadow">
-        <li class="d-flex align-items-center">
-          <a class="dropdown-item d-flex justify-content-around align-items-center fs-7" href="#">Edit feed</a>
-        </li>
-        <li class="d-flex align-items-center">
-          <a class="dropdown-item d-flex justify-content-around align-items-center fs-7" href="#">Delete feed</a>
-        </li>
-      </ul>
-    </div>
-    <div class="feed-content py-3" (click)="goFullScreen(feed)">
-      {{ feed.content }}
-      <div *ngIf="feed.medias.length > 0">
-        <div *ngFor="let media of feed.medias" class="shadow mt-3 mb-5 border-bottom">
-          <img src="{{media.url.url.href}}" class="mw-100"/>
-        </div>
+<div *ngFor="let feed of posts" class="shadow mt-3 mb-5 border-bottom">
+  <!-- author -->
+  <div class="d-flex justify-content-between">
+    <!-- avatar -->
+    <div class="d-flex">
+      <a [routerLink]="['/', feed.authorId]">
+        <img
+          src="https://placehold.co/80x80"
+          alt="avatar"
+          class="rounded-circle me-2"
+          style="width: 38px; height: 38px; object-fit: cover"
+        />
+      </a>
+      <div>
+        <p class="m-0 fw-bold">
+          <a [routerLink]="['/', feed.authorId]"
+            >{{ feed.author.data.firstName }} {{ feed.author.data.lastName }}</a
+          >
+        </p>
+        <span class="text-muted fs-7">{{ feed.createdAt }}</span>
       </div>
     </div>
-    <div class="feed-actions d-flex flex-row">
-      <button type="button" class="btn btn-default px-0 pt-0 me-3 d-flex align-items-center">
-        <span class="material-symbols-outlined me-1">thumb_up</span>
-        2,274
-      </button>
-      <button type="button" class="btn btn-default px-0 pt-0 me-3 d-flex align-items-center">
-        <span class="material-symbols-outlined me-1">sms</span>
-        67
-      </button>
-      <button type="button" class="btn btn-default px-0 pt-0 me-3 d-flex align-items-center">
-        <span class="material-symbols-outlined me-1">upload</span>
-        124
-      </button>
+    <!-- feed content -->
+    <i
+      class="fas fa-ellipsis-h"
+      type="button"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    ></i>
+    <!-- edit menu -->
+    <ul class="dropdown-menu border-0 shadow">
+      <li class="d-flex align-items-center">
+        <a
+          class="dropdown-item d-flex justify-content-around align-items-center fs-7"
+          href="#"
+          >Edit feed</a
+        >
+      </li>
+      <li class="d-flex align-items-center">
+        <a
+          class="dropdown-item d-flex justify-content-around align-items-center fs-7"
+          href="#"
+          >Delete feed</a
+        >
+      </li>
+    </ul>
+  </div>
+  <div class="feed-content py-3" (click)="goFullScreen(feed)">
+    {{ feed.content }}
+    <div *ngIf="feed.medias.length > 0">
+      <div
+        *ngFor="let media of feed.medias"
+        class="shadow mt-3 mb-5 border-bottom"
+      >
+        <img src="{{ media.url.url.href }}" class="w-100" />
+      </div>
     </div>
   </div>
-  
+  <div class="feed-actions d-flex flex-row">
+    <button
+      type="button"
+      class="btn btn-default px-0 pt-0 me-3 d-flex align-items-center"
+    >
+      <span class="material-symbols-outlined me-1">thumb_up</span>
+      2,274
+    </button>
+    <button
+      type="button"
+      class="btn btn-default px-0 pt-0 me-3 d-flex align-items-center"
+    >
+      <span class="material-symbols-outlined me-1">sms</span>
+      67
+    </button>
+    <button
+      type="button"
+      class="btn btn-default px-0 pt-0 me-3 d-flex align-items-center"
+    >
+      <span class="material-symbols-outlined me-1">upload</span>
+      124
+    </button>
+  </div>
+</div>

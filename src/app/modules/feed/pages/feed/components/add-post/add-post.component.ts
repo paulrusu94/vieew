@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Validators, ValidationMessagesBuilder } from 'src/app/shared/forms';
 import { Router } from '@angular/router';
@@ -25,7 +25,10 @@ const mapContentType = (fileCotentType: string): any => {
   templateUrl: './add-post.component.html',
   styleUrls: ['./add-post.component.scss'],
 })
+
 export class AddPostComponent implements OnInit, OnDestroy {
+  @Output() onPostAdded = new EventEmitter();
+  
   public form: FormGroup;
   public file: File | null = null
   public fileArrayBuffer: FileReader["result"] | null = null;
@@ -66,6 +69,7 @@ export class AddPostComponent implements OnInit, OnDestroy {
         });
 
         this.form.reset()
+        this.onPostAdded.emit();
       } catch (error) {
         console.log('error creating post', error);
       }

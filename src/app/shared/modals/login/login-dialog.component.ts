@@ -26,7 +26,7 @@ export class LoginDialogComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     public activeModal: NgbActiveModal,
     private modalService: ModalService,
-    private authenticationService: AuthenticationService,
+    private authenticationService: AuthenticationService
   ) {
     this.form = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email()])],

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { from, Observable, of } from 'rxjs';
-import { autoSignIn, confirmResetPassword, confirmSignUp, resetPassword, signIn, signUp } from 'aws-amplify/auth';
+import { autoSignIn, confirmResetPassword, confirmSignUp, resetPassword, signIn, signOut, signUp } from 'aws-amplify/auth';
 
 @Injectable()
 
@@ -36,5 +36,9 @@ export class AuthenticationService {
 
   confirmResetPassword(username: string, newPassword: string, confirmationCode: string): Observable<any> {
     return from(confirmResetPassword({username, newPassword, confirmationCode }));
+  }
+
+  logOut() {
+    return from(signOut({ global: true }));
   }
 }

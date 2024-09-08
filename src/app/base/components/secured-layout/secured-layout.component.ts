@@ -1,4 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { User } from 'aws-cdk-lib/aws-iam';
+import { UserStore } from 'src/app/shared/store/user.store';
 
 @Component({
   selector: '[appSecured]',
@@ -6,10 +8,25 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
   styleUrls: ['./secured-layout.component.scss'],
 })
 export class SecuredLayoutComponent implements OnInit, OnDestroy {
+  public currentUser: any;
 
-  constructor() {}
+  constructor(private userStore: UserStore) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userStore.currentUser$.subscribe({
+      next: (user) => {
+        if (!user) {
+          this.userStore.fetchUser();
+          return;
+        }
+
+        this.currentUser = user.data[0];
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
 
   ngOnDestroy() {}
 }

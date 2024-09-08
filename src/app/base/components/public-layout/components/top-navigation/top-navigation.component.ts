@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable, OperatorFunction } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { signOut, getCurrentUser } from 'aws-amplify/auth';
 // Services
@@ -8,11 +8,10 @@ import { ModalService } from 'src/app/shared/services/modal.service';
 // Modals
 import { LoginDialogComponent } from 'src/app/shared/modals/login/login-dialog.component';
 import { RegisterDialogComponent } from 'src/app/shared/modals/register/register-dialog.component';
-import { generateClient } from 'aws-amplify/api';
-import { Schema } from 'amplify/data/resource';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { UsersService } from 'src/app/shared/api/users.service';
 
-const client = generateClient<Schema>();
-type User = Schema['User']['type'];
+
 @Component({
   selector: '[appTopNavigation]',
   templateUrl: './top-navigation.component.html',
@@ -20,6 +19,7 @@ type User = Schema['User']['type'];
 })
 
 export class TopNavigationComponent implements OnInit, OnDestroy {
+  @Input() currentUser: any;
 
   public states = [
     'Alabama',
@@ -85,23 +85,15 @@ export class TopNavigationComponent implements OnInit, OnDestroy {
 
   model: any;
   userName: string | null = null;
-  user: User | null = null;
 
   constructor(
     private router: Router,
-    private modalService: ModalService
-  ) { }
+    private modalService: ModalService,
+    private authenticationService: AuthenticationService,
+    private usersService: UsersService
+  ) {}
 
-  async ngOnInit() {
-    try {
-      const userCognnito = await getCurrentUser();
-      const response = await client.models.User.getUserBySub({sub: userCognnito.userId})
-      this.user = response.data[0];
-    } catch (error) {
-      console.log('Error fetching user: ', error);
-    }
-  }
-
+  ngOnInit() {}
   formatter = (result: string) => result.toUpperCase();
 
   search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) => {
@@ -127,9 +119,14 @@ export class TopNavigationComponent implements OnInit, OnDestroy {
   }
 
   async logout() {
-    await signOut({ global: true });
-    this.userName = null;
-    window.location.reload();
+    this.authenticationService.logOut().subscribe({
+      next: (response) => {
+        window.location.reload();
+      },
+      error: (error) => {
+
+      }
+    });
   }
 
   public openLogin(): void {
