@@ -2,9 +2,12 @@ import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { PutCommand, DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb";
 import { PostConfirmationTriggerEvent } from "aws-lambda";
 import { v4 as uuid } from 'uuid'
+import { env } from '$amplify/env/post-confirmation';
 
 const client = new DynamoDBClient({});
 const docClient = DynamoDBDocumentClient.from(client);
+
+
 
 export const handler = async (event: PostConfirmationTriggerEvent) => {
     try {
@@ -21,7 +24,7 @@ export const handler = async (event: PostConfirmationTriggerEvent) => {
 
         console.log('user to create', newUser)
         const command = new PutCommand({
-            TableName: "User-z7uwsrl7tbcybo5qfzqtpeivhq-NONE",
+            TableName: env.USER_TABLE,
             Item: newUser,
         });
         await docClient.send(command);
