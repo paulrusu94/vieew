@@ -14,13 +14,11 @@ export class FeedsComponent implements OnInit, OnDestroy {
     private modalService: ModalService,
   ) {}
 
-  ngOnInit() {
-    console.log(this.posts);
-  }
+  ngOnInit() {}
 
-  public goFullScreen(feed: any): void {
+  public goFullScreen(post: any): void {
     const dialog = this.modalService.open(FullScreenFeedComponent, { fullscreen: true });
-    dialog.componentInstance.feed = feed;
+    dialog.componentInstance.post = post;
     dialog.result.then(
       () => { },
       () => { },

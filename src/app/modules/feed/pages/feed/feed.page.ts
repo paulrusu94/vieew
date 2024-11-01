@@ -1,13 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Schema } from 'amplify/data/resource';
-import { generateClient } from 'aws-amplify/api';
-import { getCurrentUser, fetchUserAttributes } from 'aws-amplify/auth';
 import { Observable } from 'rxjs';
 import { PostsService } from 'src/app/shared/api/posts.service';
-
-const client = generateClient<Schema>();
-type Post = Schema['Post']['type'];
+import { UserStore } from 'src/app/shared/store/user.store';
 
 @Component({
   selector: '[appFeed]',
@@ -15,25 +9,18 @@ type Post = Schema['Post']['type'];
   styleUrls: ['./feed.page.scss'],
 })
 export class FeedPage implements OnInit, OnDestroy {
+  public currentUser: any = null;
   public posts$!: Observable<any[]>;
   
-  private errorHandled = false;
-  public email = '';
-  public isAuthenticated: boolean = false;
-
   constructor(
-    private router: Router,
-    private postsService: PostsService
+    private postsService: PostsService,
+    public userStore: UserStore
   ) {
     this.refreshPosts();
   }
 
-  async ngOnInit() {
-    const currentUser = await getCurrentUser();
-    const userAttributes = await fetchUserAttributes();
-    console.log(currentUser)
-    console.log(userAttributes)
-    this.email = userAttributes.email!
+  ngOnInit() {
+    this.currentUser = this.userStore.getCurrentUser();
   }
   
   // Refresh the posts observable

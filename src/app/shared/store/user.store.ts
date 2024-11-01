@@ -28,8 +28,14 @@ export class UserStore {
           this.setUser(response);
         },
         error: (error: any) => {
+          this.setUser({})
           console.log(error);
         },
       });
+  }
+
+  // Return the current user value directly
+  public getCurrentUser(): any {
+    return this.curentUserSource?.value?.data && this.curentUserSource?.value?.data[0] || null;
   }
 }

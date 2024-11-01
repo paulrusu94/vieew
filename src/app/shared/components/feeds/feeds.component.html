@@ -1,11 +1,11 @@
-<div *ngFor="let feed of posts" class="shadow mt-3 mb-5 border-bottom">
+<div *ngFor="let post of posts; index as i" class="shadow mt-3 mb-5 border-bottom">
   <!-- author -->
   <div class="d-flex justify-content-between">
     <!-- avatar -->
     <div class="d-flex">
-      <a [routerLink]="['/', feed.authorId]">
+      <a [routerLink]="['/', post?.author?.data?.sub]">
         <img
-          src="https://placehold.co/80x80"
+          src="https://avatar.iran.liara.run/public/{{i}}"
           alt="avatar"
           class="rounded-circle me-2"
           style="width: 38px; height: 38px; object-fit: cover"
@@ -13,11 +13,11 @@
       </a>
       <div>
         <p class="m-0 fw-bold">
-          <a [routerLink]="['/', feed.authorId]"
-            >{{ feed.author.data.firstName }} {{ feed.author.data.lastName }}</a
+          <a [routerLink]="['/', post?.author?.data?.sub]"
+            >{{ post?.author?.data?.firstName }} {{ post?.author?.data?.lastName }}</a
           >
         </p>
-        <span class="text-muted fs-7">{{ feed.createdAt }}</span>
+        <span class="text-muted fs-7">{{ post?.createdAt }}</span>
       </div>
     </div>
     <!-- feed content -->
@@ -45,11 +45,11 @@
       </li>
     </ul>
   </div>
-  <div class="feed-content py-3" (click)="goFullScreen(feed)">
-    {{ feed.content }}
-    <div *ngIf="feed.medias.length > 0">
+  <div class="feed-content py-3" (click)="goFullScreen(post)">
+    {{ post.content }}
+    <div *ngIf="post.medias.length > 0">
       <div
-        *ngFor="let media of feed.medias"
+        *ngFor="let media of post.medias"
         class="shadow mt-3 mb-5 border-bottom"
       >
         <img src="{{ media.url.url.href }}" class="w-100" />

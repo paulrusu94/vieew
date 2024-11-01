@@ -14,8 +14,15 @@ export class PostsService {
 
   constructor() {}
 
-  public fetchPosts(): Observable<any> {
-    return from(client.models.Post.postsByDate({ type: "Post" }, { sortDirection: "DESC", limit: 10 })).pipe(
+  public createPost(post: any) {
+    return from(client.models.Post.create(post));
+  }
+
+  public fetchPosts(authorId?: string): Observable<any> {
+    // Add the filter option to your query for authorId if provided
+    const filter = authorId ? { authorId: { eq: authorId } } : {};
+
+    return from(client.models.Post.postsByDate({ type: "Post" }, { sortDirection: "DESC", limit: 10, filter })).pipe(
       mergeMap(response => {
         const { data } = response;
         // Transform each post using async logic

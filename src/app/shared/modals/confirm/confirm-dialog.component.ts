@@ -32,7 +32,6 @@ export class ConfirmDialogComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log(this.email);
   }
 
   async onSubmit() {
@@ -42,7 +41,6 @@ export class ConfirmDialogComponent implements OnInit, OnDestroy {
     this.authenticationService.confirmSignup(this.email, confirmationCode)
     .pipe(
       switchMap((confirmSignup: any) => {
-        console.log(confirmSignup);
         const { nextStep } = confirmSignup;
         
         if(nextStep.signUpStep === 'COMPLETE_AUTO_SIGN_IN') {

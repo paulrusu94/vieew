@@ -18,6 +18,7 @@ import { ForgotPasswordDialogComponent } from './modals/forgot-password/forgot-p
 import { AuthenticationService } from './services/authentication.service';
 import { UsersService } from './api/users.service';
 import { PostsService } from './api/posts.service';
+import { MediaService } from './api/media.service';
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import { PostsService } from './api/posts.service';
   providers: [
     AuthenticationService,
     UsersService,
-    PostsService
+    PostsService,
+    MediaService
   ],
 })
 export class SharedModule {}

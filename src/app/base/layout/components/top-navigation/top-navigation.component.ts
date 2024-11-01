@@ -1,8 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Observable, OperatorFunction } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { signOut, getCurrentUser } from 'aws-amplify/auth';
 // Services
 import { ModalService } from 'src/app/shared/services/modal.service';
 // Modals
@@ -10,6 +9,7 @@ import { LoginDialogComponent } from 'src/app/shared/modals/login/login-dialog.c
 import { RegisterDialogComponent } from 'src/app/shared/modals/register/register-dialog.component';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { UsersService } from 'src/app/shared/api/users.service';
+import { UserStore } from 'src/app/shared/store/user.store';
 
 
 @Component({
@@ -19,8 +19,7 @@ import { UsersService } from 'src/app/shared/api/users.service';
 })
 
 export class TopNavigationComponent implements OnInit, OnDestroy {
-  @Input() currentUser: any;
-
+  public currentUser: any = null;
   public states = [
     'Alabama',
     'Alaska',
@@ -90,10 +89,12 @@ export class TopNavigationComponent implements OnInit, OnDestroy {
     private router: Router,
     private modalService: ModalService,
     private authenticationService: AuthenticationService,
-    private usersService: UsersService
+    public userStore: UserStore
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.currentUser = this.userStore.getCurrentUser();
+  }
   formatter = (result: string) => result.toUpperCase();
 
   search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) => {

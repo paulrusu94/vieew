@@ -8,7 +8,7 @@ import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
   providers: [],
 })
 export class FullScreenFeedComponent implements OnInit, OnDestroy {
-  @Input() feed: any;
+  @Input() post: any;
 
   constructor(
     public activeModal: NgbActiveModal

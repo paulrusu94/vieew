@@ -1,10 +1,10 @@
 <div class="profile-wrapper mt-5">
   <div class="profile d-flex mb-5">
     <div class="profile-image ">
-      <img class="rounded-5 border border-4 border-black" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D" alt="" style="width: 200px; height: 200px;">
+      <img class="" src="https://avatar.iran.liara.run/public" alt="" style="width: 200px; height: 200px;">
     </div>
     <div class="profile-details ms-4 d-flex flex-column justify-content-end">
-      <h2 class="mb-0 ">{{ profile }}</h2>
+      <h2 class="mb-0 ">{{ profile?.firstName }} {{ profile?.lastName }}</h2>
       <h6 class="text-secondary mb-2">Bucharest, Romania</h6>
       <h4 class="mb-3">I design experiences mostly. I also sometimes travel.</h4>
       <div class="d-flex justify-content-between w-100">
@@ -43,8 +43,8 @@
   </div>
 
   <div>
-    <ul ngbNav #nav="ngbNav" class="nav-tabs">
-      <li ngbNavItem>
+    <ul ngbNav #nav="ngbNav" class="nav-underline border-bottom">
+      <li ngbNavItem *ngIf="visitingOwnProfile">
         <button ngbNavLink>Dashboard</button>
         <ng-template ngbNavContent>
           <div class="d-flex flex-row my-5">
@@ -62,16 +62,10 @@
               </div>
             </div>
           </div>
-          <div class="d-flex bg-dark p-4" style="width: 1100px;">
+          <div class="d-flex bg-dark p-4">
             <p class="text-secondary">Sales by service</p>
             
           </div>
-        </ng-template>
-      </li>
-      <li ngbNavItem>
-        <button ngbNavLink>Posts</button>
-        <ng-template ngbNavContent>
-          <div appFeeds class="px-4"></div>
         </ng-template>
       </li>
       <li ngbNavItem>
@@ -111,6 +105,14 @@
               </div>
             </div>
           </div>
+        </ng-template>
+      </li>
+      <li ngbNavItem>
+        <button ngbNavLink>Posts</button>
+        <ng-template ngbNavContent>
+          <!-- Add post component -->
+          <div appAddPost *ngIf="visitingOwnProfile" class="mb-5" (onPostAdded)="refreshPosts()"></div>
+          <div appFeeds *ngIf="posts$ | async as posts" [posts]="posts" class="px-4"></div>
         </ng-template>
       </li>
     </ul>

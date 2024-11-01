@@ -1,5 +1,7 @@
 <!-- Welcome Message -->
-<h2 class="py-4">Good Morning, <span class="text-primary">{{email}}</span>!</h2>
+<h2 class="py-4" *ngIf="currentUser">Good Morning, <span class="text-primary">
+    {{ currentUser.firstName }} {{ currentUser.lastName }}
+</span>!</h2>
 <!-- Add post component -->
 <div appAddPost class="mb-5" (onPostAdded)="refreshPosts()"></div>
 <!-- Feeds -->

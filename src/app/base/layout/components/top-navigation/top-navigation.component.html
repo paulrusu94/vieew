@@ -19,7 +19,7 @@
     />
     <span class="material-symbols-outlined position-absolute">search</span>
   </div>
-  <div class="d-flex align-items-center justify-content-end" *ngIf="currentUser?.userId; else authenticationActions">
+  <div class="d-flex align-items-center justify-content-end" *ngIf="currentUser; else authenticationActions">
     <button
       type="button"
       class="btn btn-default d-flex align-items-center me-3"
@@ -33,7 +33,7 @@
         id="dropdownBasic1"
       >
         <img
-          src="https://placehold.co/80x80"
+          src="https://avatar.iran.liara.run/public"
           alt="avatar"
           class="rounded-circle me-2"
           style="width: 38px; height: 38px; object-fit: cover"
@@ -44,7 +44,7 @@
         <button
           ngbDropdownItem
           class="d-flex align-items-center"
-          routerLink="/profile"
+          [routerLink]="['/', currentUser?.sub]"
         >
           <span class="material-symbols-outlined me-2">account_circle </span>My
           Profile
