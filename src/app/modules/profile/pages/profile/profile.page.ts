@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { getCurrentUser, signOut } from 'aws-amplify/auth';
+import { Observable } from 'rxjs';
+import { PostsService } from 'src/app/shared/api/posts.service';
+import { UserStore } from 'src/app/shared/store/user.store';
 
 @Component({
   selector: '[appProfile]',
@@ -8,38 +10,32 @@ import { getCurrentUser, signOut } from 'aws-amplify/auth';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit, OnDestroy {
-  private errorHandled = false;
   
-  public profile: string = '';
+  public currentUser: any = null;
+  public posts$!: Observable<any[]>;
+  public profile: any;
   public isAuthenticated: boolean = false;
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
-  ) {}
-
-  ngOnInit() {
-    this.profile = this.route.snapshot.params['profile'];
-    getCurrentUser()
-      .then((response) => {
-        this.isAuthenticated = true;
-      })
-      .catch((error) => {
-        console.log('Error', error);
-        if (!this.errorHandled) {
-          this.errorHandled = true;
-          this.isAuthenticated = false;
-        }
-      });
+    private route: ActivatedRoute,
+    private postsService: PostsService,
+    private userStore: UserStore
+  ) {
+    this.profile = this.route.snapshot.data['profile'].data[0];
+    this.currentUser = this.userStore.getCurrentUser();
+    this.refreshPosts();
   }
 
-  async logOut() {
-    try {
-      await signOut({ global: true });
-      this.router.navigate(['/login']);
-    } catch (error) {
-      console.log('error signing out: ', error);
-    }
+  get visitingOwnProfile() {
+    return this.currentUser && this.currentUser.userId === this.profile.userId;
+  }
+
+  ngOnInit() {}
+
+  // Refresh the posts observable
+  public refreshPosts(): void {
+    this.posts$ = this.postsService.fetchPosts(this.profile?.userId);
   }
   
   ngOnDestroy() {}

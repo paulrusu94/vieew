@@ -1,31 +1,48 @@
+<div class="modal-header d-flex flex-column align-items-center position-relative pt-5 border-0 rounded-5">
+  <button
+    type="button"
+    class="btn-close position-absolute"
+    style="top: 15px; right: 15px;"
+    aria-label="Close"
+    (click)="activeModal.dismiss()"
+  ></button>
+  <h1 class="modal-title" id="modal-basic-title">Register</h1>
+  <p class="pt-2">Create your account and become a vieweer</p>
+</div>
 <div class="modal-body">
   <div class="container h-100">
     <div class="row h-100 d-flex align-items-center">
-      <div [ngSwitch]="step" class="col-12">
-        <form *ngSwitchCase="'REGISTER'" [formGroup]="formRegister" (ngSubmit)="onSubmitRegister()">
+      <div class="col-12">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <div class="row">
             <section id="first-step" class="col-12">
-                <h1 class="h3 mb-3 fw-normal">First thing fasdasdirst</h1>
+                <div *ngIf="serverError" class="alert alert-default text-danger ps-0">
+                  {{ serverError }}
+                </div>
                 <div class="row mb-3">
                   <div class="col-6">
                     <input type="text" class="form-control border border-0" id="firstName" placeholder="First Name" formControlName="firstName">
+                    <p class="text-danger" *ngIf="errorMessages?.firstName">{{ errorMessages?.firstName }}</p>
                   </div>
                   <div class="col-6">
                     <input type="text" class="form-control border border-0" id="lastName" placeholder="Last Name" formControlName="lastName">
+                    <p class="text-danger" *ngIf="errorMessages?.lastName">{{ errorMessages?.lastName }}</p>
                   </div>
                 </div>
         
                 <div class="mb-3">
-                  <input  type="text" class="form-control border border-0" id="email" placeholder="Email" formControlName="email">
+                  <input type="text" class="form-control border border-0" id="email" placeholder="Email" formControlName="email">
+                  <p class="text-danger" *ngIf="errorMessages?.email">{{ errorMessages?.email }}</p>
                 </div>
         
                 <div class="mb-3">
                   <input type="password" class="form-control border border-0" id="password" placeholder="Create your password" formControlName="password">
+                  <p class="text-danger" *ngIf="errorMessages?.password">{{ errorMessages?.password }}</p>
                 </div>
   
                 <div class="mb-3">
-                  <input type="password" class="form-control border border-0" id="confirmPassword" placeholder="Confirm your password"
-                    autocomplete="false" formControlName="confirmPassword">
+                  <input type="password" class="form-control border border-0" id="confirmPassword" placeholder="Confirm your password" autocomplete="false" formControlName="confirmPassword">
+                    <p class="text-danger" *ngIf="errorMessages?.confirmPassword">{{ errorMessages?.confirmPassword }}</p>
                 </div>
                 <div class="text-muted">
                   <p>At least 8 character long.</p>
@@ -33,23 +50,13 @@
                   <p>At least one lowercase letter.</p>
                   <p>At least one special character(&*%$#)</p>
                 </div>
-                <input class="form-check-input me-2 mb-3" type="checkbox" id="bifaCheckbox">
-                <label for="bifaCheckbox">
-                  I read & agree to Vieew's <a href="#">Terms & Conditions</a>
-                </label>
-                <button class="btn btn-gradient-primary w-100 py-2 mt-3" type="submit">Continue</button>
-            </section>
-          </div>
-        </form>
-        <form *ngSwitchCase="'CONFIRM'" [formGroup]="formConfirmation" (ngSubmit)="onSubmitConfirm()">
-          <div class="row">
-            <section id="first-step" class="col-12">
-                <h1 class="h3 mb-3 fw-normal">First thing first</h1>
-                <div class="row mb-3">
-                  <div class="col">
-                    <input type="text" class="form-control border border-0" id="cofirmationCode" placeholder="Code" formControlName="confirmationCode">
-                  </div>
-                </div>        
+                <p class="text-danger" *ngIf="errorMessages?.agreeWithTerms">You need to agree our Terms.</p>
+                <div>
+                  <input class="form-check-input me-2 mb-3" type="checkbox" id="agreeWithTerms" formControlName="agreeWithTerms">
+                  <label for="agreeWithTerms">
+                    I read & agree to Vieew's <a href="#">Terms & Conditions</a>
+                  </label>
+                </div>
                 <button class="btn btn-gradient-primary w-100 py-2 mt-3" type="submit">Continue</button>
             </section>
           </div>

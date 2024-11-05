@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { signOut, getCurrentUser, fetchUserAttributes } from 'aws-amplify/auth';
+import { Observable } from 'rxjs';
+import { PostsService } from 'src/app/shared/api/posts.service';
+import { UserStore } from 'src/app/shared/store/user.store';
 
 @Component({
   selector: '[appFeed]',
@@ -8,26 +9,23 @@ import { signOut, getCurrentUser, fetchUserAttributes } from 'aws-amplify/auth';
   styleUrls: ['./feed.page.scss'],
 })
 export class FeedPage implements OnInit, OnDestroy {
-  private errorHandled = false;
-  public email = '';
-  public isAuthenticated: boolean = false;
-
+  public currentUser: any = null;
+  public posts$!: Observable<any[]>;
+  
   constructor(
-    private router: Router,
-  ) {}
-
-  async ngOnInit() {
-    const userAttributes = await fetchUserAttributes()
-    this.email = userAttributes.email!
+    private postsService: PostsService,
+    public userStore: UserStore
+  ) {
+    this.refreshPosts();
   }
 
-  async logOut() {
-    try {
-      await signOut({ global: true });
-      this.router.navigate(['/login']);
-    } catch (error) {
-      console.log('error signing out: ', error);
-    }
+  ngOnInit() {
+    this.currentUser = this.userStore.getCurrentUser();
+  }
+  
+  // Refresh the posts observable
+  public refreshPosts(): void {
+    this.posts$ = this.postsService.fetchPosts();
   }
   
   ngOnDestroy() {}

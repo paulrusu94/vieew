@@ -33,14 +33,20 @@
 </div>
 
 <ng-template #loginForm>
+  <div *ngIf="serverError" class="alert alert-default text-danger ps-0">
+    {{ serverError }}
+  </div>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <h1 class="h3 mb-3 fw-normal">Log in</h1>
 
-    <div class="input-group mb-3">
-      <span class="input-group-text border border-0" id="basic-addon1">
-        <span class="material-symbols-outlined text-muted">alternate_email</span>
-      </span>
-      <input type="email" class="form-control border border-0" id="email" placeholder="Email" formControlName="email">
+    <div>
+      <div class="input-group mb-3">
+        <span class="input-group-text border border-0" id="basic-addon1">
+          <span class="material-symbols-outlined text-muted">alternate_email</span>
+        </span>
+        <input type="email" class="form-control border border-0" id="email" placeholder="Email" formControlName="email">
+      </div>
+      <p class="text-danger" *ngIf="errorMessages?.email">{{ errorMessages?.email }}</p>
     </div>
     <div class="input-group">
       <span class="input-group-text border border-0" id="basic-addon1">
@@ -49,9 +55,9 @@
       <input type="password" class="form-control border border-0" id="password" placeholder="Password" formControlName="password">
     </div>
 
-    <p class="text-end mb-2"><a [routerLink]="['/password-reset']">Forgot passowrd?</a></p>
-    <div class="text-center mb-5">
-      <button class="btn btn-gradient-primary w-75 py-2 my-5" type="submit">Sign in</button>
+    <p class="text-end mb-2"><a class="custom-link" (click)="openForgotPassword()">Forgot passowrd?</a></p>
+    <div class="text-center">
+      <button class="btn btn-gradient-primary w-75 py-2 my-5" type="submit" aria-hidden="true">Sign in</button>
     </div>
   </form>
 </ng-template>

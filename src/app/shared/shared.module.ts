@@ -11,7 +11,14 @@ import { FeedsComponent } from './components/feeds/feeds.component';
 import { LoginDialogComponent } from './modals/login/login-dialog.component';
 import { RegisterDialogComponent } from './modals/register/register-dialog.component';
 import { ConfirmDialogComponent } from './modals/confirm/confirm-dialog.component';
+
 import { FullScreenFeedComponent } from './components/feeds/components/fullscreen-feed/fullscreen-feed.component';
+import { ForgotPasswordDialogComponent } from './modals/forgot-password/forgot-password-dialog.component';
+// Services
+import { AuthenticationService } from './services/authentication.service';
+import { UsersService } from './api/users.service';
+import { PostsService } from './api/posts.service';
+import { MediaService } from './api/media.service';
 
 @NgModule({
   imports: [
@@ -29,7 +36,8 @@ import { FullScreenFeedComponent } from './components/feeds/components/fullscree
     FullScreenFeedComponent,
     LoginDialogComponent,
     RegisterDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    ForgotPasswordDialogComponent
   ],
   exports: [
     NgbModule,
@@ -39,6 +47,11 @@ import { FullScreenFeedComponent } from './components/feeds/components/fullscree
     IndustriesSearchComponent,
     FeedsComponent,
     ],
-  providers: [],
+  providers: [
+    AuthenticationService,
+    UsersService,
+    PostsService,
+    MediaService
+  ],
 })
 export class SharedModule {}

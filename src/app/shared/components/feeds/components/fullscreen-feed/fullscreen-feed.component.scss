@@ -1,7 +1,16 @@
 @import 'src/styles/variables';
 
 :host {
-    #typeahead-format::placeholder {
-        color: blue; /* Schimbă culoarea placeholder-ului în albastru */
-      }
+    height: 100%;
+    .btn-close {
+      position: absolute;
+      left: 15px;
+      top: 0px;
+    }
+
+    .btn-report {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+    }
 }

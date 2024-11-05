@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { AuthorizedOnlyGuard } from './shared/guards/authorized-only.guard';
 import { CanLoadGuard } from './shared/guards/can-load.guard';
 // Components
-import { SecuredLayoutComponent } from './base/components/secured-layout/secured-layout.component';
+import { SecuredLayoutComponent } from './base/layout/layout.component';
 
 export const routes: Routes = [
   {
