@@ -79,4 +79,4 @@ amplify_outputs*
 amplifyconfiguration*
 schema.graphql
 
-# .vscode/
+.vscode/
