@@ -6,25 +6,22 @@
     aria-label="Close"
     (click)="activeModal.dismiss()"
   ></button>
-  <h1 class="modal-title" id="modal-basic-title">Login to Vieew</h1>
-  <p class="pt-2">You need to login to access more content.</p>
+  <h1 class="modal-title" id="modal-basic-title">Enter confirmation code</h1>
+  <p class="pt-2">We need you to confirm account with the code we sent you by email.</p>
 </div>
 
 <div class="modal-body px-5">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <h1 class="h3 mb-3 fw-normal">Verification Code</h1>
-
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">    
+    <div *ngIf="serverError" class="alert alert-default text-danger ps-0">
+      {{ serverError }}
+    </div>
     <div class="mb-3">
-      <input type="text" class="form-control border border-0" id="verificationCode" placeholder="Verification Code" formControlName="verificationCode">
+      <input type="text" class="form-control border border-0" id="confirmationCode" placeholder="Confirmation Code" formControlName="confirmationCode">
     </div>
 
     <p class="text-end mb-2"><a href="#">Do you need another one?</a></p>
     <div class="text-center mb-5">
-      <button class="btn btn-gradient-primary w-75 py-2 my-5" type="submit">Send the verification code</button>
+      <button class="btn btn-gradient-primary w-75 py-2 my-5" type="submit">Send the confirmation code</button>
     </div>
   </form>
-</div>
-<div class="modal-footer border-0 d-flex justify-content-center align-items-center flex-column mb-3">
-    <p class="text-center text-secondary mb-2">By continuing, you agree to Vieew's <a routerLink="">Terms of Service</a> and <br> that you have read Vieew's <a routerLink="">Privacy Policy</a>.</p>
-    <h5>Don't have an account?  <a class="custom-link" (click)="openRegister()">Sign Up!</a></h5>
 </div>

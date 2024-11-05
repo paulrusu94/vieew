@@ -9,11 +9,9 @@ import { CoreModule } from './shared/core.module';
 import { AppRoutingModule } from './app-routing.module';
 // Components
 import { AppComponent } from './base/app.component';
-import { PublicLayoutComponent } from './base/components/public-layout/public-layout.component';
-import { TopNavigationComponent } from './base/components/public-layout/components/top-navigation/top-navigation.component';
-import { PasswordResetComponent } from './base/components/password-reset/password-reset.component';
-import { SecuredLayoutComponent } from './base/components/secured-layout/secured-layout.component';
-import { SideNavigationComponent } from './base/components/secured-layout/components/side-navigation/side-navigation.component';
+import { TopNavigationComponent } from './base/layout/components/top-navigation/top-navigation.component';
+import { SecuredLayoutComponent } from './base/layout/layout.component';
+import { SideNavigationComponent } from './base/layout/components/side-navigation/side-navigation.component';
 // Amplify
 import { Amplify } from 'aws-amplify';
 import outputs from "./../../amplify_outputs.json"
@@ -24,9 +22,7 @@ Amplify.configure(outputs);
 @NgModule({
   declarations: [
     AppComponent,
-    PublicLayoutComponent,
     TopNavigationComponent,
-    PasswordResetComponent,
     SecuredLayoutComponent,
     // Secured layout components
     SideNavigationComponent

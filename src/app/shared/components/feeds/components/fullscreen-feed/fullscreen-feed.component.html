@@ -1,36 +1,56 @@
-
-<div class="modal-body overflow-hidden py-0" style="max-height: 100vh;">
-  <div class="row">
-    <div class="col-8 d-flex justify-content-between align-items-center bg-dark-subtle">
-      <button type="button" class="btn-close align-self-start mt-3" aria-label="Close" (click)="activeModal.close()"></button>
-      <img src="https://source.unsplash.com/collection/happy-people" alt="" style="max-width: 70%;">
-      <div class="d-flex flex-column align-items-center">
-        <div class=" d-flex align-self-start mt-3">
-          <button class="btn btn-primary bg-secondary me-md-2 border-0 mb-5 rounded-pill px-3x py-1" type="button">Report</button>
+<div class="modal-body overflow-hidden py-0 h-100">
+  <div class="row h-100">
+    <div class="col-8 d-flex align-items-center flex-grow-1 position-relative">
+      <button type="button" class="btn-close align-self-start mt-3" aria-label="Close"
+        (click)="activeModal.close()"></button>
+      <!-- Media -->
+      <div class="px-5 w-100" *ngIf="post?.medias?.length else noMediaTemplate">
+        <ng-container *ngIf="post.medias.length > 1; else singleMediaTemplate">
+          <div *ngFor="let media of post.medias">
+            <img src="{{ media.url.url.href }}" class="w-100" />
+          </div>
+        </ng-container>
+        <ng-template #singleMediaTemplate>
+          <img src="{{ post.medias[0].url.url.href }}" class="w-100" />
+        </ng-template>
+      </div>
+      <!-- No Media -->
+       <ng-template #noMediaTemplate>
+        <div class="px-5 w-100 text-center fs-5">
+          <p>{{ post?.content }}</p>
         </div>
-        <div class="d-flex flex-column align-self-center">
-          <button class="btn btn-primary bg-secondary me-md-2 border-0 rounded-pill px-4 py-1 mb-3"><span class="material-symbols-outlined">expand_less</span></button>
-          <button class="btn btn-primary bg-secondary me-md-2 border-0 rounded-pill px-4 py-1"><span class="material-symbols-outlined">expand_more</span></button>
+       </ng-template>
+      <div>
+        <button type="button" class="btn btn-dark btn-report" aria-label="Close"
+          (click)="activeModal.close()">Report</button>
+        <div>
+          <button type="button" class="btn btn-dark mb-2" aria-label="Close" (click)="activeModal.close()">
+            <i class="fa fa-chevron-up"></i>
+          </button>
+          <button type="button" class="btn btn-dark" aria-label="Close" (click)="activeModal.close()">
+            <i class="fa fa-chevron-down"></i>
+          </button>
         </div>
       </div>
     </div>
     <div class="col-4">
-      <div class="d-flex justify-content-between align-items-center py-3">
+      <div class="d-flex justify-content-between pt-5">
         <div class="d-flex">
-          <img [src]="feed.avatar" alt="avatar" class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
+          <img src="https://avatar.iran.liara.run/public/31" alt="avatar" class="rounded-circle me-2"
+            style="width: 38px; height: 38px; object-fit: cover" />
           <div>
-           <a routerLink="">
-            <p class="m-0 fw-bold">{{ feed.author }}</p>
-           </a> 
-            <span class="text-muted fs-7">{{ feed.timestamp }}</span>
+            <a routerLink="">
+              <p class="m-0 fw-bold">{{ post?.author?.data?.firstName }} {{ post?.author?.data?.lastName }}</p>
+            </a>
+            <span class="text-muted fs-7">{{ post?.updatedAt | date }}</span>
           </div>
         </div>
-        <button class="btn btn-primary btn-gradient-primary me-md-2 border-0" type="button">Follow</button>
+        <button class="btn btn-gradient-primary w-25" type="submit">Follow</button>
       </div>
-      <div class="pb-4">
-        {{ feed.content }}
+      <div class="py-4">
+        <p>{{ post?.content }}</p>
       </div>
-      <div class="feed-actions d-flex flex-row mt-1 border-bottom">
+      <div class="d-flex flex-row mt-1 border-bottom">
         <button type="button" class="btn btn-default px-0 pt-0 me-3 d-flex align-items-center">
           <span class="material-symbols-outlined me-1">thumb_up</span>
           2,274
@@ -44,64 +64,100 @@
           124
         </button>
       </div>
-      <div class="py-4 mb-4">
-        <p class="mb-3">Comments</p>
+      <div class="py-2">
+        <h5 class="mb-3">Comments</h5>
         <div class="d-flex flex-column justify-content-between">
           <div class="d-flex justify-content-between mb-3">
             <!-- avatar -->
             <div class="d-flex">
-              <a [routerLink]="['/', feed.author]">
-                <img [src]="feed.avatar" alt="avatar" class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
+              <a>
+                <img src="https://avatar.iran.liara.run/public/1" alt="avatar" class="rounded-circle me-2"
+                  style="width: 38px; height: 38px; object-fit: cover" />
               </a>
               <div>
                 <p class="m-0 fw-bold">
-                  <a [routerLink]="['/', feed.author]">{{ feed.author }}</a>
+                  <a>Jessica Thompson</a>
                 </p>
-                <p class="mb-0">Commentul meu</p>
-                <span class="text-muted fs-7">{{ feed.timestamp }}</span>
+                <p class="mb-0">&#10084;&#65039;</p>
+                <span class="text-muted fs-7">2m ago &#x2022; 86 Likes</span>
               </div>
             </div>
-          <button type="button" class="btn text-primary"><span class="material-symbols-outlined">thumb_up</span></button>
-        </div>
-        <div class="d-flex flex-column justify-content-between mb-3">
-          <div class="d-flex justify-content-between">
+            <button type="button" class="btn text-primary"><span
+                class="material-symbols-outlined">thumb_up</span></button>
+          </div>
+          <div class="d-flex justify-content-between mb-3">
             <!-- avatar -->
             <div class="d-flex">
-              <a [routerLink]="['/', feed.author]">
-                <img [src]="feed.avatar" alt="avatar" class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
+              <a>
+                <img src="https://avatar.iran.liara.run/public/22" alt="avatar" class="rounded-circle me-2"
+                  style="width: 38px; height: 38px; object-fit: cover" />
               </a>
               <div>
                 <p class="m-0 fw-bold">
-                  <a [routerLink]="['/', feed.author]">{{ feed.author }}</a>
+                  <a>Dustin Grant</a>
                 </p>
-                <p class="mb-0">Commentul meu</p>
-                <span class="text-muted fs-7">{{ feed.timestamp }}</span>
+                <p class="mb-0">Lol &#128518;</p>
+                <span class="text-muted fs-7">10m ago &#x2022; 4 Likes</span>
               </div>
             </div>
-          <button type="button" class="btn text-primary"><span class="material-symbols-outlined">thumb_up</span></button>
-        </div>
-        </div>
-        </div>
-      </div>
-      <div class="border-top py-4 mt-auto bg-black p-3 position-absolute bottom-0 w-100">
-        <form class="d-flex justify-content-between bg-dark p-0 ps-3 mt-auto rounded-5 align-items-center">
-        <div class="d-flex flex-grow-1 align-items-center">
-          <div class="form-group flex-grow-1">
-            <input
-                id="typeahead-format"
-                type="text"
-                class="form-control border-0 bg-transparent shadow-none p-0 w-100 fs-5"
-                placeholder="Log in or sign up to comment"
-              />
+            <button type="button" class="btn text-primary"><span
+                class="material-symbols-outlined">thumb_up</span></button>
+          </div>
+          <div class="d-flex justify-content-between mb-3">
+            <!-- avatar -->
+            <div class="d-flex">
+              <a>
+                <img src="https://avatar.iran.liara.run/public/61" alt="avatar" class="rounded-circle me-2"
+                  style="width: 38px; height: 38px; object-fit: cover" />
+              </a>
+              <div>
+                <p class="m-0 fw-bold">
+                  <a>Leslie Alexander</a>
+                </p>
+                <p class="mb-0">Very true!</p>
+                <span class="text-muted fs-7">15m ago &#x2022; 19 Likes</span>
+              </div>
+            </div>
+            <button type="button" class="btn text-primary"><span
+                class="material-symbols-outlined">thumb_up</span></button>
+          </div>
+          <div class="d-flex justify-content-between mb-3">
+            <!-- avatar -->
+            <div class="d-flex">
+              <a>
+                <img src="https://avatar.iran.liara.run/public/74" alt="avatar" class="rounded-circle me-2"
+                  style="width: 38px; height: 38px; object-fit: cover" />
+              </a>
+              <div>
+                <p class="m-0 fw-bold">
+                  <a>Ana Cosanzeana</a>
+                </p>
+                <p class="mb-0">&#128522;</p>
+                <span class="text-muted fs-7">19m ago &#x2022; 177 Likes</span>
+              </div>
+            </div>
+            <button type="button" class="btn text-primary"><span
+                class="material-symbols-outlined">thumb_up</span></button>
+          </div>
+          <div class="d-flex justify-content-between mb-3">
+            <!-- avatar -->
+            <div class="d-flex">
+              <a>
+                <img src="https://avatar.iran.liara.run/public/531" alt="avatar" class="rounded-circle me-2"
+                  style="width: 38px; height: 38px; object-fit: cover" />
+              </a>
+              <div>
+                <p class="m-0 fw-bold">
+                  <a>Jacob Washington</a>
+                </p>
+                <p class="mb-0">This is such a powerful quote! &#128513;</p>
+                <span class="text-muted fs-7">20m ago &#x2022; 192 Likes</span>
+              </div>
+            </div>
+            <button type="button" class="btn text-primary"><span
+                class="material-symbols-outlined">thumb_up</span></button>
           </div>
         </div>
-        <div>
-          <button class="btn btn-gradient-primary rounded-circle p-0 rounded-5"><span class="material-symbols-outlined m-0 d-block">
-            keyboard_arrow_right
-            </span></button>
-        </div>
-        </form>
       </div>
     </div>
   </div>
-</div>
