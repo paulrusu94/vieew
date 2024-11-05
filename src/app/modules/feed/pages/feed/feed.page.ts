@@ -17,10 +17,7 @@ export class FeedPage implements OnInit, OnDestroy {
   ) {}
 
   async ngOnInit() {
-    const currentUser = await getCurrentUser();
-    const userAttributes = await fetchUserAttributes();
-    console.log(currentUser)
-    console.log(userAttributes)
+    const userAttributes = await fetchUserAttributes()
     this.email = userAttributes.email!
   }
 

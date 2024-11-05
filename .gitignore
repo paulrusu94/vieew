@@ -87,3 +87,5 @@ amplifytools.xcconfig
 amplify_outputs*
 amplifyconfiguration*
 schema.graphql
+
+.vscode/
