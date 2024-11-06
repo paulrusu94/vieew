@@ -18,7 +18,7 @@ const schema = a.schema({
       "IN_DRAFT", 
       "IN_REVIEW", 
       "IN_ARCHIVE",
-      "STATUS"
+      "IN_FEED"
     ]),
     MediaContentTypes: a
     .enum([
@@ -42,7 +42,7 @@ const schema = a.schema({
       index("email"),
       index("sub").queryField("getUserBySub"),
     ])
-    .authorization((allow) => [allow.publicApiKey()]),
+    .authorization((allow) => [allow.guest()]),
   Post: a
     .model({
       type: a.string().default("Post"),
@@ -64,7 +64,7 @@ const schema = a.schema({
       index("authorId"),
       index("type").sortKeys(["createdAt"]).queryField("postsByDate"),
     ])
-    .authorization((allow) =>[allow.publicApiKey()]),
+    .authorization((allow) =>[allow.guest()]),
   Entity: a
     .model({
       entityId: a.id().required(),
@@ -78,7 +78,7 @@ const schema = a.schema({
     .secondaryIndexes(index => [
       index("ownerId")
     ])
-    .authorization((allow) =>[allow.publicApiKey()]),
+    .authorization((allow) =>[allow.guest()]),
   Media: a.model({
       type: a.string().default("Media"),
       mediaId: a.id().required(),
@@ -98,7 +98,7 @@ const schema = a.schema({
       index("ownerId").sortKeys(["createdAt"]).queryField("listMediaByOwner"),
       index("postId").sortKeys(["createdAt"]).queryField("listMediaByPost")
     ])
-    .authorization((allow) =>[allow.publicApiKey()]),
+    .authorization((allow) =>[allow.guest()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
@@ -106,9 +106,6 @@ export type Schema = ClientSchema<typeof schema>;
 export const data = defineData({
   schema,
   authorizationModes: {
-    defaultAuthorizationMode: "apiKey",
-    apiKeyAuthorizationMode: {
-      expiresInDays: 30,
-    },
+    defaultAuthorizationMode: "iam"
   },
 });
