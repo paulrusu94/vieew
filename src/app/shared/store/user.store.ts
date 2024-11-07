@@ -25,6 +25,7 @@ export class UserStore {
       )
       .subscribe({
         next: (response: any) => {
+          console.log(response)
           this.setUser(response);
         },
         error: (error: any) => {

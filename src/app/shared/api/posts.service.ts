@@ -25,7 +25,7 @@ export class PostsService {
     return from(client.models.Post.postsByDate({ type: "Post" }, { sortDirection: "DESC", limit: 10, filter })).pipe(
       mergeMap(response => {
         const { data } = response;
-        // Transform each post using async logic
+        if (data) {// Transform each post using async logic
         return from(Promise.all(
           data.map(async (feed: Post) => ({
             ...feed,
@@ -39,6 +39,8 @@ export class PostsService {
             )
           }))
         ));
+      }
+      return of([]);
       })
     );
   }

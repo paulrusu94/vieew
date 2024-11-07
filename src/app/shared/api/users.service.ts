@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { from, Observable, of } from 'rxjs';
+import { from, map, Observable, of } from 'rxjs';
 import {
   autoSignIn,
   confirmResetPassword,
@@ -32,11 +32,15 @@ export class UsersService {
   }
 
   getCurrentDynamoUser(cognitoUser: any): Observable<any> {
+    console.log(cognitoUser)
     if (!cognitoUser || !cognitoUser.userId) {
       console.error('Cognito user is missing or invalid:', cognitoUser);
       return of(null); // Return a default observable if the user is missing
     }
 
-    return from(client.models.User.getUserBySub({ sub: cognitoUser.userId }));
+    console.log(cognitoUser)
+
+    return from(client.models.User.getUserBySub({sub: cognitoUser.userId}, {})).pipe(
+      map((response) => {console.log(response)}));
   }
 }
