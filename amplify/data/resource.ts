@@ -42,7 +42,7 @@ const schema = a.schema({
       index("email"),
       index("sub").queryField("getUserBySub"),
     ])
-    .authorization((allow) => [allow.guest()]),
+    .authorization((allow) => [allow.guest(), allow.authenticated()]),
   Post: a
     .model({
       type: a.string().default("Post"),
