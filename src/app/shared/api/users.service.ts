@@ -40,7 +40,7 @@ export class UsersService {
 
     console.log(cognitoUser)
 
-    return from(client.models.User.getUserBySub({sub: cognitoUser.userId}, {})).pipe(
-      map((response) => {console.log(response)}));
+    return from(client.models.User.getUserBySub({sub: cognitoUser.userId})).pipe(
+      map((response) => {console.log(response); return response}));
   }
 }
