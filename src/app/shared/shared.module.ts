@@ -19,6 +19,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { UsersService } from './api/users.service';
 import { PostsService } from './api/posts.service';
 import { MediaService } from './api/media.service';
+import { UpgradeAccountDialogComponent } from './modals/upgrade-account/upgrade-account-dialog.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { MediaService } from './api/media.service';
     LoginDialogComponent,
     RegisterDialogComponent,
     ConfirmDialogComponent,
-    ForgotPasswordDialogComponent
+    ForgotPasswordDialogComponent,
+    UpgradeAccountDialogComponent
   ],
   exports: [
     NgbModule,

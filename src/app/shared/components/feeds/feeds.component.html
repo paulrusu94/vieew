@@ -39,7 +39,7 @@
       <li class="d-flex align-items-center">
         <a
           class="dropdown-item d-flex justify-content-around align-items-center fs-7"
-          href="#"
+          (click)="deletePost(post.postId)"
           >Delete feed</a
         >
       </li>
@@ -50,9 +50,14 @@
     <div *ngIf="post.medias.length > 0">
       <div
         *ngFor="let media of post.medias"
-        class="shadow mt-3 mb-5 border-bottom"
+        class="shadow mt-3 mb-5 border-bottom text-center"
       >
-        <img src="{{ media.url.url.href }}" class="w-100" />
+      <ng-container *ngIf="media?.contentType !== 'video_mp4'; else videoPreview">
+        <img [src]="media.url.url.href" alt="Image preview" class="img-fluid" width="300" />
+      </ng-container>
+      <ng-template #videoPreview>
+        <video [src]="media.url.url.href" controls class="img-fluid" width="300"></video>
+      </ng-template>
       </div>
     </div>
   </div>

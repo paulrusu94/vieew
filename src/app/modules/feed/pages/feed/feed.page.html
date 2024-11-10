@@ -5,4 +5,4 @@
 <!-- Add post component -->
 <div appAddPost class="mb-5" (onPostAdded)="refreshPosts()"></div>
 <!-- Feeds -->
-<div appFeeds *ngIf="posts$ | async as posts" [posts]="posts" class="px-4"></div>
+<div appFeeds *ngIf="posts$ | async as posts" [posts]="posts" class="px-4" (onPostDeleted)="refreshPosts()"></div>

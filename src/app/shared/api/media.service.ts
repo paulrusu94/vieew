@@ -10,15 +10,7 @@ const client = generateClient<Schema>();
 export class MediaService {
   constructor() {}
 
-  upload(data: any): Observable<any> {
-    return new Observable<any>((subscriber) => {
-      try {
-        const result = uploadData(data); // Call uploadData directly
-        subscriber.next(result); // Emit the result
-        subscriber.complete(); // Mark observable as complete
-      } catch (error) {
-        subscriber.error(error); // Pass error to observable
-      }
-    });
+  upload(data: any) {
+    return uploadData(data);
   }
 }

@@ -112,7 +112,7 @@
         <ng-template ngbNavContent>
           <!-- Add post component -->
           <div appAddPost *ngIf="visitingOwnProfile" class="mb-5" (onPostAdded)="refreshPosts()"></div>
-          <div appFeeds *ngIf="posts$ | async as posts" [posts]="posts" class="px-4"></div>
+          <div appFeeds *ngIf="posts$ | async as posts" [posts]="posts" class="px-4" (onPostDeleted)="refreshPosts()"></div>
         </ng-template>
       </li>
     </ul>
