@@ -1,0 +1,27 @@
+<div class="modal-header d-flex flex-column align-items-center position-relative pt-5 border-0 rounded-5">
+  <button
+    type="button"
+    class="btn-close position-absolute"
+    style="top: 15px; right: 15px;"
+    aria-label="Close"
+    (click)="activeModal.dismiss()"
+  ></button>
+  <h1 class="modal-title" id="modal-basic-title">Become a vieewer</h1>
+  <p class="pt-2">We need you to confirm account with the code we sent you by email.</p>
+</div>
+
+<div class="modal-body px-5">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">    
+    <div *ngIf="serverError" class="alert alert-default text-danger ps-0">
+      {{ serverError }}
+    </div>
+    <div class="mb-3">
+      <input type="text" class="form-control border border-0" id="confirmationCode" placeholder="Confirmation Code" formControlName="confirmationCode">
+    </div>
+
+    <p class="text-end mb-2"><a href="#">Do you need another one?</a></p>
+    <div class="text-center mb-5">
+      <button class="btn btn-gradient-primary w-75 py-2 my-5" type="submit">Send the confirmation code</button>
+    </div>
+  </form>
+</div>

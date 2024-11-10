@@ -95,6 +95,7 @@ export class TopNavigationComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.currentUser = this.userStore.getCurrentUser();
   }
+  
   formatter = (result: string) => result.toUpperCase();
 
   search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) => {
@@ -145,7 +146,6 @@ export class TopNavigationComponent implements OnInit, OnDestroy {
       () => { },
     );
   }
-
 
   ngOnDestroy() { }
 }

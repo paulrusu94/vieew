@@ -22,7 +22,7 @@ export class PostsService {
     // Add the filter option to your query for authorId if provided
     const filter = authorId ? { authorId: { eq: authorId } } : {};
 
-    return from(client.models.Post.postsByDate({ type: "Post" }, { sortDirection: "DESC", limit: 10, filter })).pipe(
+    return from(client.models.Post.postsByDate({ type: "Post" }, { sortDirection: "DESC", limit: 100, filter })).pipe(
       mergeMap(response => {
         const { data } = response;
         // Transform each post using async logic
@@ -41,5 +41,9 @@ export class PostsService {
         ));
       })
     );
+  }
+
+  public deletePost(postId: string) {
+    return from(client.models.Post.delete({postId: postId}));
   }
 }

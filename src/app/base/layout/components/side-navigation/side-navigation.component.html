@@ -23,9 +23,8 @@
     </button>
   </li>
   <li class="nav-item mt-5">
-    <button [routerLink]="['/']" routerLinkActive="active"
-      class="nav-link btn btn-gradient-primary text-white text-start d-flex align-items-center justify-content-between"
-      aria-current="page" style="width: 100%;">
+    <button class="nav-link btn btn-gradient-primary text-white text-start d-flex align-items-center justify-content-between" (click)="openUpgradeAccount()" aria-current="page" style="width: 100%;"
+      >
       <span class="d-flex align-items-center"><span class="material-symbols-outlined me-2 me-1">upload</span>Become a
         Vieewer</span> <span class="float-end pe-2"></span>
     </button>

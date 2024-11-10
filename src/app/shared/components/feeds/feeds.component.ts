@@ -1,6 +1,7 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { ModalService } from 'src/app/shared/services/modal.service';
 import { FullScreenFeedComponent } from './components/fullscreen-feed/fullscreen-feed.component';
+import { PostsService } from '../../api/posts.service';
 
 @Component({
   selector: '[appFeeds]',
@@ -9,12 +10,16 @@ import { FullScreenFeedComponent } from './components/fullscreen-feed/fullscreen
 })
 export class FeedsComponent implements OnInit, OnDestroy {
   @Input() posts: any;
+  @Output() onPostDeleted = new EventEmitter();
 
   constructor(
     private modalService: ModalService,
+    private postsService: PostsService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.posts);
+  }
 
   public goFullScreen(post: any): void {
     const dialog = this.modalService.open(FullScreenFeedComponent, { fullscreen: true });
@@ -23,6 +28,18 @@ export class FeedsComponent implements OnInit, OnDestroy {
       () => { },
       () => { },
     );
+  }
+
+  deletePost(postId: any) {
+    this.postsService.deletePost(postId).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.onPostDeleted.emit();
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
   }
 
   ngOnDestroy() {}
