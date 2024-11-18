@@ -16,7 +16,7 @@ export class SideNavigationComponent implements OnInit, OnDestroy {
   ngOnInit() {}
 
   public openUpgradeAccount(): void {
-    const dialog = this.modalService.open(UpgradeAccountDialogComponent, { size: 'md' });
+    const dialog = this.modalService.open(UpgradeAccountDialogComponent, { size: 'lg' });
     dialog.result.then(
       () => { },
       () => { },

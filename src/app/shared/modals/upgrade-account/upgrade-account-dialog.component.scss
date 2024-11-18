@@ -16,3 +16,8 @@
   color: #0056b3; /* Tre facut mov mai luminos*/
   text-decoration: underline; 
 }
+
+input::placeholder {
+  color: var(--bs-secondary) !important;  /* Culoare Bootstrap de tip 'danger' */
+}
+
