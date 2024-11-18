@@ -1,97 +1,72 @@
-
 <div class="modal-body px-5">
-  <div *ngIf="!selectedOption" class="">
-    <h3 class="py-3">Select account type</h3>
-    <div class="row mb-3">
-      <div class="col-md-6">
-        <div class="option-button bg-dark rounded ps-3 pe-5 py-2" role="button" (click)="selectOption(1)">
-            <h3 class="m-0 text-primary"> Vieewer</h3>
-            <p class="mt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <ng-container [ngSwitch]="step">
+    <div *ngSwitchCase="'select'">
+      <h3 class="py-3">Select account type</h3>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <div class="option-button bg-dark rounded ps-3 pe-5 py-2" role="button" (click)="selectOption('form', 'vieewer')">
+            <h3 class="m-0 text-primary">Vieewer</h3>
+            <p class="mt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua.</p>
           </div>
-      </div>  
-      <div class="col-md-6">
-        <div class="option-button bg-dark rounded ps-3 pe-5 py-2" role="button" (click)="selectOption(2)">
+        </div>
+        <div class="col-md-6">
+          <div class="option-button bg-dark rounded ps-3 pe-5 py-2" role="button" (click)="selectOption('form', 'agency')">
             <h3 class="m-0 text-primary">Agency</h3>
-            <p class="mt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p class="mt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua.</p>
           </div>
-      </div>  
-     </div>
-      <div class="option-button bg-dark rounded ps-3 pe-5 py-2 mb-3" role="button" (click)="selectOption(3)">
+        </div>
+      </div>
+      <div class="option-button bg-dark rounded ps-3 pe-5 py-2 mb-3" role="button" (click)="selectOption('form', 'company')">
         <h3 class="m-0 text-primary">Business</h3>
-        <p class="mt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p class="mt-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+          labore et dolore magna aliqua.</p>
       </div>
       <button class="col-md-12 bg-dark fs-3 py-2 my-2 border-0 rounded" (click)="activeModal.dismiss()">Cancel</button>
-  </div>
-
-  <div *ngIf="selectedOption === 1">
-    <h3 class="pt-3 mb-4">Select industry</h3>
-        <p class="text-secondary mb-3">Please select the industry you activate in</p>
-        <div class="search-wrap position-relative mb-4 rounded">
-            <input
-              id="typeahead-format"
-              type="text"
-              class="form-control border border-0 shadow-none"
-              placeholder="Search">
-              <!-- [(ngModel)]="model"
-              (selectItem)="selectItem($event)"
-              (keydown.enter)="onKeypress()"
-              [ngbTypeahead]="search"
-              [resultFormatter]="formatter" 
-               <span class="material-symbols-outlined position-absolute">search</span>
-               Trebe pusa lupa pizdii calumea 
-               -->
-          </div>
-        <div class="d-flex gap-4">
-            <button class="btn bg-dark  flex-fill" (click)="goBack()">Back</button>
-            <button class="btn btn-gradient-primary flex-fill">Continue</button>
-        </div>
-  </div>
-
-  <div *ngIf="selectedOption === 2">
-    <h1>Muie noua ca aici nu vad design! sau cred ca e acelasi ca la option 3?</h1>
-    <div class="d-flex gap-4">
-        <button class="btn btn-primary flex-fill" (click)="goBack()">Back</button>
-        <button class="btn btn-gradient-primary flex-fill">Continue</button>
     </div>
-  </div>
-
-  <div *ngIf="selectedOption === 3">
-    <h3 class="pt-3 mb-4">A few details about you</h3>
+  
+    <form *ngSwitchCase="'form'" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <h3 class="pt-3">Select industry</h3>
         <p class="text-secondary mb-3">Please select the industry you activate in</p>
         <div class="search-wrap position-relative mb-4 rounded">
-            <input
-              id="typeahead-format"
-              type="text"
-              class="form-control border border-0 shadow-none text-"
-              placeholder="Search">
-              <!-- Si aici trebe pusa lupa pizdii -->
+          <input id="typeahead-format" type="text" class="form-control border border-0 shadow-none" placeholder="Search"
+            formControlName="industry">
+        </div>
+      </div>
+      <div>
+        <div class="d-flex gap-4 mb-4" *ngIf="form.controls['name']">
+          <div class="flex-column flex-fill">
+            <p class="text-secondary mb-3">The name of your bussiness/agency</p>
+            <input type="text" class="form-control border border-0 shadow-none" placeholder="Enter name"
+              formControlName="name">
           </div>
-          <div class="d-flex gap-4 mb-4">
-            <div class="flex-column flex-fill">
-                <p class="text-secondary mb-3">The name of your bussiness/agency</p>
-                <input type="text"
-                  class="form-control border border-0 shadow-none"
-                  placeholder="Enter name">
-            </div>
-            <div class="flex-column flex-fill">
-                <p class="text-secondary mb-3">Username</p>
-                <input type="text"
-                  class="form-control border border-0 shadow-none"
-                  placeholder="Username">
-            </div>
+          <div class="flex-column flex-fill" *ngIf="form.controls['username']">
+            <p class="text-secondary mb-3">Username</p>
+            <input type="text" class="form-control border border-0 shadow-none" placeholder="Username"
+              formControlName="username">
+          </div>
         </div>
-        <div class="mb-4 d-flex flex-row">
-            <img src="" alt="">
-            <div class="d-flex flex-column">
-                <h5>Select profile picture</h5>
-                <p class="text-secondary">Upload your profile picture</p>
-                <input type="file" id="fileInput" class="btn btn-primary">
-            </div>
+        <div class="mb-4 d-flex flex-row" *ngIf="form.controls['picture']">
+          <img src="" alt="">
+          <div class="d-flex flex-column">
+            <h5>Select profile picture</h5>
+            <p class="text-secondary">Upload your profile picture</p>
+            <input type="file" id="fileInput" class="btn btn-primary" formControlName="picture">
+          </div>
         </div>
-        <div class="d-flex gap-4">
-            <button class="btn bg-dark  flex-fill" (click)="goBack()">Back</button>
-            <button class="btn btn-gradient-primary flex-fill">Continue</button>
-        </div>
-  </div>
+      </div>
+      <div class="d-flex gap-4">
+        <button class="btn bg-dark flex-fill" (click)="goBack()">Back</button>
+        <button class="btn btn-gradient-primary flex-fill">Continue</button>
+      </div>
+    </form>
+    <div *ngSwitchCase="'success'" class="text-center">
+      <img src="./assets/images/lets_get_started.png" alt="" />
+      <h3>Let's get started</h3>
+      <p>Your business account is all set up! Get started with sharing content and start selling your services</p>
+      <button class="btn btn-gradient-primary flex-fill" (click)="activeModal.dismiss()">Get started!</button>
+    </div>
+  </ng-container>
 </div>
-
