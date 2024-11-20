@@ -4,15 +4,15 @@
       <button type="button" class="btn-close align-self-start mt-3" aria-label="Close"
         (click)="activeModal.close()"></button>
       <!-- Media -->
-      <div class="px-5 w-100" *ngIf="post?.medias?.length else noMediaTemplate">
-        <ng-container *ngIf="post.medias.length > 1; else singleMediaTemplate">
-          <div *ngFor="let media of post.medias">
-            <img src="{{ media.url.url.href }}" class="w-100" />
-          </div>
-        </ng-container>
-        <ng-template #singleMediaTemplate>
-          <img src="{{ post.medias[0].url.url.href }}" class="w-100" />
-        </ng-template>
+      <div class="px-5 text-center" *ngIf="post?.medias?.length else noMediaTemplate">
+        <div *ngFor="let media of post.medias" class="shadow mt-3 mb-5 border-bottom text-center">
+          <ng-container *ngIf="media?.contentType !== 'video_mp4'; else videoPreview">
+            <img [src]="media.url.url.href" alt="Image preview" class="img-fluid" />
+          </ng-container>
+          <ng-template #videoPreview>
+            <video [src]="media.url.url.href" controls class="img-fluid"></video>
+          </ng-template>
+        </div>
       </div>
       <!-- No Media -->
        <ng-template #noMediaTemplate>
